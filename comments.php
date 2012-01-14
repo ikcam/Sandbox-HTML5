@@ -2,13 +2,13 @@
 	if ( 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']) )
 		die ( 'Please do not load this page directly. Thanks.' );
 ?>
-			<div id="comments">
+			<section id="comments">
 <?php
 	if ( !empty($post->post_password) ) :
 		if ( $_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password ) :
 ?>
 				<div class="nopassword"><?php _e( 'This post is protected. Enter the password to view any comments.', 'sandbox' ) ?></div>
-			</div><!-- .comments -->
+			</section><!-- .comments -->
 <?php
 		return;
 	endif;
@@ -25,7 +25,7 @@ foreach ( $comments as $comment )
 <?php if ( $comment_count ) : ?>
 <?php $sandbox_comment_alt = 0 ?>
 
-				<div id="comments-list" class="comments">
+				<section id="comments-list" class="comments">
 					<h3><?php printf($comment_count > 1 ? __('<span>%d</span> Comments', 'sandbox') : __('<span>One</span> Comment', 'sandbox'), $comment_count) ?></h3>
 
 					<ol>
@@ -45,13 +45,13 @@ foreach ( $comments as $comment )
 <?php endforeach; ?>
 
 					</ol>
-				</div><!-- #comments-list .comments -->
+				</section><!-- #comments-list .comments -->
 
 <?php endif; // REFERENCE: if ( $comment_count ) ?>
 <?php if ( $ping_count ) : ?>
 <?php $sandbox_comment_alt = 0 ?>
 
-				<div id="trackbacks-list" class="comments">
+				<section id="trackbacks-list" class="comments">
 					<h3><?php printf($ping_count > 1 ? __('<span>%d</span> Trackbacks', 'sandbox') : __('<span>One</span> Trackback', 'sandbox'), $ping_count) ?></h3>
 
 					<ol>
@@ -71,14 +71,14 @@ foreach ( $comments as $comment )
 <?php endforeach; ?>
 
 					</ol>
-				</div><!-- #trackbacks-list .comments -->
+				</section><!-- #trackbacks-list .comments -->
 
 <?php endif // REFERENCE: if ( $ping_count ) ?>
 <?php endif // REFERENCE: if ( $comments ) ?>
 <?php if ( 'open' == $post->comment_status ) : ?>
 <?php $req = get_option('require_name_email'); // Checks if fields are required. Thanks, Adam. ;-) ?>
 
-				<div id="respond">
+				<section id="respond">
 					<h3><?php _e( 'Post a Comment', 'sandbox' ) ?></h3>
 
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
@@ -121,7 +121,7 @@ foreach ( $comments as $comment )
 					</div><!-- .formcontainer -->
 <?php endif // REFERENCE: if ( get_option('comment_registration') && !$user_ID ) ?>
 
-				</div><!-- #respond -->
+				</section><!-- #respond -->
 <?php endif // REFERENCE: if ( 'open' == $post->comment_status ) ?>
 
-			</div><!-- #comments -->
+			</section><!-- #comments -->

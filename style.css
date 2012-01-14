@@ -18,37 +18,37 @@ right:1em;
 top:1em;
 }
 
-div#menu {
+nav#menu {
 background:#EEE;
 height:1.5em;
 margin:1em 0;
 width:100%;
 }
 
-div#menu ul,div#menu ul ul {
+nav#menu ul,nav#menu ul ul {
 line-height:1;
 list-style:none;
 margin:0;
 padding:0;
 }
 
-div#menu ul a {
+nav#menu ul a {
 display:block;
 margin-right:1em;
 padding:0.2em 0.5em;
 text-decoration:none;
 }
 
-div#menu ul ul ul a {
+nav#menu ul ul ul a {
 font-style:italic;
 }
 
-div#menu ul li ul {
+nav#menu ul li ul {
 left:-999em;
 position:absolute;
 }
 
-div#menu ul li:hover ul {
+nav#menu ul li:hover ul {
 left:auto;
 }
 
@@ -56,7 +56,7 @@ left:auto;
 clear:both;
 }
 
-div#container,div#primary {
+section#container,aside#primary {
 margin-top:2em;
 }
 
@@ -77,7 +77,7 @@ input#author,input#email,input#url,textarea#comment {
 padding:0.2em;
 }
 
-div.comments ol li {
+section.comments ol li {
 margin:0 0 3.5em;
 }
 
@@ -141,68 +141,68 @@ div.gallery dl.gallery-columns-5 {
 width:19%;
 }
 
-div#nav-above {
+nav#nav-above {
 margin-bottom:1em;
 }
 
-div#nav-below {
+nav#nav-below {
 margin-top:1em;
 }
 
-div#nav-images {
+nav#nav-images {
 height:150px;
 margin:1em 0;
 }
 
-div.navigation {
+nav.navigation {
 height:1.25em;
 }
 
-div.navigation div.nav-next {
+nav.navigation div.nav-next {
 float:right;
 text-align:right;
 }
 
-div.sidebar h3 {
+aside.sidebar h3 {
 font-size:1.2em;
 }
 
-div.sidebar input#s {
+aside.sidebar input#s {
 width:7em;
 }
 
-div.sidebar li {
+aside.sidebar li {
 list-style:none;
 margin:0 0 2em;
 }
 
-div.sidebar li form {
+aside.sidebar li form {
 margin:0.2em 0 0;
 padding:0;
 }
 
-div.sidebar ul ul {
+aside.sidebar ul ul {
 margin:0 0 0 1em;
 }
 
-div.sidebar ul ul li {
+aside.sidebar ul ul li {
 list-style:disc;
 margin:0;
 }
 
-div.sidebar ul ul ul {
+aside.sidebar ul ul ul {
 margin:0 0 0 0.5em;
 }
 
-div.sidebar ul ul ul li {
+aside.sidebar ul ul ul li {
 list-style:circle;
 }
 
-div#menu ul li,div.gallery dl,div.navigation div.nav-previous {
+nav#menu ul li,div.gallery dl,nav.navigation div.nav-previous {
 float:left;
 }
 
-div#header,div#footer {
+header#header,header#footer {
 text-align:center;
 }
 
@@ -210,7 +210,7 @@ input#author,input#email,input#url,div.navigation div {
 width:50%;
 }
 
-div.gallery *,div.sidebar div,div.sidebar h3,div.sidebar ul {
+div.gallery *,aside.sidebar div,aside.sidebar h3,aside.sidebar ul {
 margin:0;
 padding:0;
 }

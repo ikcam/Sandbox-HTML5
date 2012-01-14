@@ -1,4 +1,4 @@
-	<div id="primary" class="sidebar">
+	<aside id="primary" class="sidebar">
 		<ul class="xoxo">
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(1) ) : // begin primary sidebar widgets ?>
 
@@ -26,16 +26,16 @@
 			</li>
 <?php endif; // end primary sidebar widgets  ?>
 		</ul>
-	</div><!-- #primary .sidebar -->
+	</aside><!-- #primary .sidebar -->
 
-	<div id="secondary" class="sidebar">
+	<aside id="secondary" class="sidebar">
 		<ul class="xoxo">
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(2) ) : // begin secondary sidebar widgets ?>
 			<li id="search">
 				<h3><label for="s"><?php _e( 'Search', 'sandbox' ) ?></label></h3>
 				<form id="searchform" class="blog-search" method="get" action="<?php bloginfo('home') ?>">
 					<div>
-						<input id="s" name="s" type="text" class="text" value="<?php the_search_query() ?>" size="10" tabindex="1" />
+						<input id="s" name="s" type="text" class="text" value="<?php the_search_query() ?>" size="10" tabindex="1" required />
 						<input type="submit" class="button" value="<?php _e( 'Find', 'sandbox' ) ?>" tabindex="2" />
 					</div>
 				</form>
@@ -63,4 +63,4 @@
 			</li>
 <?php endif; // end secondary sidebar widgets  ?>
 		</ul>
-	</div><!-- #secondary .sidebar -->
+	</aside><!-- #secondary .sidebar -->

@@ -1,16 +1,16 @@
 <?php get_header() ?>
 
-	<div id="container">
-		<div id="content">
+	<section id="container">
+		<section id="content">
 
 <?php the_post() ?>
 
-			<div id="nav-above" class="navigation">
+			<nav id="nav-above" class="navigation">
 				<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">&laquo;</span> %title' ) ?></div>
 				<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
-			</div>
+			</nav>
 
-			<div id="post-<?php the_ID() ?>" class="<?php sandbox_post_class() ?>">
+			<article id="post-<?php the_ID() ?>" class="<?php sandbox_post_class() ?>">
 				<h2 class="entry-title"><?php the_title() ?></h2>
 				<div class="entry-content">
 <?php the_content() ?>
@@ -42,17 +42,17 @@
 <?php edit_post_link( __( 'Edit', 'sandbox' ), "\n\t\t\t\t\t<span class=\"edit-link\">", "</span>" ) ?>
 
 				</div>
-			</div><!-- .post -->
+			</article><!-- .post -->
 
-			<div id="nav-below" class="navigation">
+			<nav id="nav-below" class="navigation">
 				<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">&laquo;</span> %title' ) ?></div>
 				<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
-			</div>
+			</nav>
 
 <?php comments_template() ?>
 
-		</div><!-- #content -->
-	</div><!-- #container -->
+		</section><!-- #content -->
+	</section><!-- #container -->
 
 <?php get_sidebar() ?>
 <?php get_footer() ?>

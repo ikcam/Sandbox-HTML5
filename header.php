@@ -3,24 +3,29 @@
 <head>
 	<!-- Meta -->
 	<meta charset="<?php bloginfo('charset') ?>" />
+	<!-- Facebook Open Graph -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<meta property="og:type" content="website" />
 	<meta property="fb:app_id" content="" /><!-- Your Custom User ID or App ID -->
 <?php if( is_single() ) { ?>
+	<!-- Is Single -->
+	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="<?php the_title() ?>"/>
 	<meta property="og:url" content="<?php the_permalink() ?>"/>
 	<meta property="og:description" content="<?php post_description() ?>" />
 	<meta property="og:image" content="<?php post_image() ?>" />
-	<!-- Google +1 OG -->
+	<!-- Google Plus One -->
 	<meta itemprop="name" content="<?php the_title() ?>">
 	<meta itemprop="description" content="<?php post_description() ?>">
 	<meta itemprop="image" content="<?php post_image() ?>">
 <?php } else { ?>
+	<!-- Not Single -->
+	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
 	<meta property="og:url" content="<?php bloginfo('url') ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />
 	<meta property="og:image" content="<?php bloginfo('stylesheet_directory') ?>/images/logo.png" />
-	<!-- Google +1 OG -->
+	<!-- Google Plus One -->
 	<meta itemprop="name" content="<?php bloginfo('name') ?>">
 	<meta itemprop="description" content="<?php bloginfo('description') ?>">
 	<meta itemprop="image" content="<?php bloginfo('stylesheet_directory') ?>/images/logo.png">

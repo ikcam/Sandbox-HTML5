@@ -506,4 +506,38 @@ add_filter( 'archive_meta', 'convert_chars' );
 add_filter( 'archive_meta', 'wpautop' );
 
 // Remember: the Sandbox is for play.
+
+function post_description(){
+	$my_id = get_the_ID();
+	$post_id = get_post($my_id);
+	$content = $post_id->post_content;
+	$content = str_replace(']]>', ']]&gt;', $content);
+	$content = strip_tags($content);
+	$content = substr($content, 0, 120);
+	$content = $content . '...';
+
+	echo $content;
+}
+
+function post_image(){
+	$attachments = get_children( array(
+		'post_parent'    => get_the_ID(),
+		'post_type'      => 'attachment',
+		'numberposts'    => 1, // show all -1
+		'post_status'    => 'inherit',
+		'post_mime_type' => 'image',
+		'order'          => 'DESC',
+		'orderby'        => 'menu_order DESC'
+	) );
+	foreach ( $attachments as $attachment_id => $attachment ) {
+		$post_image = wp_get_attachment_image_src( $attachment_id );
+	}
+
+	$post_image = $post_image[0];
+	if( empty($post_image) ) {
+		echo $post_image = bloginfo('template_directory').'/images/logo.png';
+	} else {
+		echo $post_image;
+	}
+}
 ?>

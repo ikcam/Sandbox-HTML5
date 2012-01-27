@@ -38,6 +38,9 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 
 	<!-- Scripts -->
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <?php wp_head() // For plugins ?>
 </head>
 

@@ -1,14 +1,14 @@
 <?php get_header() ?>
 
-	<div id="container">
-		<div id="content">
+	<section id="container">
+		<section id="content">
 
 			<h2 class="page-title"><?php _e( 'Tag Archives:', 'sandbox' ) ?> <span><?php single_tag_title() ?></span></h2>
 
-			<div id="nav-above" class="navigation">
+			<nav id="nav-above" class="navigation">
 				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 'sandbox' ) ) ?></div>
 				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?></div>
-			</div>
+			</nav>
 
 <?php while ( have_posts() ) : the_post() ?>
 
@@ -35,13 +35,13 @@
 
 <?php endwhile; ?>
 
-			<div id="nav-below" class="navigation">
+			<nav id="nav-below" class="navigation">
 				<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&laquo;</span> Older posts', 'sandbox' ) ) ?></div>
 				<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&raquo;</span>', 'sandbox' ) ) ?></div>
-			</div>
+			</nav>
 
-		</div><!-- #content -->
-	</div><!-- #container -->
+		</section><!-- #content -->
+	</section><!-- #container -->
 
 <?php get_sidebar() ?>
 <?php get_footer() ?>

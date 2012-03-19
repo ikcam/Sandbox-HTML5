@@ -18,7 +18,7 @@ function sandbox_globalnav() {
 		$class = 'class="page_item"';
 	}
 	if ( $menu = str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages('title_li=&sort_column=menu_order&echo=0') ) )
-		$menu = '<ul><li '. $class .' ><a href="' . $home . '" rel="home">Inicio</a></li>' . $menu . '</ul>';
+		$menu = '<ul><li '. $class .' ><a href="' . $home . '" rel="home">' . __( 'Home', 'sandbox' ) . '</a></li>' . $menu . '</ul>';
 	$menu = '<nav id="menu">' . $menu . "</nav>\n";
 	echo apply_filters( 'globalnav_menu', $menu ); // Filter to override default globalnav: globalnav_menu
 }

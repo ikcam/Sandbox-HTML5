@@ -2,27 +2,27 @@
 LAYOUT: Two-Column (Right)
 DESCRIPTION: Two-column fluid layout with one sidebars right of content
 */
-div#container {
+section#container {
 float:left;
 margin:0 -200px 0 0;
 width:100%;
 }
 
-div#content {
+section#content {
 margin:0 200px 0 0;
 }
 
-div.sidebar {
+aside.sidebar {
 float:right;
 overflow:hidden;
 width:180px;
 }
 
-div#secondary {
+aside#secondary {
 clear:right;
 }
 
-div#footer {
+footer#footer {
 clear:both;
 width:100%;
 }

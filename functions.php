@@ -11,17 +11,15 @@ You should have received a copy of the GNU General Public License along with SAN
 
 // Produces a list of pages in the header without whitespace
 function sandbox_globalnav() {
-	$home = get_bloginfo('url');
-	if( is_home() ){
-		$class = 'class="current_page_item page_item"';
-	} else {
-		$class = 'class="page_item"';
-	}
-	if ( $menu = str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages('title_li=&sort_column=menu_order&echo=0') ) )
-		$menu = '<ul><li '. $class .' ><a href="' . $home . '" rel="home">' . __( 'Home', 'sandbox' ) . '</a></li>' . $menu . '</ul>';
-	$menu = '<nav id="menu">' . $menu . "</nav>\n";
-	echo apply_filters( 'globalnav_menu', $menu ); // Filter to override default globalnav: globalnav_menu
+	register_nav_menus(
+		array(
+		'menu-header' => __( 'Header Menu' )
+		// 'menu-other' => __( 'Other Menu' )
+		)
+	);
 }
+
+add_action( 'init', 'sandbox_globalnav' );
 
 // Generates semantic classes for BODY element
 function sandbox_body_class( $print = true ) {

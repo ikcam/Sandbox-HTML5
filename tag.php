@@ -12,7 +12,7 @@
 
 <?php while ( have_posts() ) : the_post() ?>
 
-			<div id="post-<?php the_ID() ?>" class="<?php sandbox_post_class() ?>">
+			<article id="post-<?php the_ID() ?>" class="<?php sandbox_post_class() ?>">
 				<h3 class="entry-title"><a href="<?php the_permalink() ?>" title="<?php printf( __( 'Permalink to %s', 'sandbox' ), the_title_attribute('echo=0') ) ?>" rel="bookmark"><?php the_title() ?></a></h3>
 				<div class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php unset($previousday); printf( __( '%1$s &#8211; %2$s', 'sandbox' ), the_date( '', '', '', false ), get_the_time() ) ?></abbr></div>
 				<div class="entry-content">
@@ -31,7 +31,7 @@
 <?php edit_post_link( __( 'Edit', 'sandbox' ), "\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
 					<span class="comments-link"><?php comments_popup_link( __( 'Comments (0)', 'sandbox' ), __( 'Comments (1)', 'sandbox' ), __( 'Comments (%)', 'sandbox' ) ) ?></span>
 				</div>
-			</div><!-- .post -->
+			</article><!-- .post -->
 
 <?php endwhile; ?>
 

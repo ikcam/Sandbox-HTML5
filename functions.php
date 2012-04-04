@@ -13,8 +13,8 @@ You should have received a copy of the GNU General Public License along with SAN
 function sandbox_globalnav() {
 	register_nav_menus(
 		array(
-		'menu-header' => __( 'Header Menu' )
-		// 'menu-other' => __( 'Other Menu' )
+			'menu-header' => __( 'Header Menu' )
+			// 'menu-other' => __( 'Other Menu' )
 		)
 	);
 }

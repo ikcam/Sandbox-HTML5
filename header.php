@@ -60,5 +60,5 @@
 
 	<section id="access">
 		<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'sandbox' ) ?>"><?php _e( 'Skip to content', 'sandbox' ) ?></a></div>
-		<?php wp_nav_menu( array( 'theme_location' => 'menu-header' ) ); ?>
+		<?php wp_nav_menu( array( 'theme_location' => 'menu-header', 'container' => 'nav', 'container_id' => 'menu' ) ); ?>
 	</section><!-- #access -->

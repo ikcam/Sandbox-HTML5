@@ -10,16 +10,28 @@ You should have received a copy of the GNU General Public License along with SAN
 */
 
 // Produces a list of pages in the header without whitespace
-function sandbox_globalnav() {
+function sandbox_menus() {
 	register_nav_menus(
 		array(
 			'menu-header' => __( 'Header Menu' )
-			// 'menu-other' => __( 'Other Menu' )
+			// 'menu-footer' => __( 'Footer Menu' )
+			// 'menu-is-login' => __( 'Menu IS Login' )
+			// 'menu-no-login' => __( 'Menu NO Login' )
 		)
 	);
 }
+add_action( 'init', 'sandbox_menus' );
 
-add_action( 'init', 'sandbox_globalnav' );
+function sandbox_globalnav() {
+	wp_nav_menu( array( 'theme_location' => 'menu-header', 'container' => 'nav', 'container_id' => 'menu', 'fallback_cb' => 'sandbox_globalnav_fallback' ) );
+}
+
+function sandbox_globalnav_fallback() {
+	if ( $menu = str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages('title_li=&sort_column=menu_order&echo=0') ) )
+		$menu = '<ul>' . $menu . '</ul>';
+	$menu = '<nav id="menu">' . $menu . "</nav>\n";
+	echo apply_filters( 'globalnav_menu', $menu ); // Filter to override default globalnav: globalnav_menu
+}
 
 // Generates semantic classes for BODY element
 function sandbox_body_class( $print = true ) {
@@ -510,6 +522,8 @@ add_filter( 'archive_meta', 'convert_chars' );
 add_filter( 'archive_meta', 'wpautop' );
 
 // Remember: the Sandbox is for play.
+
+add_theme_support( 'post-thumbnails' );
 
 function post_description(){
 	$my_id = get_the_ID();

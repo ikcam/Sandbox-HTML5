@@ -558,4 +558,65 @@ function post_image(){
 		echo $post_image;
 	}
 }
+function settings_register(){
+	register_setting( 'sandbox', 'google_analytics' );
+	register_setting( 'sandbox', 'facebook_appid' );
+	add_settings_section('sandbox_main', 'Main Settings', 'settings_main_desc', 'sandbox');
+}
+
+function settings_main_desc(){
+	echo '<p>First area.</p>';
+}
+
+function settings_page(){
+?>
+<div class="wrap">
+	<h2><?php _e('Sandbox Settings Page', 'Sandbox') ?></h2>
+<?php
+	if( $_GET['settings-updated']==true ){
+		$message = __('Settings saved.', 'Sandbox');
+?>
+
+		<div id="message" class="updated fade"><p><?php echo $message; ?></p></div>
+<?php
+	}
+?>
+	<form method="post" action="options.php">
+<?php	
+settings_fields('sandbox');
+do_settings_sections('sandbox_main');
+?>
+		<table class="form-table">
+		<tbody>
+			<tr valign="top">
+				<th scope="row">
+					<label><?php _e( 'Google Analiytics ID', 'Sandbox' ) ?></label>
+				</th>
+				<td>
+					<input type="text" name="google_analytics" value="<?php echo get_option('google_analytics'); ?>" />
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">
+					<label><?php _e( 'Facebook App ID', 'Sandbox' ) ?></label>
+				</th>
+				<td>
+					<input type="text" name="facebook_appid" value="<?php echo get_option('facebook_appid'); ?>" />
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		<p class="submit">
+			<input type="submit" value="<?php _e('Save Changes') ?>" class="button-primary" />
+		</p>
+	</form>
+</div>
+<?php
+}
+
+function sandbox_admin_menu(){
+	add_menu_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', 'settings_page', '', 61 );
+	add_action('admin_init', 'settings_register');
+}
+add_action('admin_menu', 'sandbox_admin_menu');
 ?>

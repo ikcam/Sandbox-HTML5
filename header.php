@@ -6,7 +6,9 @@
 	<!-- Facebook Open Graph -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<meta property="og:type" content="website" />
-	<meta property="fb:app_id" content="" /><!-- Your Custom User ID or App ID -->
+<?php if( get_option('facebook_appid') ) { ?>
+	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid') ?>" />
+<?php } ?>
 <?php if( is_single() ) { ?>
 	<!-- Is Single -->
 	<!-- Facebook Open Graph -->
@@ -47,6 +49,19 @@
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php wp_head() // For plugins ?>
+<?php if( get_option('google_analytics') ) { ?>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '<?php echo get_option("google_analytics") ?>']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<?php } ?>
 </head>
 
 <body class="<?php sandbox_body_class() ?>">

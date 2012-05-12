@@ -1,10 +1,11 @@
 <?php
 class sandbox_admin {
 	function settings_register(){
-		register_setting( 'sandbox', 'google_analytics' );
-		register_setting( 'sandbox', 'facebook_appid', array('sandbox_admin', 'facebook_appid_verify') );
-		register_setting( 'sandbox', 'google_plus' );
-		register_setting( 'sandbox', 'facebook_og' );
+		register_setting( 'sandbox', 'sb_google_analytics' );
+		register_setting( 'sandbox', 'sb_facebook_appid', array('sandbox_admin', 'facebook_appid_verify') );
+		register_setting( 'sandbox', 'sb_google_plus' );
+		register_setting( 'sandbox', 'sb_facebook_og' );
+		register_setting( 'sandbox', 'sb_website_logo', array( 'sandbox_admin', 'website_logo_verify' ) );
 		add_settings_section('sandbox_main', 'Main Settings', 'settings_main_desc', 'sandbox');
 	}
 
@@ -15,9 +16,21 @@ class sandbox_admin {
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 		$object = curl_exec($c);
 		curl_close($c);
+		
 		$object = json_decode($object);
+
 		if( isset($object->id) ) {
 			return $app_id;
+		}
+	}
+
+	function website_logo_verify($input){
+		$logo = $input;
+		if ( empty($logo) ) {
+			$logo = get_bloginfo('template_directory').'/images/logo.png';
+			return $logo;
+		} else {
+			return $logo;
 		}
 	}
 
@@ -46,7 +59,7 @@ class sandbox_admin {
 						<label><?php _e( 'Google Analiytics ID', 'Sandbox' ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" type="text" name="google_analytics" value="<?php echo get_option('google_analytics'); ?>" />
+						<input class="regular-text" type="text" name="sb_google_analytics" value="<?php echo get_option('sb_google_analytics'); ?>" />
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> UA-12345678-9</span>
 					</td>
 				</tr>
@@ -55,7 +68,7 @@ class sandbox_admin {
 						<label><?php _e( 'Facebook App ID', 'Sandbox' ) ?></label>
 					</th>
 					<td>
-						<input class="regular-text" type="text" name="facebook_appid" value="<?php echo get_option('facebook_appid'); ?>" />
+						<input class="regular-text" type="text" name="sb_facebook_appid" value="<?php echo get_option('sb_facebook_appid'); ?>" />
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> 123456789012345</span>
 					</td>
 				</tr>
@@ -64,7 +77,7 @@ class sandbox_admin {
 						<label><?php _e( 'OpenGraph inside &lt;head&gt;', 'Sandbox' ) ?></label>
 					</th>
 					<td>
-						<input type="checkbox" name="facebook_og" <?php if( get_option('facebook_og')==true ) { echo 'checked';	 } ?> />
+						<input type="checkbox" name="sb_facebook_og" <?php if( get_option('sb_facebook_og')==true ) { echo 'checked';	 } ?> />
 					</td>
 				</tr>
 				<tr valign="top">
@@ -72,7 +85,16 @@ class sandbox_admin {
 						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
 					</th>
 					<td>
-						<input type="checkbox" name="google_plus" <?php if( get_option('google_plus')==true ) { echo 'checked';	 } ?> />
+						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Website Logo', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input class="regular-text" type="text" name="sb_website_logo" value="<?php echo get_option('sb_website_logo'); ?>" />
+						<span class="description"><?php _e('Default:', 'Sandbox') ?><?php bloginfo('template_directory') ?>/images/logo.png</span>
 					</td>
 				</tr>
 			</tbody>

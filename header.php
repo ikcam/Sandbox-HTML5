@@ -3,36 +3,51 @@
 <head>
 	<!-- Meta -->
 	<meta charset="<?php bloginfo('charset') ?>" />
-	<!-- Facebook Open Graph -->
+<?php 
+if( get_option('sb_facebook_og') == TRUE ) { 
+?>
+	<!-- Facebook Open Graph (ALWAYS) -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
 	<meta property="og:type" content="website" />
-<?php if( get_option('facebook_appid') ) { ?>
-	<meta property="fb:app_id" content="<?php echo get_option('facebook_appid') ?>" />
-<?php } ?>
-<?php if( is_single() ) { ?>
-	<!-- Is Single -->
-	<!-- Facebook Open Graph -->
+<?php 
+	if( get_option('facebook_appid') ) {
+?>
+	<meta property="fb:app_id" content="<?php echo get_option('sb_facebook_appid') ?>" />
+<?php
+	}
+	if( is_single() ) { 
+?>
+	<!-- Facebook Open Graph (SINGLE) -->
 	<meta property="og:title" content="<?php the_title() ?>"/>
 	<meta property="og:url" content="<?php the_permalink() ?>"/>
 	<meta property="og:description" content="<?php sandbox_post_description() ?>" />
 	<meta property="og:image" content="<?php sandbox_post_image() ?>" />
-	<!-- Google Plus One -->
-	<meta itemprop="name" content="<?php the_title() ?>">
-	<meta itemprop="description" content="<?php sandbox_post_description() ?>">
-	<meta itemprop="image" content="<?php sandbox_post_image() ?>">
-<?php } else { ?>
-	<!-- Not Single -->
-	<!-- Facebook Open Graph -->
+<?php 
+	} else { 
+?>
+	<!-- Facebook Open Graph (NOT SINGLE) -->
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
 	<meta property="og:url" content="<?php bloginfo('url') ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />
-	<meta property="og:image" content="<?php bloginfo('stylesheet_directory') ?>/images/logo.png" />
-	<!-- Google Plus One -->
+	<meta property="og:image" content="<?php get_option('sb_website_logo') ?>" />
+<?php 
+	} 
+}
+if( get_option('sb_google_plus') == TRUE ) {
+	if( is_single() ) { ?>
+	<!-- Google Plus One (SINGLE) -->
+	<meta itemprop="name" content="<?php the_title() ?>">
+	<meta itemprop="description" content="<?php sandbox_post_description() ?>">
+	<meta itemprop="image" content="<?php sandbox_post_image() ?>">
+	<?php } else { ?>
+	<!-- Google Plus One (NOT SINGLE) -->
 	<meta itemprop="name" content="<?php bloginfo('name') ?>">
 	<meta itemprop="description" content="<?php bloginfo('description') ?>">
-	<meta itemprop="image" content="<?php bloginfo('stylesheet_directory') ?>/images/logo.png">
-<?php } ?>
-
+	<meta itemprop="image" content="<?php get_option('sb_website_logo') ?>">
+<?php 
+	} 
+} 
+?>
 	<!-- Title -->
 	<title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ) ?></title>
 

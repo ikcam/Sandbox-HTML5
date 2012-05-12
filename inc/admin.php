@@ -6,9 +6,12 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_google_plus' );
 		register_setting( 'sandbox', 'sb_facebook_og' );
 		register_setting( 'sandbox', 'sb_website_logo', array( 'sandbox_admin', 'website_logo_verify' ) );
-		add_settings_section('sandbox_main', 'Main Settings', 'settings_main_desc', 'sandbox');
+		register_setting( 'sandbox', 'sb_image_width', array( 'sandbox_admin', 'verify_number' ) );
+		register_setting( 'sandbox', 'sb_image_height', array( 'sandbox_admin', 'verify_number' ) );
+		register_setting( 'sandbox', 'sb_timthumb' );
 	}
 
+	// Verify Facebook Application ID
 	function facebook_appid_verify($input){
 		$app_id = $input;
 		
@@ -24,6 +27,7 @@ class sandbox_admin {
 		}
 	}
 
+	// This kind of force you to add an image to the OpenGraph
 	function website_logo_verify($input){
 		$logo = $input;
 		if ( empty($logo) ) {
@@ -34,8 +38,14 @@ class sandbox_admin {
 		}
 	}
 
-	function settings_main_desc(){
-		echo '<p>First area.</p>';
+	// Verify positive value
+	function verify_number($input){
+		$number = $input;
+		if($number < 10 || $number > 1400){
+			return 10;
+		} else {
+			return $number;
+		}
 	}
 
 	function settings_page(){
@@ -52,6 +62,7 @@ class sandbox_admin {
 <?php	
 	settings_fields('sandbox');
 ?>
+			<h3><?php _e('Google Settings', 'Sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
@@ -63,6 +74,20 @@ class sandbox_admin {
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> UA-12345678-9</span>
 					</td>
 				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+			</tbody>
+			</table>
+
+			<h3><?php _e('Facebook OpenGraph Settings', 'Sandbox') ?></h3>
+			<table class="form-table">
+			<tbody>
 				<tr valign="top">
 					<th scope="row">
 						<label><?php _e( 'Facebook App ID', 'Sandbox' ) ?></label>
@@ -82,19 +107,42 @@ class sandbox_admin {
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
-					</th>
-					<td>
-						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row">
 						<label><?php _e( 'Website Logo', 'Sandbox' ) ?></label>
 					</th>
 					<td>
 						<input class="regular-text" type="text" name="sb_website_logo" value="<?php echo get_option('sb_website_logo'); ?>" />
-						<span class="description"><?php _e('Default:', 'Sandbox') ?><?php bloginfo('template_directory') ?>/images/logo.png</span>
+						<span class="description"><?php _e('Only for OpenGraph purposes', 'Sandbox') ?></span>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+
+			<h3><?php _e('Shortcode Options', 'Sandbox') ?></h3>
+			<table class="form-table">
+			<tbody>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Activate TimThumb?', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_timthumb" <?php if( get_option('sb_timthumb')==true ){ echo 'checked'; } ?> />
+						<span class="description"><?php _e('Better image compression. Requires fopen()', 'Sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Default image width', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="number" min="10" max="1400" name="sb_image_width" value="<?php echo get_option('sb_image_width'); ?>" />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Default image height', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="number" min="10" max="1400" name="sb_image_height" value="<?php echo get_option('sb_image_height'); ?>" />
 					</td>
 				</tr>
 			</tbody>

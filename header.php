@@ -8,7 +8,6 @@ if( get_option('sb_facebook_og') == TRUE ) {
 ?>
 	<!-- Facebook Open Graph (ALWAYS) -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
-	<meta property="og:type" content="website" />
 <?php 
 	if( get_option('facebook_appid') ) {
 ?>
@@ -18,6 +17,7 @@ if( get_option('sb_facebook_og') == TRUE ) {
 	if( is_single() ) { 
 ?>
 	<!-- Facebook Open Graph (SINGLE) -->
+	<meta property="og:type" content="article" />
 	<meta property="og:title" content="<?php the_title() ?>"/>
 	<meta property="og:url" content="<?php the_permalink() ?>"/>
 	<meta property="og:description" content="<?php sandbox_post_description() ?>" />
@@ -26,6 +26,7 @@ if( get_option('sb_facebook_og') == TRUE ) {
 	} else { 
 ?>
 	<!-- Facebook Open Graph (NOT SINGLE) -->
+	<meta property="og:type" content="website" />
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
 	<meta property="og:url" content="<?php bloginfo('url') ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />

@@ -29,7 +29,7 @@ if( get_option('sb_facebook_og') == TRUE ) {
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
 	<meta property="og:url" content="<?php bloginfo('url') ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />
-	<meta property="og:image" content="<?php get_option('sb_website_logo') ?>" />
+	<meta property="og:image" content="<?php echo get_option('sb_website_logo') ?>" />
 <?php 
 	} 
 }
@@ -43,7 +43,7 @@ if( get_option('sb_google_plus') == TRUE ) {
 	<!-- Google Plus One (NOT SINGLE) -->
 	<meta itemprop="name" content="<?php bloginfo('name') ?>">
 	<meta itemprop="description" content="<?php bloginfo('description') ?>">
-	<meta itemprop="image" content="<?php get_option('sb_website_logo') ?>">
+	<meta itemprop="image" content="<?php echo get_option('sb_website_logo') ?>">
 <?php 
 	} 
 } 

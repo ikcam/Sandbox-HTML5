@@ -3,6 +3,8 @@ class sandbox_admin {
 	function settings_register(){
 		register_setting( 'sandbox', 'google_analytics' );
 		register_setting( 'sandbox', 'facebook_appid', array('sandbox_admin', 'facebook_appid_verify') );
+		register_setting( 'sandbox', 'google_plus' );
+		register_setting( 'sandbox', 'facebook_og' );
 		add_settings_section('sandbox_main', 'Main Settings', 'settings_main_desc', 'sandbox');
 	}
 
@@ -55,6 +57,22 @@ class sandbox_admin {
 					<td>
 						<input class="regular-text" type="text" name="facebook_appid" value="<?php echo get_option('facebook_appid'); ?>" />
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> 123456789012345</span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'OpenGraph inside &lt;head&gt;', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="facebook_og" <?php if( get_option('facebook_og')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="google_plus" <?php if( get_option('google_plus')==true ) { echo 'checked';	 } ?> />
 					</td>
 				</tr>
 			</tbody>

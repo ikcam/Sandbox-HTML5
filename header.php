@@ -14,12 +14,12 @@
 	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="<?php the_title() ?>"/>
 	<meta property="og:url" content="<?php the_permalink() ?>"/>
-	<meta property="og:description" content="<?php post_description() ?>" />
-	<meta property="og:image" content="<?php post_image() ?>" />
+	<meta property="og:description" content="<?php sandbox_post_description() ?>" />
+	<meta property="og:image" content="<?php sandbox_post_image() ?>" />
 	<!-- Google Plus One -->
 	<meta itemprop="name" content="<?php the_title() ?>">
-	<meta itemprop="description" content="<?php post_description() ?>">
-	<meta itemprop="image" content="<?php post_image() ?>">
+	<meta itemprop="description" content="<?php sandbox_post_description() ?>">
+	<meta itemprop="image" content="<?php sandbox_post_image() ?>">
 <?php } else { ?>
 	<!-- Not Single -->
 	<!-- Facebook Open Graph -->
@@ -45,6 +45,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 
 	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->

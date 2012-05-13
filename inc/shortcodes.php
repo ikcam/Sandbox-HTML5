@@ -56,4 +56,16 @@ function shortcode_image($atts, $content=NULL){
 	}
 }
 add_shortcode('image', 'shortcode_image');
+
+function shortcode_is_user($atts, $content=NULL){
+	$user_id = get_current_user_id();
+	if($user_id == 0){
+		$content = _e('Login to see this content.', 'Sandbox');
+		return $content;
+	} else {
+		return $content;
+	}
+}
+add_shortcode('is_user', 'shortcode_is_user');
+
 ?>

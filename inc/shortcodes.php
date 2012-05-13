@@ -29,25 +29,32 @@ function shortcode_image($atts, $content=NULL){
 		) , $atts)
 	);
 
+
 	$align = esc_attr($align);
 
 	if( $title != '' ){
 		$title = esc_attr($title);
+	}
 
+	if( $url != '' ){
+		$url = esc_attr($url);
+	}
+
+	if( get_option('sb_timthumb') == TRUE ){
+		$image = bloginfo('stylesheet_directory').'/inc/timthumb.php?src='.$content.'&w='.$width.'&h='.$height;
 		if( $url != '' ){
-			$url = esc_attr($url);
-			$
+			return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';
+		} else {
+			return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
+		}
+	} else {
+		$image = $content;
+		if( $url != '' ){
+			return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';
+		} else {
+			return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
 		}
 	}
-
-
-
-	if( $url == '' ){
-		$image = '<img src="'.$content.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
-	} else {
-		return '<a href="'.$url.'"><img class="'.$align.'" src="'.$content.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';
-	}
-
 }
 add_shortcode('image', 'shortcode_image');
 ?>

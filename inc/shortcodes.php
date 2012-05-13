@@ -1,20 +1,20 @@
 <?php
-function shortcode_one_half($content=NULL){
+function shortcode_one_half($atts, $content=NULL){
 	return '<div class="one_half">'.$content.'</div>';
 }
 add_shortcode('one_half', 'shortcode_one_half');
 
-function shortcode_one_half_last($content=NULL){
+function shortcode_one_half_last($atts, $content=NULL){
 	return '<div class="one_half last">'.$content.'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_half_last', 'shortcode_one_half_last');
 
-function shortcode_one_third($content=NULL){
+function shortcode_one_third($atts, $content=NULL){
 	return '<div class="one_third">'.$content.'</div>';
 }
 add_shortcode('one_third', 'shortcode_one_third');
 
-function shortcode_one_third_last($content=NULL){
+function shortcode_one_third_last($atts, $content=NULL){
 	return '<div class="one_third last">'.$content.'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_third_last', 'shortcode_one_third_last');
@@ -28,7 +28,6 @@ function shortcode_image($atts, $content=NULL){
 			'height' => get_option('sb_image_height')
 		) , $atts)
 	);
-
 
 	$align = esc_attr($align);
 

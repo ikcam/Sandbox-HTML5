@@ -561,6 +561,7 @@ function sandbox_post_image(){
 
 // Sandbox Admin Panel
 include('inc/admin.php');
+include('inc/shortcodes.php');
 
 // Remember: the Sandbox is for play.
 ?>

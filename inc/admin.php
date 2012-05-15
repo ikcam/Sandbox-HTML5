@@ -1,5 +1,8 @@
 <?php
+// Using a class to avoid conflicts with other fuctions
 class sandbox_admin {
+
+	// Register all the settings
 	function settings_register(){
 		register_setting( 'sandbox', 'sb_google_analytics' );
 		register_setting( 'sandbox', 'sb_facebook_appid', array('sandbox_admin', 'facebook_appid_verify') );
@@ -9,6 +12,7 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_image_width', array( 'sandbox_admin', 'verify_number' ) );
 		register_setting( 'sandbox', 'sb_image_height', array( 'sandbox_admin', 'verify_number' ) );
 		register_setting( 'sandbox', 'sb_timthumb' );
+		register_setting( 'sandbox', 'sb_footer_sidebars', array( 'sandbox_admin', 'footer_sidebars_verify' ) );
 	}
 
 	// Verify Facebook Application ID
@@ -34,6 +38,7 @@ class sandbox_admin {
 			$logo = get_bloginfo('template_directory').'/images/logo.png';
 			return $logo;
 		} else {
+			$logo = esc_attr($logo);
 			return $logo;
 		}
 	}
@@ -44,10 +49,23 @@ class sandbox_admin {
 		if($number < 10 || $number > 1400){
 			return 10;
 		} else {
+			$number = esc_attr($number);
 			return $number;
 		}
 	}
 
+	// Callback for sb_footer_sidebars setting
+	function footer_sidebars_verify($input){
+		$count = $input;
+		if($count<0 || $count>4){
+			return 0;
+		} else {
+			$count = esc_attr($count);
+			return $count;
+		}
+	}
+
+	// This is the settings page on WordPress Admin Page
 	function settings_page(){
 	?>
 	<div class="wrap">
@@ -62,6 +80,25 @@ class sandbox_admin {
 <?php	
 	settings_fields('sandbox');
 ?>
+			<h3><?php _e( 'Main Settings', 'Sandbox' ) ?></h3>
+			<table class="form-table">
+			<tbody>
+				<tr valign="top">
+					<th scope="row">
+						<label>Footer Sidebars</label>
+					</th>
+					<td>
+						<select name="sb_footer_sidebars">
+							<option value="0" <?php if( get_option('sb_footer_sidebars') == 0 ) { echo 'selected'; } ?> >0</option>
+							<option value="1" <?php if( get_option('sb_footer_sidebars') == 1 ) { echo 'selected'; } ?> >1</option>
+							<option value="2" <?php if( get_option('sb_footer_sidebars') == 2 ) { echo 'selected'; } ?> >2</option>
+							<option value="3" <?php if( get_option('sb_footer_sidebars') == 3 ) { echo 'selected'; } ?> >3</option>
+							<option value="4" <?php if( get_option('sb_footer_sidebars') == 4 ) { echo 'selected'; } ?> >4</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+			</table>
 			<h3><?php _e('Google Settings', 'Sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
@@ -155,6 +192,8 @@ class sandbox_admin {
 <?php
 	}
 }
+
+// Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
 	add_menu_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page'), '', 61 );
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));

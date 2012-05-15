@@ -1,6 +1,6 @@
 	<aside id="primary" class="sidebar">
 		<ul class="xoxo">
-<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(1) ) : // begin primary sidebar widgets ?>
+<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('primary') ) : // begin primary sidebar widgets ?>
 
 			<li id="pages">
 				<h3><?php _e( 'Pages', 'sandbox' ) ?></h3>
@@ -30,7 +30,7 @@
 
 	<aside id="secondary" class="sidebar">
 		<ul class="xoxo">
-<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar(2) ) : // begin secondary sidebar widgets ?>
+<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('secondary') ) : // begin secondary sidebar widgets ?>
 			<li id="search">
 				<h3><label for="s"><?php _e( 'Search', 'sandbox' ) ?></label></h3>
 				<form id="searchform" class="blog-search" method="get" action="<?php bloginfo('home') ?>">

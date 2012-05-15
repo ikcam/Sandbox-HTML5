@@ -67,19 +67,19 @@ class sandbox_admin {
 			<tbody>
 				<tr valign="top">
 					<th scope="row">
+						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
 						<label><?php _e( 'Google Analiytics ID', 'Sandbox' ) ?></label>
 					</th>
 					<td>
 						<input class="regular-text" type="text" name="sb_google_analytics" value="<?php echo get_option('sb_google_analytics'); ?>" />
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> UA-12345678-9</span>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row">
-						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
-					</th>
-					<td>
-						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />
 					</td>
 				</tr>
 			</tbody>
@@ -90,19 +90,19 @@ class sandbox_admin {
 			<tbody>
 				<tr valign="top">
 					<th scope="row">
+						<label><?php _e( 'OpenGraph inside &lt;head&gt;', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_facebook_og" <?php if( get_option('sb_facebook_og')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
 						<label><?php _e( 'Facebook App ID', 'Sandbox' ) ?></label>
 					</th>
 					<td>
 						<input class="regular-text" type="text" name="sb_facebook_appid" value="<?php echo get_option('sb_facebook_appid'); ?>" />
 						<span class="description"><?php _e('Example:', 'Sandbox') ?> 123456789012345</span>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row">
-						<label><?php _e( 'OpenGraph inside &lt;head&gt;', 'Sandbox' ) ?></label>
-					</th>
-					<td>
-						<input type="checkbox" name="sb_facebook_og" <?php if( get_option('sb_facebook_og')==true ) { echo 'checked';	 } ?> />
 					</td>
 				</tr>
 				<tr valign="top">

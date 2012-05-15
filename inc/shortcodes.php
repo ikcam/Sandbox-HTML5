@@ -59,6 +59,7 @@ add_shortcode('image', 'shortcode_image');
 
 function shortcode_is_user($atts, $content=NULL){
 	$user_id = get_current_user_id();
+
 	if($user_id == 0){
 		$content = _e('Login to see this content.', 'Sandbox');
 		return $content;
@@ -67,5 +68,19 @@ function shortcode_is_user($atts, $content=NULL){
 	}
 }
 add_shortcode('is_user', 'shortcode_is_user');
+
+function shortcode_is_admin($atts, $content=NULL){
+	$user_id = get_current_user_id();
+	$user = get_userdata($user_id);
+	$user_level = $user->user_level;
+
+	if($user_lever == 10){
+		return ;
+	} else {
+		return $content;
+	}
+}
+add_shortcode('is_admin', 'shortcode_is_admin');
+
 
 ?>

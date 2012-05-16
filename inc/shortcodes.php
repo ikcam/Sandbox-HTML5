@@ -40,11 +40,19 @@ function shortcode_image($atts, $content=NULL){
 	}
 
 	if( get_option('sb_timthumb') == TRUE ){
-		$image = bloginfo('stylesheet_directory').'/inc/timthumb.php?src='.$content.'&w='.$width.'&h='.$height;
+		$image = get_bloginfo('stylesheet_directory').'/inc/timthumb.php?src='.$content.'&w='.$width.'&h='.$height;
 		if( $url != '' ){
-			return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';
+			if( $title != '' ) {
+				return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';				
+			} else {
+				return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" /></a>';
+			}
 		} else {
-			return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
+			if( $title != '' ) {
+				return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
+			} else {
+				return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" />';
+			}
 		}
 	} else {
 		$image = $content;

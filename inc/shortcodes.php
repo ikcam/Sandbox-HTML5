@@ -39,7 +39,7 @@ function shortcode_image($atts, $content=NULL){
 			'title' => '',
 			'align' => 'aligncenter',
 			'width' => get_option('sb_image_width'),
-			'height' => get_option('sb_image_height')
+			'height' => get_option('sb_image_height'),
 		) , $atts)
 	);
 
@@ -57,9 +57,9 @@ function shortcode_image($atts, $content=NULL){
 		$image = get_bloginfo('stylesheet_directory').'/inc/timthumb.php?src='.$content.'&w='.$width.'&h='.$height;
 		if( $url != '' ){
 			if( $title != '' ) {
-				return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';				
+				return '<a href="'.$url.'" rel="lightbox"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';				
 			} else {
-				return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" /></a>';
+				return '<a href="'.$url.'" rel="lightbox"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" /></a>';
 			}
 		} else {
 			if( $title != '' ) {
@@ -87,7 +87,7 @@ function shortcode_is_user($atts, $content=NULL){
 		$content = _e('Login to see this content.', 'Sandbox');
 		return $content;
 	} else {
-		return $content;
+		return do_shortcode($content);
 	}
 }
 add_shortcode('is_user', 'shortcode_is_user');
@@ -101,7 +101,7 @@ function shortcode_is_admin($atts, $content=NULL){
 	if($user_lever == 10){
 		return ;
 	} else {
-		return $content;
+		return do_shortcode($content);
 	}
 }
 add_shortcode('is_admin', 'shortcode_is_admin');

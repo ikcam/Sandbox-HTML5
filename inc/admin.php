@@ -104,7 +104,7 @@ class sandbox_admin {
 			<tbody>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e( 'Google+ inside &lt;head&gt;', 'Sandbox' ) ?></label>
+						<label><?php _e( 'GooglePlus inside &lt;head&gt;', 'Sandbox' ) ?></label>
 					</th>
 					<td>
 						<input type="checkbox" name="sb_google_plus" <?php if( get_option('sb_google_plus')==true ) { echo 'checked';	 } ?> />

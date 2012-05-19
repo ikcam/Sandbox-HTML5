@@ -1,34 +1,34 @@
 <?php
 // [one_half]
 function shortcode_one_half($atts, $content=NULL){
-	return '<div class="one_half">'.$content.'</div>';
+	return '<div class="one_half">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_half', 'shortcode_one_half');
 
 function shortcode_one_half_last($atts, $content=NULL){
-	return '<div class="one_half last">'.$content.'</div><div class="clearfix"></div>';
+	return '<div class="one_half last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_half_last', 'shortcode_one_half_last');
 
 // [one_third]
 function shortcode_one_third($atts, $content=NULL){
-	return '<div class="one_third">'.$content.'</div>';
+	return '<div class="one_third">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_third', 'shortcode_one_third');
 
 function shortcode_one_third_last($atts, $content=NULL){
-	return '<div class="one_third last">'.$content.'</div><div class="clearfix"></div>';
+	return '<div class="one_third last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_third_last', 'shortcode_one_third_last');
 
 // [one_fourth]
 function shortcode_one_fourth($atts, $content=NULL){
-	return '<div class="one_fourth">'.$content.'</div>';
+	return '<div class="one_fourth">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_fourth', 'shortcode_one_fourth');
 
 function shortcode_one_fourth_last($atts, $content=NULL){
-	return '<div class="one_fourth last">'.$content.'</div><div class="clearfix"></div>';
+	return '<div class="one_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_fourth_last', 'shortcode_one_fourth_last');
 

@@ -1,4 +1,5 @@
 <?php
+// [one_half]
 function shortcode_one_half($atts, $content=NULL){
 	return '<div class="one_half">'.$content.'</div>';
 }
@@ -9,6 +10,7 @@ function shortcode_one_half_last($atts, $content=NULL){
 }
 add_shortcode('one_half_last', 'shortcode_one_half_last');
 
+// [one_third]
 function shortcode_one_third($atts, $content=NULL){
 	return '<div class="one_third">'.$content.'</div>';
 }
@@ -19,6 +21,18 @@ function shortcode_one_third_last($atts, $content=NULL){
 }
 add_shortcode('one_third_last', 'shortcode_one_third_last');
 
+// [one_fourth]
+function shortcode_one_fourth($atts, $content=NULL){
+	return '<div class="one_fourth">'.$content.'</div>';
+}
+add_shortcode('one_fourth', 'shortcode_one_fourth');
+
+function shortcode_one_fourth_last($atts, $content=NULL){
+	return '<div class="one_fourth last">'.$content.'</div><div class="clearfix"></div>';
+}
+add_shortcode('one_fourth_last', 'shortcode_one_fourth_last');
+
+// [image]
 function shortcode_image($atts, $content=NULL){
 	extract( shortcode_atts( array(
 			'url' => '',
@@ -65,6 +79,7 @@ function shortcode_image($atts, $content=NULL){
 }
 add_shortcode('image', 'shortcode_image');
 
+// [is_user]
 function shortcode_is_user($atts, $content=NULL){
 	$user_id = get_current_user_id();
 
@@ -77,6 +92,7 @@ function shortcode_is_user($atts, $content=NULL){
 }
 add_shortcode('is_user', 'shortcode_is_user');
 
+// [is_admin]
 function shortcode_is_admin($atts, $content=NULL){
 	$user_id = get_current_user_id();
 	$user = get_userdata($user_id);

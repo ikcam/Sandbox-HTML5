@@ -54,6 +54,7 @@ if( get_option('sb_google_plus') == TRUE ) {
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" />
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/css/shortcodes.css" />
 
 	<!-- RSS & Pingback -->
 	<link rel="alternate" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />

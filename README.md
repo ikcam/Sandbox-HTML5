@@ -4,20 +4,26 @@ One of the most influential blog themes, the Sandbox is a starting point for des
 
 ## Aditions ##
 * WordPress Admin Panel where you can setup:
-	** Google Analytics ID
-	** Facebook AppID
-	** Facebook OpenGraph Meta Tags
-		*** Default logo
-	** Google Plus Meta Tags
-	** Footer sidebars
+
+	* Google Analytics ID
+	* Facebook AppID
+	* Facebook OpenGraph Meta Tags
+
+		* Default logo
+
+	* Google Plus Meta Tags
+	* Footer sidebars
+
 * Better sidebar control
-* Shortcodes
-	** [one_half]
-	** [one_third]
-	** [one_fourth]
-	** [image]
-	** [is_user]
-	** [is_admin]
+
+* Shortcodes:
+
+	* [one_half]
+	* [one_third]
+	* [one_fourth]
+	* [image]
+	* [is_user]
+	* [is_admin]
 
 ## Status ##
 BETA but you can use it in production sites.

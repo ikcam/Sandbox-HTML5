@@ -89,6 +89,4 @@ function shortcode_is_admin($atts, $content=NULL){
 	}
 }
 add_shortcode('is_admin', 'shortcode_is_admin');
-
-
 ?>

@@ -1,11 +1,11 @@
 /*
 Sandbox shortcodes CSS
 */
-div.one_half,div.one_third,div.one_fourth{float:left;margin-right:4%;min-height:1px;height:100% !important;height:1px;position:relative}
-div.one_half{width:48%}
-div.one_third{width:30.6666%}
-div.one_fourth{width:22%}
-div.last{clear:right;margin-right:0 !important}
-div.clearfix{zoom:1}
-div.clearfix:before,div.clearfix:after{content:"";display:table}
-div.clearfix:after{clear:both}
+.one_half,.one_third,.one_fourth{float:left;margin-right:4%;min-height:1px;height:100% !important;height:1px;position:relative}
+.one_half{width:48%}
+.one_third{width:30.6666%}
+.one_fourth{width:22%}
+.last{clear:right;margin-right:0 !important}
+.clearfix{zoom:1}
+.clearfix:before,.clearfix:after{content:"";display:table}
+.clearfix:after{clear:both}

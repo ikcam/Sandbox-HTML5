@@ -39,22 +39,23 @@ function sandbox_footer_sidebars(){
 
 	switch ( $count ){
 		case 1:
-			$class .= 'one-column';
+			$class .= 'one_column';
 			break;
 		case 2:
-			$class .= 'two-columns';
+			$class .= 'one_half';
 			break;
 		case 3:
-			$class .= 'three-columns';
+			$class .= 'one_third';
 			break;
 		case 4:
-			$class .= 'four-columns';
+			$class .= 'one_fourth';
 			break;
 		default:
 			return;
 	}
 
 	for($i=1;$i<=$count;$i++){
+		if($i!=$count){
 ?>
 	<aside class="<?php echo $class ?>">
 		<ul>
@@ -66,8 +67,19 @@ function sandbox_footer_sidebars(){
 		</ul>
 	</aside>
 <?php
-		if( $i==$count ){
-			echo '<div class="clearfix"></div>';
+		} else {
+?>
+	<aside class="<?php echo $class ?> last">
+		<ul>
+		<?php 
+			$id = 'footer-'.$i;
+			if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar( $id ) ) :
+			endif;
+		?>
+		</ul>
+	</aside>
+	<div class="clearfix"></div>
+<?
 		}
 	}
 }

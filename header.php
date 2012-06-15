@@ -54,7 +54,7 @@ if( get_option('sb_google_plus') == TRUE ) {
 	<title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ) ?></title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/style.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/main.css" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/shortcodes.css" />
 
 	<!-- RSS & Pingback -->

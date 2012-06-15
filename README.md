@@ -24,7 +24,7 @@ One of the most influential blog themes, the Sandbox is a starting point for des
 
 ## Comming soon ##
 * More **shortcodes**
-
+* Social sharing buttons
 
 ## Status ##
 **BETA** but you can use it in production sites.

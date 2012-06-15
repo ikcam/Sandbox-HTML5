@@ -3,6 +3,7 @@
 <head>
 	<!-- Meta -->
 	<meta charset="<?php bloginfo('charset') ?>" />
+	<meta name="viewport" content="width=device-width" />
 <?php 
 if( get_option('sb_facebook_og') == TRUE ) { 
 ?>
@@ -53,8 +54,8 @@ if( get_option('sb_google_plus') == TRUE ) {
 	<title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ) ?></title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>" />
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory') ?>/css/shortcodes.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/style.css" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/shortcodes.css" />
 
 	<!-- RSS & Pingback -->
 	<link rel="alternate" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />

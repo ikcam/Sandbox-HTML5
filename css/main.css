@@ -1,14 +1,4 @@
-/*
-THEME NAME: Sandbox
-THEME URI: https://github.com/ikcam/Sandbox-HTML5
-DESCRIPTION: Rich with powerful and dynamic semantic class selectors, Sandbox is a canvas for CSS artists
-VERSION: 2.6.1
-AUTHOR: <a href="http://ikcam.com/">Irving Kcam</a>
-AUTHOR URI: http://ikcam.com
-TAGS: html5, opengraph, google-plus, white, microformats, fixed-width, flexible-width, one-column, two-columns, three-columns, four-columns, left-sidebar, right-sidebar
-*/
-
-/* Two-column with sidebar on left from the /examples/ folder  */
+/* Two-column with sidebar on left from this folder  */
 @import url('2c-l.css');
 
 /* Just some example content */

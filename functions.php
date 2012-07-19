@@ -551,6 +551,17 @@ function sandbox_post_image(){
 	}
 }
 
+// Adds jQuery and jQueryUI to <head>
+function sandbox_scripts(){
+	if( get_option('sb_jquery') == true	){
+		wp_enqueue_script( 'jquery' );
+	}
+	if( get_option('sb_jqueryui') == true	){
+		wp_enqueue_script( 'jquery-ui-core' );
+	}
+}
+add_action('wp_enqueue_scripts', 'sandbox_scripts');
+
 // Sandbox Admin Panel
 include('inc/admin.php');
 include('inc/shortcodes.php');

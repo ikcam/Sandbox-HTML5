@@ -63,7 +63,6 @@ if( get_option('sb_google_plus') == TRUE ) {
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 
 	<!-- Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->

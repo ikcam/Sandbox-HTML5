@@ -13,6 +13,8 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_image_height', array( 'sandbox_admin', 'verify_number' ) );
 		register_setting( 'sandbox', 'sb_timthumb' );
 		register_setting( 'sandbox', 'sb_footer_sidebars', array( 'sandbox_admin', 'footer_sidebars_verify' ) );
+		register_setting( 'sandbox', 'sb_jquery' );
+		register_setting( 'sandbox', 'sb_jqueryui', array('sandbox_admin', 'jquery_verify') );
 	}
 
 	// Verify Facebook Application ID
@@ -65,6 +67,15 @@ class sandbox_admin {
 		}
 	}
 
+	// Callback for jqueryui setting
+	function jquery_verify($input){
+		if($input==true){
+			update_option( 'sb_jquery', true );
+			return true;
+		}
+
+	}
+
 	// This is the settings page on WordPress Admin Page
 	function settings_page(){
 	?>
@@ -85,7 +96,24 @@ class sandbox_admin {
 			<tbody>
 				<tr valign="top">
 					<th scope="row">
-						<label>Footer Sidebars</label>
+						<label><?php _e('jQuery inside', 'sandbox') ?> &lt;head&gt;</label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_jquery" <?php if( get_option('sb_jquery')==true ) { echo 'checked';	 } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('jQueryUI inside', 'sandbox') ?> &lt;head&gt;</label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_jqueryui" <?php if( get_option('sb_jqueryui')==true ) { echo 'checked';	 } ?> />
+						<span class="description"><?php _e('Only jQueryUI Core', 'Sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Footer Sidebars', 'sandbox') ?></label>
 					</th>
 					<td>
 						<select name="sb_footer_sidebars">
@@ -99,7 +127,7 @@ class sandbox_admin {
 				</tr>
 			</tbody>
 			</table>
-			<h3><?php _e('Google Settings', 'Sandbox') ?></h3>
+			<h3><?php _e('Google Settings', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
@@ -112,7 +140,7 @@ class sandbox_admin {
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e( 'Google Analiytics ID', 'Sandbox' ) ?></label>
+						<label><?php _e( 'Google Analiytics ID', 'sandbox' ) ?></label>
 					</th>
 					<td>
 						<input class="regular-text" type="text" name="sb_google_analytics" value="<?php echo get_option('sb_google_analytics'); ?>" />

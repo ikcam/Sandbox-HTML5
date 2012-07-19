@@ -32,6 +32,28 @@ function shortcode_one_fourth_last($atts, $content=NULL){
 }
 add_shortcode('one_fourth_last', 'shortcode_one_fourth_last');
 
+// [one_fifth]
+function shortcode_one_fifth($atts, $content=NULL){
+	return '<div class="one_fifth">'.do_shortcode($content).'</div>';
+}
+add_shortcode('one_fifth', 'shortcode_one_fifth');
+
+function shortcode_one_fifth_last($atts, $content=NULL){
+	return '<div class="one_fifth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+}
+add_shortcode('one_fifth_last', 'shortcode_one_fifth_last');
+
+// [one_sixth]
+function shortcode_one_sixth($atts, $content=NULL){
+	return '<div class="one_sixth">'.do_shortcode($content).'</div>';
+}
+add_shortcode('one_sixth', 'shortcode_one_sixth');
+
+function shortcode_one_sixth_last($atts, $content=NULL){
+	return '<div class="one_sixth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+}
+add_shortcode('one_sixth_last', 'shortcode_one_sixth_last');
+
 // [image]
 function shortcode_image($atts, $content=NULL){
 	extract( shortcode_atts( array(

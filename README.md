@@ -18,6 +18,8 @@ One of the most influential blog themes, the Sandbox is a starting point for des
 	* One Half
 	* One Third
 	* One Fourth
+	* One Fifth
+	* One Sixth
 	* Image
 	* Is user
 	* Is admin

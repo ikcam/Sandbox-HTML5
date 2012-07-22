@@ -15,6 +15,7 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_footer_sidebars', array( 'sandbox_admin', 'footer_sidebars_verify' ) );
 		register_setting( 'sandbox', 'sb_jquery' );
 		register_setting( 'sandbox', 'sb_jqueryui', array('sandbox_admin', 'jquery_verify') );
+		register_setting( 'sandbox', 'sb_comments', array('sandbox_admin', 'comments_verify'));
 	}
 
 	// Verify Facebook Application ID
@@ -76,6 +77,32 @@ class sandbox_admin {
 
 	}
 
+	// Callback for comments setting
+	function comments_verify($input){
+
+		if( $input['com_posts'] == true )
+			$input['com_posts'] = 1;
+		else
+			$input['com_posts'] = 0;
+
+		if( $input['tra_posts'] == true )
+			$input['tra_posts'] = 1;
+		else
+			$input['tra_posts'] = 0;
+
+		if( $input['com_pages'] == true )
+			$input['com_pages'] = 1;
+		else
+			$input['com_pages'] = 0;
+
+		if( $input['tra_pages'] == true )
+			$input['tra_pages'] = 1;
+		else
+			$input['tra_pages'] = 0;
+
+		return $input;
+	}
+
 	// This is the settings page on WordPress Admin Page
 	function settings_page(){
 	?>
@@ -96,7 +123,7 @@ class sandbox_admin {
 			<tbody>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e('jQuery inside', 'sandbox') ?> &lt;head&gt;</label>
+						<label for="sb_jquery"><?php _e('jQuery inside', 'sandbox') ?> &lt;head&gt;</label>
 					</th>
 					<td>
 						<input type="checkbox" name="sb_jquery" <?php if( get_option('sb_jquery')==true ) { echo 'checked';	 } ?> />
@@ -104,7 +131,7 @@ class sandbox_admin {
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e('jQueryUI inside', 'sandbox') ?> &lt;head&gt;</label>
+						<label for="sb_jqueryui"><?php _e('jQueryUI inside', 'sandbox') ?> &lt;head&gt;</label>
 					</th>
 					<td>
 						<input type="checkbox" name="sb_jqueryui" <?php if( get_option('sb_jqueryui')==true ) { echo 'checked';	 } ?> />
@@ -113,7 +140,7 @@ class sandbox_admin {
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label><?php _e('Footer Sidebars', 'sandbox') ?></label>
+						<label for="sb_footer_sidebars"><?php _e('Footer Sidebars', 'sandbox') ?></label>
 					</th>
 					<td>
 						<select name="sb_footer_sidebars">
@@ -123,6 +150,23 @@ class sandbox_admin {
 							<option value="3" <?php if( get_option('sb_footer_sidebars') == 3 ) { echo 'selected'; } ?> >3</option>
 							<option value="4" <?php if( get_option('sb_footer_sidebars') == 4 ) { echo 'selected'; } ?> >4</option>
 						</select>
+					</td>
+				</tr>
+				<tr valign="top">
+					<?php $sb_comments = get_option('sb_comments'); ?>
+					<th scope="row">
+						<label><?php _e('Enable Comments', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_comments[com_posts]" <?php if($sb_comments['com_posts']==1){ echo 'checked'; } ?> /> <?php _e('on posts?', 'sandbox') ?> <input type="checkbox" name="sb_comments[com_pages]" <?php if($sb_comments['com_pages']==1){ echo 'checked'; } ?> /> <?php _e('on pages?', 'sandbox') ?>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Enable Trackbacks', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_comments[tra_posts]" <?php if($sb_comments['tra_posts']==1){ echo 'checked'; } ?> /> <?php _e('on posts?', 'sandbox') ?> <input type="checkbox" name="sb_comments[tra_pages]" <?php if($sb_comments['tra_pages']==1){ echo 'checked'; } ?> /> <?php _e('on pages?', 'sandbox') ?>
 					</td>
 				</tr>
 			</tbody>

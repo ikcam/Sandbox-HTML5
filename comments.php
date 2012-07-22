@@ -23,6 +23,7 @@ foreach ( $comments as $comment )
 	get_comment_type() == "comment" ? ++$comment_count : ++$ping_count;
 ?>
 <?php if ( $comment_count ) : ?>
+<?php if( sandbox_comments() ) : ?>
 <?php $sandbox_comment_alt = 0 ?>
 
 				<section id="comments-list" class="comments">
@@ -46,9 +47,10 @@ foreach ( $comments as $comment )
 
 					</ol>
 				</section><!-- #comments-list .comments -->
-
+<?php endif; // REFERENCE: if ( sandbox_comments() ) ?>
 <?php endif; // REFERENCE: if ( $comment_count ) ?>
 <?php if ( $ping_count ) : ?>
+<?php if( sandbox_trackbacks() ) : ?>
 <?php $sandbox_comment_alt = 0 ?>
 
 				<section id="trackbacks-list" class="comments">
@@ -72,9 +74,10 @@ foreach ( $comments as $comment )
 
 					</ol>
 				</section><!-- #trackbacks-list .comments -->
-
+<?php endif // REFERENCE: if ( sandbox_trackbacks() ) ?>
 <?php endif // REFERENCE: if ( $ping_count ) ?>
 <?php endif // REFERENCE: if ( $comments ) ?>
+<?php if( sandbox_comments() ) : ?>
 <?php if ( 'open' == $post->comment_status ) : ?>
 <?php $req = get_option('require_name_email'); // Checks if fields are required. Thanks, Adam. ;-) ?>
 
@@ -123,5 +126,5 @@ foreach ( $comments as $comment )
 
 				</section><!-- #respond -->
 <?php endif // REFERENCE: if ( 'open' == $post->comment_status ) ?>
-
+<?php endif // REFERENCE: if ( sandbox_comments() ) ?>
 			</section><!-- #comments -->

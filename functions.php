@@ -562,6 +562,55 @@ function sandbox_scripts(){
 }
 add_action('wp_enqueue_scripts', 'sandbox_scripts');
 
+
+function sandbox_comments(){
+	// Get the global option
+	$comments = get_option('sb_comments');
+
+	if( is_single() ){
+		$comments = $comments['com_posts'];
+		if($comments == 1)
+			return true;
+		else
+			return false;
+	}
+	elseif ( is_page() ){
+		$comments = $comments['com_pages'];
+		if($comments == 1)
+			return true;
+		else
+			return false;
+	}
+	else {
+		return false;
+	}
+}
+
+function sandbox_trackbacks(){
+	// Get the global option
+	$comments = get_option('sb_comments');
+
+	if( is_single() ){
+		$comments = $comments['tra_posts'];
+		if($comments == 1)
+			return true;
+		else
+			return false;
+	}
+	elseif ( is_page() ){
+		$comments = $comments['tra_pages'];
+		if($comments == 1)
+			return true;
+		else
+			return false;
+	}
+	else {
+		return false;
+	}
+}
+
+
+
 // Sandbox Admin Panel
 include('inc/admin.php');
 include('inc/shortcodes.php');

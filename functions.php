@@ -562,7 +562,6 @@ function sandbox_scripts(){
 }
 add_action('wp_enqueue_scripts', 'sandbox_scripts');
 
-
 function sandbox_comments(){
 	// Get the global option
 	$comments = get_option('sb_comments');
@@ -609,7 +608,89 @@ function sandbox_trackbacks(){
 	}
 }
 
+function sandbox_excerpt($text) {
+	$sb_excerpt = get_option('sb_excerpt');
 
+	if( $sb_excerpt['th_width'] == 0 )
+		$th_width = 9999;
+	else
+		$th_with = $sb_excerpt['th_width'];
+
+	if( $sb_excerpt['th_height'] == 0 )
+		$th_width = 9999;
+	else
+		$th_with = $sb_excerpt['th_height'];
+
+	if( $sb_excerpt['th_crop'] == 1 )
+		$th_crop = true;
+	else
+		$th_crop = false;
+
+	switch( $sb_excerpt['th_align'] ){
+		case 0:
+			$th_align = 'attachment-sb_thumbnail alignnone';
+			break;
+		case 1:
+			$th_align = 'attachment-sb_thumbnail aligncenter';
+			break;
+		case 2:
+			$th_align = 'attachment-sb_thumbnail alignleft';
+			break;
+		case 3:
+			$th_align = 'attachment-sb_thumbnail alignright';
+			break;
+	}
+
+	if( $sb_excerpt['thumbnail'] == 1 ){
+		if ( has_post_thumbnail() )
+			$thumb = get_the_post_thumbnail($post->ID, 'post-thumb'); // Get post thumb
+		else {
+			if( $sb_excerpt['th_force'] == 1 ){
+				$attachments = get_children( array(
+					'post_parent'    => get_the_ID(),
+					'post_type'      => 'attachment',
+					'numberposts'    => 1, // show all -1
+					'post_status'    => 'inherit',
+					'post_mime_type' => 'image',
+					'order'          => 'DESC',
+					'orderby'        => 'menu_order DESC'
+				) );
+				foreach ( $attachments as $attachment_id => $attachment ) {
+					$thumb = wp_get_attachment_image( $attachment_id, array( $th_width, $th_height, $th_crop ), false, array( 'class' => $th_align ) ); 
+				}
+			}
+		}
+	}
+
+	if( $sb_excerpt['more'] == 0 )
+		$more = '...';
+	else
+		$more = '... <a href="'. get_permalink($post->ID) . '">' . __( 'Read More', 'sandbox' ) . ' <span class="meta-nav">&raquo;</span></a>';
+
+	$raw_excerpt = $text;
+
+	if ( '' == $text ) {
+		$text = get_the_content('');
+		$text = strip_shortcodes( $text );
+		$text = apply_filters('the_content', $text);
+		$text = str_replace(']]>', ']]&gt;', $text);
+		$text = strip_tags($text);
+		$excerpt_length = apply_filters('excerpt_length', $sb_excerpt['lenght']); // Word limit
+		$excerpt_more = apply_filters('excerpt_more', $more ); // "Read more" link
+		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+		if ( count($words) > $excerpt_length ) {
+			array_pop($words);
+			$text = implode(' ', $words);
+			$text = $thumb . $text . $excerpt_more;
+		} else {
+			$text = $thumb . implode(' ', $words);
+		}
+	}
+	return apply_filters('sandbox_excerpt', $text, $raw_excerpt);
+}
+
+remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+add_filter( 'get_the_excerpt', 'sandbox_excerpt');
 
 // Sandbox Admin Panel
 include('inc/admin.php');

@@ -16,6 +16,7 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_jquery' );
 		register_setting( 'sandbox', 'sb_jqueryui', array('sandbox_admin', 'jquery_verify') );
 		register_setting( 'sandbox', 'sb_comments', array('sandbox_admin', 'comments_verify'));
+		register_setting( 'sandbox', 'sb_excerpt', array('sandbox_admin', 'excerpt_verify'));
 	}
 
 	// Verify Facebook Application ID
@@ -77,9 +78,8 @@ class sandbox_admin {
 
 	}
 
-	// Callback for comments setting
+	// Callback for comments settings
 	function comments_verify($input){
-
 		if( $input['com_posts'] == true )
 			$input['com_posts'] = 1;
 		else
@@ -99,6 +99,51 @@ class sandbox_admin {
 			$input['tra_pages'] = 1;
 		else
 			$input['tra_pages'] = 0;
+
+		return $input;
+	}
+
+	// Callback for excerpt settings
+	function excerpt_verify($input){
+		// Show thumbnail
+		if( $input['thumbnail'] == true )
+			$input['thumbnail'] = 1;
+		else
+			$input['thumbnail'] = 0;
+
+		// Force thumbnail
+		if( $input['th_force'] == true )
+			$input['th_force'] = 1;
+		else
+			$input['th_force'] = 0;
+
+		// Thumbnail align
+		if($input['th_align'] < 0 || $input['th_align'] > 3)
+			$input['th_align'] = 0;
+
+		// Thumbnail width
+		if( $input['th_width']=='' )
+			$input['th_width'] = 0;
+
+		// Thumbnail height
+		if( $input['th_height']=='' )
+			$input['th_height'] = 0;
+
+		// Crop thumbnail
+		if( $input['th_crop'] == true )
+			$input['th_crop'] = 1;
+		else
+			$input['th_crop'] = 0;
+
+		// Excerpt lenght
+		if( $input['lenght'] == '' )
+			$input['lenght'] = 80;
+
+		// Read More button
+		if( $input['more'] == true )
+			$input['more'] = 1;
+		else
+			$input['more'] = 0;
 
 		return $input;
 	}
@@ -171,6 +216,85 @@ class sandbox_admin {
 				</tr>
 			</tbody>
 			</table>
+
+			<h3><?php _e('Excerpt Settings', 'sandbox') ?></h3>
+			<table class="form-table">
+			<tbody>
+				<?php $sb_excerpt = get_option('sb_excerpt'); ?>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Show Thumbnail?', 'Sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_excerpt[thumbnail]" <?php if( $sb_excerpt['thumbnail']==1 ) { echo 'checked'; } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Force thumbnail', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_excerpt[th_force]" <?php if( $sb_excerpt['th_force']==1 ){ echo 'checked'; } ?> />
+						<span class="description"><?php _e('Get any image from the post', 'sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Thumbnail align', 'sandbox') ?></label>
+					</th>
+					<td>
+						<select name="sb_excerpt[th_align]">
+							<option value="0" <?php if( $sb_excerpt['th_align'] == 0 ){ echo 'selected'; } ?>><?php _e('No Align', 'sandbox') ?></option>
+							<option value="1" <?php if( $sb_excerpt['th_align'] == 1 ){ echo 'selected'; } ?>><?php _e('Align Center', 'sandbox') ?></option>
+							<option value="2" <?php if( $sb_excerpt['th_align'] == 2 ){ echo 'selected'; } ?>><?php _e('Align Left', 'sandbox') ?></option>
+							<option value="3" <?php if( $sb_excerpt['th_align'] == 3 ){ echo 'selected'; } ?>><?php _e('Align Right', 'sandbox') ?></option>
+						</select>
+					</td>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Thumbnail width', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="number" name="sb_excerpt[th_width]" value="<?php echo $sb_excerpt['th_width']; ?>" />
+						<span class="description"><?php _e('If is 0 will use max width of the image', 'Sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Thumbnail height', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="number" name="sb_excerpt[th_height]" value="<?php echo $sb_excerpt['th_height']; ?>" />
+						<span class="description"><?php _e('If is 0 will use max height of the image', 'Sandbox') ?></span>						
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Crop thumbnail', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_excerpt[th_crop]" <?php if($sb_excerpt['th_crop']==1){ echo 'checked'; } ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e( 'Excerpt lenght', 'sandbox' ) ?></label>
+					</th>
+					<td>
+						<input type="number" name="sb_excerpt[lenght]" value="<?php echo $sb_excerpt['lenght']; ?>" />
+						<span class="description"><?php _e('Number of characters on the excerpt', 'sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Show "Read More" button', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_excerpt[more]" <?php if( $sb_excerpt['more']==1 ){ echo 'checked'; } ?> />
+					</td>
+			</tbody>
+			</table>
+
 			<h3><?php _e('Google Settings', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>

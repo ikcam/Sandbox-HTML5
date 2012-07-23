@@ -13,8 +13,7 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_image_height', array( 'sandbox_admin', 'verify_number' ) );
 		register_setting( 'sandbox', 'sb_timthumb' );
 		register_setting( 'sandbox', 'sb_footer_sidebars', array( 'sandbox_admin', 'footer_sidebars_verify' ) );
-		register_setting( 'sandbox', 'sb_jquery' );
-		register_setting( 'sandbox', 'sb_jqueryui', array('sandbox_admin', 'jquery_verify') );
+		register_setting( 'sandbox', 'sb_jquery', array('sandbox_admin', 'jquery_verify') );
 		register_setting( 'sandbox', 'sb_comments', array('sandbox_admin', 'comments_verify'));
 		register_setting( 'sandbox', 'sb_excerpt', array('sandbox_admin', 'excerpt_verify'));
 	}
@@ -71,11 +70,26 @@ class sandbox_admin {
 
 	// Callback for jqueryui setting
 	function jquery_verify($input){
-		if($input==true){
-			update_option( 'sb_jquery', true );
-			return true;
-		}
+		if( $input['jquery'] == true )
+			$input['jquery'] = 1;
+		else
+			$input['jquery'] = 0;
 
+		if( $input['jqueryui'] == true ){
+			$input['jquery'] = 1;
+			$input['jqueryui'] = 1;
+		}
+		else
+			$input['jqueryui'] = 0;
+
+		if( $input['gmaps'] == true ){
+			$input['jquery'] = 1;
+			$input['gmaps'] = 1;
+		}
+		else
+			$input['gmaps'] = 0;
+
+		return $input;
 	}
 
 	// Callback for comments settings
@@ -166,21 +180,31 @@ class sandbox_admin {
 			<h3><?php _e( 'Main Settings', 'Sandbox' ) ?></h3>
 			<table class="form-table">
 			<tbody>
+				<?php $jquery = get_option('sb_jquery'); ?>
 				<tr valign="top">
 					<th scope="row">
-						<label for="sb_jquery"><?php _e('jQuery inside', 'sandbox') ?> &lt;head&gt;</label>
+						<label><?php _e('jQuery inside', 'sandbox') ?> &lt;head&gt;</label>
 					</th>
 					<td>
-						<input type="checkbox" name="sb_jquery" <?php if( get_option('sb_jquery')==true ) { echo 'checked';	 } ?> />
+						<input type="checkbox" name="sb_jquery[jquery]" <?php if( $jquery['jquery']==1 ) { echo 'checked';	 } ?> />
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row">
-						<label for="sb_jqueryui"><?php _e('jQueryUI inside', 'sandbox') ?> &lt;head&gt;</label>
+						<label><?php _e('jQueryUI inside', 'sandbox') ?> &lt;head&gt;</label>
 					</th>
 					<td>
-						<input type="checkbox" name="sb_jqueryui" <?php if( get_option('sb_jqueryui')==true ) { echo 'checked';	 } ?> />
-						<span class="description"><?php _e('Only jQueryUI Core', 'Sandbox') ?></span>
+						<input type="checkbox" name="sb_jquery[jqueryui]" <?php if( $jquery['jqueryui']==1 ) { echo 'checked';	 } ?> />
+						<span class="description"><?php _e('Only includes jQueryUI Core', 'Sandbox') ?></span>
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">
+						<label><?php _e('Enable gMaps shortcode', 'sandbox') ?></label>
+					</th>
+					<td>
+						<input type="checkbox" name="sb_jquery[gmaps]" <?php if( $jquery['gmaps']==1 ) { echo 'checked'; } ?> />
+						<span class="description"><?php _e('gMaps is a jQuery library', 'sandbox') ?> <a href="http://hpneo.github.com/gmaps/" target="_blank"><?php _e('See more', 'sandbox') ?></a></span>
 					</td>
 				</tr>
 				<tr valign="top">

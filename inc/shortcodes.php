@@ -127,4 +127,23 @@ function shortcode_is_admin($atts, $content=NULL){
 	}
 }
 add_shortcode('is_admin', 'shortcode_is_admin');
+
+// [gmaps]
+function shortcode_gmaps($atts, $content=NULL){
+	extract( shortcode_atts( array(
+			'class' => 'gMaps',
+			'id' => 'gMaps',
+			'lat' => -6.599131,
+			'lng' => -79.963989,
+			'height' => 330
+		), $atts ) 
+	);
+
+	$jquery = get_option('sb_jquery');
+	if( $jquery['gmaps'] == 0 )
+		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');
+
+	return '<script type="text/javascript">jQuery(document).ready(function(){ map = new GMaps({ div: "#'.$id.'", lat: '.$lat.', lng: '.$lng.', height: "'.$height.'px" });'.do_shortcode($content).'});</script><div id="'.$id.'"></div>';
+}
+add_shortcode('gmaps', 'shortcode_gmaps');
 ?>

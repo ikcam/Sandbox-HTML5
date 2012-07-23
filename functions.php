@@ -553,11 +553,17 @@ function sandbox_post_image(){
 
 // Adds jQuery and jQueryUI to <head>
 function sandbox_scripts(){
-	if( get_option('sb_jquery') == true	){
+	$jquery = get_option('sb_jquery');
+	
+	if( $jquery['jquery'] == 1 )
 		wp_enqueue_script( 'jquery' );
-	}
-	if( get_option('sb_jqueryui') == true	){
+
+	if( $jquery['jqueryui'] == 1 )
 		wp_enqueue_script( 'jquery-ui-core' );
+
+	if( $jquery['gmaps'] == 1 ){
+		wp_enqueue_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=true' );
+		wp_enqueue_script( 'gmaps', get_template_directory_uri() . '/javascript/gmaps.jquery.js', array('jquery') );
 	}
 }
 add_action('wp_enqueue_scripts', 'sandbox_scripts');

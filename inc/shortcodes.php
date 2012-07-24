@@ -21,6 +21,16 @@ function shortcode_one_third_last($atts, $content=NULL){
 }
 add_shortcode('one_third_last', 'shortcode_one_third_last');
 
+function shortcode_two_third($atts, $content=NULL){
+ return '<div class="two_third">'.do_shortcode($content).'</div>';
+}
+add_shortcode('two_third', 'shortcode_two_third');
+
+function shortcode_two_third_last($atts, $content=NULL){
+	return '<div class="two_third last">'.do_shortcode($content).'</div><div class="clearfix></div>';
+}
+add_shortcode('two_third_last', 'shortcode_two_third_last');
+
 // [one_fourth]
 function shortcode_one_fourth($atts, $content=NULL){
 	return '<div class="one_fourth">'.do_shortcode($content).'</div>';
@@ -31,6 +41,16 @@ function shortcode_one_fourth_last($atts, $content=NULL){
 	return '<div class="one_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
 }
 add_shortcode('one_fourth_last', 'shortcode_one_fourth_last');
+
+function shortcode_three_fourth($atts, $content=NULL){
+	return '<div class="three_fourth">'.do_shortcode($content).'</div>';
+}
+add_shortcode('three_fourth', 'shortcode_three_fourth');
+
+function shortcode_three_fourth_last($atts, $content=NULL){
+	return '<div class="three_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+}
+add_shortcode('three_fourth_last', 'shortcode_three_fourth_last');
 
 // [one_fifth]
 function shortcode_one_fifth($atts, $content=NULL){

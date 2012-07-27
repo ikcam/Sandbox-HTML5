@@ -153,8 +153,8 @@ function shortcode_gmaps($atts, $content=NULL){
 	extract( shortcode_atts( array(
 			'class' => 'gMaps',
 			'id' => 'gMaps',
-			'lat' => -6.599131,
-			'lng' => -79.963989,
+			'lat' => -12.043333,
+			'lng' => -77.028333,
 			'height' => 330
 		), $atts ) 
 	);
@@ -166,4 +166,37 @@ function shortcode_gmaps($atts, $content=NULL){
 	return '<script type="text/javascript">jQuery(document).ready(function(){ map = new GMaps({ div: "#'.$id.'", lat: '.$lat.', lng: '.$lng.', height: "'.$height.'px" });'.do_shortcode($content).'});</script><div id="'.$id.'"></div>';
 }
 add_shortcode('gmaps', 'shortcode_gmaps');
+
+function shortcode_groute($atts){
+	extract( shortcode_atts( array(
+			'origin' => '-12.044012922866312, -77.02470665341184',
+			'destination' => '-12.090814532191756, -77.02271108990476',
+			'travelMode' => 'walking',
+			'strokeColor' => '131540',
+			'strokeOpacity' => 0.6,
+			'strokeWeight' => 6
+		), $atts ) 
+	);
+
+	return 'map.drawRoute({ origin: ['.$origin.'], destination: ['.$destination.'], travelMode: "'.$travelMode.'", strokeColor: "#'.$strokeColor.'", strokeOpacity: '.$strokeOpacity.', strokeWeight: '.$strokeWeight.'  });';
+}
+add_shortcode('groute', 'shortcode_groute');
+
+function shortcode_gmarker($atts, $content=NULL){
+	extract( shortcode_atts( array(
+			'lat' => -12.043333,
+			'lng' => -77.028333,
+  		'title' => 'Marker'
+		), $atts ) 
+	);
+
+	$output = 'map.addMarker({ lat: '.$lat.', lng: '.$lng.', title: "'.$title.'"';
+	if( $content!=NULL )
+		$output.= ',infoWindow: { content: "'.$content.'" }';
+	$output .= '});';
+
+	return $output;
+}
+add_shortcode('gmarker', 'shortcode_gmarker');
+
 ?>

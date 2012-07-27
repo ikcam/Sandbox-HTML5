@@ -17,12 +17,17 @@ One of the most influential blog themes, the Sandbox is a starting point for des
 * **Shortcodes** [see Wiki for further info]():
 	* One Half
 	* One Third
+	* Two Third
 	* One Fourth
+	* Three Fourth
 	* One Fifth
 	* One Sixth
 	* Image
 	* Is user
 	* Is admin
+	* gMaps
+		* gRoute
+		* gMarker
 
 ## Comming soon ##
 * More **shortcodes**

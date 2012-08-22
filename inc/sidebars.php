@@ -79,7 +79,7 @@ function sandbox_footer_sidebars(){
 		</ul>
 	</aside>
 	<div class="clearfix"></div>
-<?
+<?php
 		}
 	}
 }

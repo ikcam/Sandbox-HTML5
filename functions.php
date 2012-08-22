@@ -23,13 +23,13 @@ function sandbox_menus() {
 add_action( 'init', 'sandbox_menus' );
 
 function sandbox_globalnav() {
-	wp_nav_menu( array( 'theme_location' => 'menu-header', 'container' => 'nav', 'container_id' => 'menu', 'fallback_cb' => 'sandbox_globalnav_fallback' ) );
+	wp_nav_menu( array( 'theme_location' => 'menu-header', 'container' => 'nav', 'container_id' => 'menu-main', 'fallback_cb' => 'sandbox_globalnav_fallback' ) );
 }
 
 function sandbox_globalnav_fallback() {
 	if ( $menu = str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages('title_li=&sort_column=menu_order&echo=0') ) )
 		$menu = '<ul>' . $menu . '</ul>';
-	$menu = '<nav id="menu">' . $menu . "</nav>\n";
+	$menu = '<nav id="menu-main">' . $menu . "</nav>\n";
 	echo apply_filters( 'globalnav_menu', $menu ); // Filter to override default globalnav: globalnav_menu
 }
 

@@ -1,7 +1,7 @@
 /*
 Sandbox shortcodes CSS
 */
-.one_half,.one_third,.one_fourth,.one_fifth,.one_sixth{float:left;margin-right:4%;min-height:1px;height:100% !important;height:1px;position:relative}
+.one_half,.one_third,.two_third,.one_fourth,.three_fourth,.one_fifth,.one_sixth{float:left;margin-right:4%;min-height:1px;height:100% !important;height:1px;position:relative}
 .one_half{width:48%}
 .one_third{width:30.6666%}
 .two_third{width:65.3333%}

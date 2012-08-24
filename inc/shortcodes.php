@@ -74,53 +74,6 @@ function shortcode_one_sixth_last($atts, $content=NULL){
 }
 add_shortcode('one_sixth_last', 'shortcode_one_sixth_last');
 
-// [image]
-function shortcode_image($atts, $content=NULL){
-	extract( shortcode_atts( array(
-			'url' => '',
-			'title' => '',
-			'align' => 'aligncenter',
-			'width' => get_option('sb_image_width'),
-			'height' => get_option('sb_image_height'),
-		) , $atts)
-	);
-
-	$align = esc_attr($align);
-
-	if( $title != '' ){
-		$title = esc_attr($title);
-	}
-
-	if( $url != '' ){
-		$url = esc_attr($url);
-	}
-
-	if( get_option('sb_timthumb') == TRUE ){
-		$image = get_bloginfo('stylesheet_directory').'/inc/timthumb.php?src='.$content.'&w='.$width.'&h='.$height;
-		if( $url != '' ){
-			if( $title != '' ) {
-				return '<a href="'.$url.'" rel="lightbox"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';				
-			} else {
-				return '<a href="'.$url.'" rel="lightbox"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" /></a>';
-			}
-		} else {
-			if( $title != '' ) {
-				return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
-			} else {
-				return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" />';
-			}
-		}
-	} else {
-		$image = $content;
-		if( $url != '' ){
-			return '<a href="'.$url.'"><img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" /></a>';
-		} else {
-			return '<img src="'.$image.'" class="'.$align.'" width="'.$width.'" height="'.$height.'" title="'.$title.'" />';
-		}
-	}
-}
-add_shortcode('image', 'shortcode_image');
-
 // [is_user]
 function shortcode_is_user($atts, $content=NULL){
 	$user_id = get_current_user_id();

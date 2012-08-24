@@ -8,37 +8,37 @@ right:1em;
 top:1em;
 }
 
-nav#menu {
+nav#menu-main {
 background:#EEE;
 height:1.5em;
 margin:1em 0;
 width:100%;
 }
 
-nav#menu ul,nav#menu ul ul {
+nav#menu-main ul,nav#menu-main ul ul {
 line-height:1;
 list-style:none;
 margin:0;
 padding:0;
 }
 
-nav#menu ul a {
+nav#menu-main ul a {
 display:block;
 margin-right:1em;
 padding:0.2em 0.5em;
 text-decoration:none;
 }
 
-nav#menu ul ul ul a {
+nav#menu-main ul ul ul a {
 font-style:italic;
 }
 
-nav#menu ul li ul {
+nav#menu-main ul li ul {
 left:-999em;
 position:absolute;
 }
 
-nav#menu ul li:hover ul {
+nav#menu-main ul li:hover ul {
 left:auto;
 }
 
@@ -188,7 +188,7 @@ aside.sidebar ul ul ul li {
 list-style:circle;
 }
 
-nav#menu ul li,div.gallery dl,nav.navigation div.nav-previous {
+nav#menu-main ul li,div.gallery dl,nav.navigation div.nav-previous {
 float:left;
 }
 

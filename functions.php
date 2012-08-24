@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with SAN
 function sandbox_menus() {
 	register_nav_menus(
 		array(
-			'menu-header' => __( 'Header Menu' )
+			'menu-main' => __( 'Main Menu' )
 			// 'menu-footer' => __( 'Footer Menu' )
 			// 'menu-is-login' => __( 'Menu IS Login' )
 			// 'menu-no-login' => __( 'Menu NO Login' )
@@ -23,7 +23,7 @@ function sandbox_menus() {
 add_action( 'init', 'sandbox_menus' );
 
 function sandbox_globalnav() {
-	wp_nav_menu( array( 'theme_location' => 'menu-header', 'container' => 'nav', 'container_id' => 'menu-main', 'fallback_cb' => 'sandbox_globalnav_fallback' ) );
+	wp_nav_menu( array( 'theme_location' => 'menu-main', 'container' => 'nav', 'container_id' => 'menu-main', 'fallback_cb' => 'sandbox_globalnav_fallback' ) );
 }
 
 function sandbox_globalnav_fallback() {
@@ -570,17 +570,17 @@ add_action('wp_enqueue_scripts', 'sandbox_scripts');
 
 function sandbox_comments(){
 	// Get the global option
-	$comments = get_option('sb_comments');
+	$settings = get_option('sb_settings');
 
 	if( is_single() ){
-		$comments = $comments['com_posts'];
+		$comments = $settings['comments_posts'];
 		if($comments == 1)
 			return true;
 		else
 			return false;
 	}
 	elseif ( is_page() ){
-		$comments = $comments['com_pages'];
+		$comments = $settings['comments_pages'];
 		if($comments == 1)
 			return true;
 		else
@@ -593,17 +593,17 @@ function sandbox_comments(){
 
 function sandbox_trackbacks(){
 	// Get the global option
-	$comments = get_option('sb_comments');
+	$settings = get_option('sb_settings');
 
 	if( is_single() ){
-		$comments = $comments['tra_posts'];
+		$comments = $settings['trackbacks_posts'];
 		if($comments == 1)
 			return true;
 		else
 			return false;
 	}
 	elseif ( is_page() ){
-		$comments = $comments['tra_pages'];
+		$comments = $settings['trackbacks_pages'];
 		if($comments == 1)
 			return true;
 		else
@@ -615,44 +615,43 @@ function sandbox_trackbacks(){
 }
 
 function sandbox_excerpt($text) {
-	$sb_excerpt = get_option('sb_excerpt');
+	$settings = get_option('sb_settings');
 
-	if( $sb_excerpt['th_width'] == 0 )
+	if( $settings['excerpt_thumb_width'] == 9999 || $settings['excerpt_thumb_width'] == 0 )
 		$th_width = 9999;
 	else
-		$th_with = $sb_excerpt['th_width'];
+		$th_with = $sb_excerpt['excerpt_thumb_width'];
 
-	if( $sb_excerpt['th_height'] == 0 )
+	if( $settings['excerpt_thumb_height'] == 9999 || $settings['excerpt_thumb_height'] == 0 )
 		$th_width = 9999;
 	else
-		$th_with = $sb_excerpt['th_height'];
+		$th_with = $settings['excerpt_thumb_height'];
 
-	if( $sb_excerpt['th_crop'] == 1 )
+	if( $settings['excerpt_thumb_crop'] == 1 )
 		$th_crop = true;
 	else
 		$th_crop = false;
 
-	switch( $sb_excerpt['th_align'] ){
-		case 0:
-			$th_align = 'attachment-sb_thumbnail alignnone';
-			break;
+	switch( $settings['excerpt_thumb_align'] ){
 		case 1:
-			$th_align = 'attachment-sb_thumbnail aligncenter';
-			break;
-		case 2:
 			$th_align = 'attachment-sb_thumbnail alignleft';
 			break;
-		case 3:
+		case 2:
 			$th_align = 'attachment-sb_thumbnail alignright';
+			break;
+		case 3:
+			$th_align = 'attachment-sb_thumbnail aligncenter';
+			break;
+		case 4:
+			$th_align = 'attachment-sb_thumbnail alignnone';
 			break;
 	}
 
-	if( $sb_excerpt['thumbnail'] == 1 ){
+	if( $settings['excerpt_thumb'] == 1 ){
 		if ( has_post_thumbnail() )
-			$thumb = get_the_post_thumbnail($post->ID, 'post-thumb'); // Get post thumb
+			$thumb = get_the_post_thumbnail($post->ID, array( $th_width, $th_height, $th_crop ), array( 'class' => $th_align ) ); // Get post thumb
 		else {
-			if( $sb_excerpt['th_force'] == 1 ){
-				$attachments = get_children( array(
+			$attachments = get_children( array(
 					'post_parent'    => get_the_ID(),
 					'post_type'      => 'attachment',
 					'numberposts'    => 1, // show all -1
@@ -660,15 +659,15 @@ function sandbox_excerpt($text) {
 					'post_mime_type' => 'image',
 					'order'          => 'DESC',
 					'orderby'        => 'menu_order DESC'
-				) );
-				foreach ( $attachments as $attachment_id => $attachment ) {
-					$thumb = wp_get_attachment_image( $attachment_id, array( $th_width, $th_height, $th_crop ), false, array( 'class' => $th_align ) ); 
-				}
+				) 
+			);
+			foreach ( $attachments as $attachment_id => $attachment ) {
+				$thumb = wp_get_attachment_image( $attachment_id, array( $th_width, $th_height, $th_crop ), false, array( 'class' => $th_align ) ); 
 			}
 		}
 	}
 
-	if( $sb_excerpt['more'] == 0 )
+	if( $settings['excerpt_more'] == 0 )
 		$more = '...';
 	else
 		$more = '... <a href="'. get_permalink($post->ID) . '">' . __( 'Read More', 'sandbox' ) . ' <span class="meta-nav">&raquo;</span></a>';
@@ -681,7 +680,7 @@ function sandbox_excerpt($text) {
 		$text = apply_filters('the_content', $text);
 		$text = str_replace(']]>', ']]&gt;', $text);
 		$text = strip_tags($text);
-		$excerpt_length = apply_filters('excerpt_length', $sb_excerpt['lenght']); // Word limit
+		$excerpt_length = apply_filters('excerpt_length', $settings['excerpt_lenght']); // Word limit
 		$excerpt_more = apply_filters('excerpt_more', $more ); // "Read more" link
 		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
 		if ( count($words) > $excerpt_length ) {

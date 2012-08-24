@@ -125,12 +125,10 @@ add_shortcode('image', 'shortcode_image');
 function shortcode_is_user($atts, $content=NULL){
 	$user_id = get_current_user_id();
 
-	if($user_id == 0){
-		$content = _e('Login to see this content.', 'Sandbox');
-		return $content;
-	} else {
+	if($user_id == 0)
+		return ;
+	else
 		return do_shortcode($content);
-	}
 }
 add_shortcode('is_user', 'shortcode_is_user');
 
@@ -140,11 +138,10 @@ function shortcode_is_admin($atts, $content=NULL){
 	$user = get_userdata($user_id);
 	$user_level = $user->user_level;
 
-	if($user_lever == 10){
+	if($user_lever == 10)
 		return ;
-	} else {
+	else 
 		return do_shortcode($content);
-	}
 }
 add_shortcode('is_admin', 'shortcode_is_admin');
 
@@ -159,11 +156,12 @@ function shortcode_gmaps($atts, $content=NULL){
 		), $atts ) 
 	);
 
-	$jquery = get_option('sb_jquery');
-	if( $jquery['gmaps'] == 0 )
-		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');
+	$settings = get_option('sb_settings');
 
-	return '<script type="text/javascript">jQuery(document).ready(function(){ map = new GMaps({ div: "#'.$id.'", lat: '.$lat.', lng: '.$lng.', height: "'.$height.'px" });'.do_shortcode($content).'});</script><div id="'.$id.'"></div>';
+	if( $settings['site_gmaps'] == 0 )
+		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');
+	else
+		return '<script type="text/javascript">jQuery(document).ready(function(){ map = new GMaps({ div: "#'.$id.'", lat: '.$lat.', lng: '.$lng.', height: "'.$height.'px" });'.do_shortcode($content).'});</script><div id="'.$id.'"></div>';
 }
 add_shortcode('gmaps', 'shortcode_gmaps');
 
@@ -198,5 +196,4 @@ function shortcode_gmarker($atts, $content=NULL){
 	return $output;
 }
 add_shortcode('gmarker', 'shortcode_gmarker');
-
 ?>

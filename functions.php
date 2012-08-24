@@ -553,15 +553,15 @@ function sandbox_post_image(){
 
 // Adds jQuery and jQueryUI to <head>
 function sandbox_scripts(){
-	$jquery = get_option('sb_jquery');
+	$settings = get_option('sb_settings');
 	
-	if( $jquery['jquery'] == 1 )
+	if( $function['site_jquery'] == 1 )
 		wp_enqueue_script( 'jquery' );
 
-	if( $jquery['jqueryui'] == 1 )
+	if( $function['site_jqueryui'] == 1 )
 		wp_enqueue_script( 'jquery-ui-core' );
 
-	if( $jquery['gmaps'] == 1 ){
+	if( $function['site_gmaps'] == 1 ){
 		wp_enqueue_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=true' );
 		wp_enqueue_script( 'gmaps', get_template_directory_uri() . '/javascript/gmaps.jquery.js', array('jquery') );
 	}
@@ -620,7 +620,7 @@ function sandbox_excerpt($text) {
 	if( $settings['excerpt_thumb_width'] == 9999 || $settings['excerpt_thumb_width'] == 0 )
 		$th_width = 9999;
 	else
-		$th_with = $sb_excerpt['excerpt_thumb_width'];
+		$th_with = $settings['excerpt_thumb_width'];
 
 	if( $settings['excerpt_thumb_height'] == 9999 || $settings['excerpt_thumb_height'] == 0 )
 		$th_width = 9999;

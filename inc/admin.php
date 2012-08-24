@@ -28,6 +28,7 @@ class sandbox_admin {
 		$input['trackbacks_posts']   = $input['trackbacks_posts']   == true ? 1:0;
 		$input['trackbacks_pages']   = $input['trackbacks_pages']   == true ? 1:0;
 		$input['excerpt_thumb']      = $input['excerpt_thumb']      == true ? 1:0;
+		$input['excerpt_thumb_crop'] = $input['excerpt_thumb_crop'] == true ? 1:0;
 		$input['excerpt_more']       = $input['excerpt_more']       == true ? 1:0;
 		if ( empty($input['excerpt_lenght']) )       { $input['excerpt_lenght']       = 80;  }
 		if ( empty($input['excerpt_thumb_width']) )  { $input['excerpt_thumb_width']  = 150; }
@@ -125,17 +126,23 @@ class sandbox_admin {
 				<tr valign="top">
 					<th scope="row"><label>Enable Thumbnail</label></th>
 					<td>
-						<input type="checkbox" name="sb_settings[excerpt _thumb]" <?php if( $settings['_thumb'] == 1 ) {echo 'checked';} ?> />
+						<input type="checkbox" name="sb_settings[excerpt_thumb]" <?php if( $settings['excerpt_thumb'] == 1 ) {echo 'checked';} ?> />
+					</td>
+				</tr>
+				<tr valign="top">
+					<th scope="row"><label>Crop Thumbnail</label></th>
+					<td>
+						<input type="checkbox" name="sb_settings[excerpt_thumb_crop]" <?php if( $settings['excerpt_thumb_crop'] == 1 ) {echo 'checked';} ?> />
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><label>Thumbnail Align</label></th>
 					<td>
 						<select name="sb_settings[excerpt_thumb_align]">
-							<option value="0" <?php if( $settings['excerpt_thumb_align'] == 0 ) {echo 'selected'; } ?>>Align Left</option>
-							<option value="1" <?php if( $settings['excerpt_thumb_align'] == 1 ) {echo 'selected'; } ?>>Align Right</option>
-							<option value="2" <?php if( $settings['excerpt_thumb_align'] == 2 ) {echo 'selected'; } ?>>Align Center</option>
-							<option value="3" <?php if( $settings['excerpt_thumb_align'] == 3 ) {echo 'selected'; } ?>>No Align</option>
+							<option value="1" <?php if( $settings['excerpt_thumb_align'] == 1 ) {echo 'selected'; } ?>>Align Left</option>
+							<option value="2" <?php if( $settings['excerpt_thumb_align'] == 2 ) {echo 'selected'; } ?>>Align Right</option>
+							<option value="3" <?php if( $settings['excerpt_thumb_align'] == 3 ) {echo 'selected'; } ?>>Align Center</option>
+							<option value="4" <?php if( $settings['excerpt_thumb_align'] == 4 ) {echo 'selected'; } ?>>No Align</option>
 						</select>
 					</td>
 				</tr>

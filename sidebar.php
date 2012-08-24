@@ -1,3 +1,8 @@
+<?php 
+$settings = get_option('sb_settings');
+
+if( $settings['site_layout'] != 6 ) : 
+?>
 	<aside id="primary" class="sidebar">
 		<ul class="xoxo">
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('primary') ) : // begin primary sidebar widgets ?>
@@ -27,7 +32,7 @@
 <?php endif; // end primary sidebar widgets  ?>
 		</ul>
 	</aside><!-- #primary .sidebar -->
-
+<?php if( $settings['site_layout'] == 3 || $settings['site_layout'] == 4 || $settings['site_layout'] == 5 ) : ?>
 	<aside id="secondary" class="sidebar">
 		<ul class="xoxo">
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('secondary') ) : // begin secondary sidebar widgets ?>
@@ -64,3 +69,5 @@
 <?php endif; // end secondary sidebar widgets  ?>
 		</ul>
 	</aside><!-- #secondary .sidebar -->
+<?php endif; // Site layout: 3, 4, 5 ?>
+<?php endif; // Site layout: 1, 2, 3, 4, 5  ?>

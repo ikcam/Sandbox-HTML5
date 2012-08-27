@@ -555,13 +555,13 @@ function sandbox_post_image(){
 function sandbox_scripts(){
 	$settings = get_option('sb_settings');
 	
-	if( $function['site_jquery'] == 1 )
+	if( $settings['site_jquery'] == 1 )
 		wp_enqueue_script( 'jquery' );
 
-	if( $function['site_jqueryui'] == 1 )
+	if( $settings['site_jqueryui'] == 1 )
 		wp_enqueue_script( 'jquery-ui-core' );
 
-	if( $function['site_gmaps'] == 1 ){
+	if( $settings['site_gmaps'] == 1 ){
 		wp_enqueue_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=true' );
 		wp_enqueue_script( 'gmaps', get_template_directory_uri() . '/javascript/gmaps.jquery.js', array('jquery') );
 	}

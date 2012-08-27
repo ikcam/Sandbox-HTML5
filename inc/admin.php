@@ -233,11 +233,17 @@ class sandbox_admin {
 	</div>
 <?php
 	} // Function settings_page
+
+	function settings_colors(){
+		
+	}
 } // Class sandbox_admin
 
 // Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
 	add_menu_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page'), '', 61 );
+	add_submenu_page( 'sandbox', 'Colors', 'Colors', 'administrator', 'sandbox_colors', array( 'sandbox_admin', 'settings_colors' ) );
+
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));
 }
 add_action('admin_menu', 'sandbox_admin_menu');

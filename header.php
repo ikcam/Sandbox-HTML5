@@ -1,21 +1,22 @@
+<?php $settings = get_option('sb_settings'); ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xmlns:fb="https://www.facebook.com/2008/fbml" <?php language_attributes() ?> itemscope itemtype="http://schema.org/Blog">
 <head>
 	<!-- Meta -->
 	<meta charset="<?php bloginfo('charset') ?>" />
 	<meta name="viewport" content="width=device-width" />
-<?php 
-if( get_option('sb_facebook_og') == TRUE ) { 
-?>
+
 	<!-- Facebook Open Graph (ALWAYS) -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
-<?php 
-	if( get_option('facebook_appid') ) {
-?>
-	<meta property="fb:app_id" content="<?php echo get_option('sb_facebook_appid') ?>" />
 <?php
-	}
-	if( is_single() ) { 
+if( $settings['site_fbappid'] != '' ) :
+?>
+	<meta property="fb:app_id" content="<?php echo $settings['site_fbappid'] ?>" />
+<?php
+endif;
+
+if ( $settings['site_og'] == 1 ) :  
+	if( is_single() ) :
 ?>
 	<!-- Facebook Open Graph (SINGLE) -->
 	<meta property="og:type" content="article" />
@@ -24,31 +25,33 @@ if( get_option('sb_facebook_og') == TRUE ) {
 	<meta property="og:description" content="<?php sandbox_post_description() ?>" />
 	<meta property="og:image" content="<?php sandbox_post_image() ?>" />
 <?php 
-	} else { 
+	else :
 ?>
 	<!-- Facebook Open Graph (NOT SINGLE) -->
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
 	<meta property="og:url" content="<?php bloginfo('url') ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />
-	<meta property="og:image" content="<?php echo get_option('sb_website_logo') ?>" />
+	<meta property="og:image" content="<?php echo $settings['site_logo'] ?>" />
 <?php 
-	} 
-}
-if( get_option('sb_google_plus') == TRUE ) {
-	if( is_single() ) { ?>
+	endif;
+endif; // site_og
+
+if( $settings('site_gplus') == 1 ) :
+	if( is_single() ) :
+?>
 	<!-- Google Plus One (SINGLE) -->
 	<meta itemprop="name" content="<?php the_title() ?>">
 	<meta itemprop="description" content="<?php sandbox_post_description() ?>">
 	<meta itemprop="image" content="<?php sandbox_post_image() ?>">
-	<?php } else { ?>
+<?php else : ?>
 	<!-- Google Plus One (NOT SINGLE) -->
 	<meta itemprop="name" content="<?php bloginfo('name') ?>">
 	<meta itemprop="description" content="<?php bloginfo('description') ?>">
-	<meta itemprop="image" content="<?php echo get_option('sb_website_logo') ?>">
+	<meta itemprop="image" content="<?php echo $settings['site_logo'] ?>">
 <?php 
-	} 
-} 
+	endif;
+endif; // site_gplus 
 ?>
 	<!-- Title -->
 	<title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ) ?></title>
@@ -67,10 +70,10 @@ if( get_option('sb_google_plus') == TRUE ) {
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <?php wp_head() // For plugins ?>
-<?php if( get_option('google_analytics') ) { ?>
+<?php if( $settings['site_ga'] != '' ) : ?>
 <script>
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '<?php echo get_option("google_analytics") ?>']);
+  _gaq.push(['_setAccount', '<?php echo settings["site_ga"] ?>']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -79,20 +82,20 @@ if( get_option('sb_google_plus') == TRUE ) {
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
-<?php } ?>
+<?php endif; ?>
 </head>
 
 <body class="<?php sandbox_body_class() ?>">
-<?php if( get_option('facebook_appid') ) { ?>
+<?php if( $settings['site_fbappid'] != '' ) : ?>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
 		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=<?php echo get_option('facebook_appid') ?>";
+		js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=<?php echo $settings['site_fbappid'] ?>";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-<?php } ?>
+<?php endif; ?>
 <section id="wrapper" class="hfeed">
 
 	<header id="header">

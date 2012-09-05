@@ -35,7 +35,7 @@ if ( $settings['site_og'] == 1 ) :
 	endif;
 endif; // site_og
 
-if( $settings('site_gplus') == 1 ) :
+if( $settings['site_gplus'] == 1 ) :
 	if( is_single() ) :
 ?>
 	<!-- Google Plus One (SINGLE) -->
@@ -71,7 +71,7 @@ endif; // site_gplus
 <?php if( $settings['site_ga'] != '' ) : ?>
 <script>
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '<?php echo settings["site_ga"] ?>']);
+  _gaq.push(['_setAccount', '<?php echo $settings["site_ga"] ?>']);
   _gaq.push(['_trackPageview']);
 
   (function() {

@@ -8,13 +8,11 @@
 
 	<!-- Facebook Open Graph (ALWAYS) -->
 	<meta property="og:site_name" content="<?php bloginfo('name') ?>" />
-<?php
-if( $settings['site_fbappid'] != '' ) :
-?>
+<?php if( $settings['site_fbappid'] != '' ) : ?>
 	<meta property="fb:app_id" content="<?php echo $settings['site_fbappid'] ?>" />
-<?php
-endif;
+<?php endif; ?>
 
+<?php
 if ( $settings['site_og'] == 1 ) :  
 	if( is_single() ) :
 ?>

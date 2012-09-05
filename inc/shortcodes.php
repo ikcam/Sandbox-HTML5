@@ -118,6 +118,7 @@ function shortcode_gmaps($atts, $content=NULL){
 }
 add_shortcode('gmaps', 'shortcode_gmaps');
 
+// [groute]
 function shortcode_groute($atts){
 	extract( shortcode_atts( array(
 			'origin' => '-12.044012922866312, -77.02470665341184',
@@ -133,6 +134,7 @@ function shortcode_groute($atts){
 }
 add_shortcode('groute', 'shortcode_groute');
 
+// [gmarker]
 function shortcode_gmarker($atts, $content=NULL){
 	extract( shortcode_atts( array(
 			'lat' => -12.043333,

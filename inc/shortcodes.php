@@ -1,78 +1,80 @@
 <?php
 // [one_half]
 function shortcode_one_half($atts, $content=NULL){
-	return '<div class="one_half">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="one_half last">'.do_shortcode($content).'</div><div class="clearfix"></div>';	
+	}
+	else
+		return '<div class="one_half">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_half', 'shortcode_one_half');
 
-function shortcode_one_half_last($atts, $content=NULL){
-	return '<div class="one_half last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('one_half_last', 'shortcode_one_half_last');
-
 // [one_third]
 function shortcode_one_third($atts, $content=NULL){
-	return '<div class="one_third">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="one_third last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+	}
+	else
+		return '<div class="one_third">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_third', 'shortcode_one_third');
 
-function shortcode_one_third_last($atts, $content=NULL){
-	return '<div class="one_third last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('one_third_last', 'shortcode_one_third_last');
-
+// [two_third]
 function shortcode_two_third($atts, $content=NULL){
- return '<div class="two_third">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="two_third last">'.do_shortcode($content).'</div><div class="clearfix></div>';
+	}
+	else
+		return '<div class="two_third">'.do_shortcode($content).'</div>';
 }
 add_shortcode('two_third', 'shortcode_two_third');
 
-function shortcode_two_third_last($atts, $content=NULL){
-	return '<div class="two_third last">'.do_shortcode($content).'</div><div class="clearfix></div>';
-}
-add_shortcode('two_third_last', 'shortcode_two_third_last');
-
 // [one_fourth]
 function shortcode_one_fourth($atts, $content=NULL){
-	return '<div class="one_fourth">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+		return '<div class="one_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+	}
+	else
+		return '<div class="one_fourth">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_fourth', 'shortcode_one_fourth');
 
-function shortcode_one_fourth_last($atts, $content=NULL){
-	return '<div class="one_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('one_fourth_last', 'shortcode_one_fourth_last');
-
+// [three_fourth]
 function shortcode_three_fourth($atts, $content=NULL){
-	return '<div class="three_fourth">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="three_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+	}
+	else
+		return '<div class="three_fourth">'.do_shortcode($content).'</div>';
 }
 add_shortcode('three_fourth', 'shortcode_three_fourth');
 
-function shortcode_three_fourth_last($atts, $content=NULL){
-	return '<div class="three_fourth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('three_fourth_last', 'shortcode_three_fourth_last');
-
 // [one_fifth]
 function shortcode_one_fifth($atts, $content=NULL){
-	return '<div class="one_fifth">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="one_fifth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+	}
+	else
+		return '<div class="one_fifth">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_fifth', 'shortcode_one_fifth');
 
-function shortcode_one_fifth_last($atts, $content=NULL){
-	return '<div class="one_fifth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('one_fifth_last', 'shortcode_one_fifth_last');
-
 // [one_sixth]
 function shortcode_one_sixth($atts, $content=NULL){
-	return '<div class="one_sixth">'.do_shortcode($content).'</div>';
+	if( is_array( $atts ) ) {
+		if ( in_array( 'last', $atts ) )
+			return '<div class="one_sixth la	st">'.do_shortcode($content).'</div><div class="clearfix"></div>';
+	}
+	else
+		return '<div class="one_sixth">'.do_shortcode($content).'</div>';
 }
 add_shortcode('one_sixth', 'shortcode_one_sixth');
-
-function shortcode_one_sixth_last($atts, $content=NULL){
-	return '<div class="one_sixth last">'.do_shortcode($content).'</div><div class="clearfix"></div>';
-}
-add_shortcode('one_sixth_last', 'shortcode_one_sixth_last');
 
 // [is_user]
 function shortcode_is_user($atts, $content=NULL){
@@ -100,7 +102,7 @@ add_shortcode('is_admin', 'shortcode_is_admin');
 
 // [gmaps]
 function shortcode_gmaps($atts, $content=NULL){
-	extract( shortcode_atts( array(
+			extract( shortcode_atts( array(
 			'class' => 'gMaps',
 			'id' => 'gMaps',
 			'lat' => -12.043333,
@@ -121,12 +123,12 @@ add_shortcode('gmaps', 'shortcode_gmaps');
 // [groute]
 function shortcode_groute($atts){
 	extract( shortcode_atts( array(
-			'origin' => '-12.044012922866312, -77.02470665341184',
-			'destination' => '-12.090814532191756, -77.02271108990476',
-			'travelMode' => 'walking',
-			'strokeColor' => '131540',
+			'origin'        => '-12.044012922866312, -77.02470665341184',
+			'destination'   => '-12.090814532191756, -77.02271108990476',
+			'travelMode'    => 'walking',
+			'strokeColor'   => '131540',
 			'strokeOpacity' => 0.6,
-			'strokeWeight' => 6
+			'strokeWeight'  => 6
 		), $atts ) 
 	);
 
@@ -137,9 +139,9 @@ add_shortcode('groute', 'shortcode_groute');
 // [gmarker]
 function shortcode_gmarker($atts, $content=NULL){
 	extract( shortcode_atts( array(
-			'lat' => -12.043333,
-			'lng' => -77.028333,
-  		'title' => 'Marker'
+			'lat'   => -12.043333,
+			'lng'   => -77.028333,
+			'title' => 'Marker'
 		), $atts ) 
 	);
 
@@ -151,4 +153,17 @@ function shortcode_gmarker($atts, $content=NULL){
 	return $output;
 }
 add_shortcode('gmarker', 'shortcode_gmarker');
+
+// [contact]
+function shortcode_contact($atts){
+	$settings = get_settings('sb_settings');
+	$type = 'contact_'.$atts['type'];
+
+	if( in_array('link', $atts) )
+		return '<a href="'.$settings[$type].'">'.$settings[$type].'</a>';
+	else
+		return $settings[$type];
+}
+add_shortcode( 'contact', 'shortcode_contact' );
+
 ?>

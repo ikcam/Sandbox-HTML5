@@ -305,73 +305,6 @@ function sandbox_commenter_link() {
 	echo $avatar . ' <span class="fn n">' . $commenter . '</span>';
 }
 
-// Function to filter the default gallery shortcode
-function sandbox_gallery($attr) {
-	global $post;
-	if ( isset($attr['orderby']) ) {
-		$attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
-		if ( !$attr['orderby'] )
-			unset($attr['orderby']);
-	}
-
-	extract(shortcode_atts( array(
-		'orderby'    => 'menu_order ASC, ID ASC',
-		'id'         => $post->ID,
-		'itemtag'    => 'dl',
-		'icontag'    => 'dt',
-		'captiontag' => 'dd',
-		'columns'    => 3,
-		'size'       => 'thumbnail',
-	), $attr ));
-
-	$id           =  intval($id);
-	$orderby      =  addslashes($orderby);
-	$attachments  =  get_children("post_parent=$id&post_type=attachment&post_mime_type=image&orderby={$orderby}");
-
-	if ( empty($attachments) )
-		return null;
-
-	if ( is_feed() ) {
-		$output = "\n";
-		foreach ( $attachments as $id => $attachment )
-			$output .= wp_get_attachment_link( $id, $size, true ) . "\n";
-		return $output;
-	}
-
-	$listtag     =  tag_escape($listtag);
-	$itemtag     =  tag_escape($itemtag);
-	$captiontag  =  tag_escape($captiontag);
-	$columns     =  intval($columns);
-	$itemwidth   =  $columns > 0 ? floor(100/$columns) : 100;
-
-	$output = apply_filters( 'gallery_style', "\n" . '<div class="gallery">', 9 ); // Available filter: gallery_style
-
-	foreach ( $attachments as $id => $attachment ) {
-		$img_lnk = get_attachment_link($id);
-		$img_src = wp_get_attachment_image_src( $id, $size );
-		$img_src = $img_src[0];
-		$img_alt = $attachment->post_excerpt;
-		if ( $img_alt == null )
-			$img_alt = $attachment->post_title;
-		$img_rel = apply_filters( 'gallery_img_rel', 'attachment' ); // Available filter: gallery_img_rel
-		$img_class = apply_filters( 'gallery_img_class', 'gallery-image' ); // Available filter: gallery_img_class
-
-		$output  .=  "\n\t" . '<' . $itemtag . ' class="gallery-item gallery-columns-' . $columns .'">';
-		$output  .=  "\n\t\t" . '<' . $icontag . ' class="gallery-icon"><a href="' . $img_lnk . '" title="' . $img_alt . '" rel="' . $img_rel . '"><img src="' . $img_src . '" alt="' . $img_alt . '" class="' . $img_class . ' attachment-' . $size . '" /></a></' . $icontag . '>';
-
-		if ( $captiontag && trim($attachment->post_excerpt) ) {
-			$output .= "\n\t\t" . '<' . $captiontag . ' class="gallery-caption">' . $attachment->post_excerpt . '</' . $captiontag . '>';
-		}
-
-		$output .= "\n\t" . '</' . $itemtag . '>';
-		if ( $columns > 0 && ++$i % $columns == 0 )
-			$output .= "\n</div>\n" . '<div class="gallery">';
-	}
-	$output .= "\n</div>\n";
-
-	return $output;
-}
-
 // Widget: Search; to match the Sandbox style and replace Widget plugin default
 function widget_sandbox_search($args) {
 	extract($args);
@@ -503,9 +436,6 @@ load_theme_textdomain('sandbox');
 
 // Runs our code at the end to check that everything needed has loaded
 add_action( 'init', 'sandbox_widgets_init' );
-
-// Registers our function to filter default gallery shortcode
-add_filter( 'post_gallery', 'sandbox_gallery', $attr );
 
 // Adds filters for the description/meta content in archives.php
 add_filter( 'archive_meta', 'wptexturize' );
@@ -699,6 +629,7 @@ add_filter( 'get_the_excerpt', 'sandbox_excerpt');
 
 // Sandbox Admin Panel
 include('inc/admin.php');
+// Sandbox Shortcodes
 include('inc/shortcodes.php');
 
 // Remember: the Sandbox is for play.

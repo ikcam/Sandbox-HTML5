@@ -1,0 +1,8 @@
+.ui-state-default{
+	background:none;
+	border:2px solid #FFF;
+	display:inline-block;
+}
+.ui-state-active img{
+	border: 2px solid #999;
+}

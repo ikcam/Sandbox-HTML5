@@ -445,6 +445,7 @@ add_filter( 'archive_meta', 'wpautop' );
 
 // Adds thumbnails support
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'custom-background' );
 
 // This two functions are for Meta and OG Graph purposes
 function sandbox_post_description(){
@@ -623,9 +624,17 @@ function sandbox_excerpt($text) {
 	}
 	return apply_filters('sandbox_excerpt', $text, $raw_excerpt);
 }
-
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter( 'get_the_excerpt', 'sandbox_excerpt');
+
+function sandbox_header(){
+	$settings = get_option('sb_settings');
+
+	if( $settings['site_logo'] != '' )
+		echo wp_get_attachment_image( $settings['site_logo'], array($settings['site_logo_width'],$settings['site_logo_height']) );
+	else
+		return bloginfo('name');
+}
 
 // Sandbox Admin Panel
 include('inc/admin.php');

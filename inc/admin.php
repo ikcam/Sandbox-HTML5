@@ -6,11 +6,22 @@ class sandbox_admin {
 		register_setting( 'sandbox', 'sb_settings', array( 'sandbox_admin' , 'settings_callback' ) );
 	} // Function settings_registers
 
+	function settings_scripts(){
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-button' );
+		wp_enqueue_script( 'sandbox-jquery', get_template_directory_uri().'/inc/javascript/admin.jquery.js', array('jquery') );
+		wp_register_style( 'sandbox-css', get_template_directory_uri().'/inc/stylesheet/admin.css' );
+		wp_enqueue_style( 'sandbox-css' );
+	}
+
 	function settings_callback($input){
 		// $input['site_layout'];
 		// $input['site_ga'];
 		// $input['site_fbappid'];
 		// $input['site_logo'];
+		// $input['site_logo_width'];
+		// $input['site_logo_height'];
 		// $input['footer_layout'];
 		// $input['excerpt_thumb_align'];
 		// $input['contact_phone'];
@@ -43,33 +54,63 @@ class sandbox_admin {
 	<div class="wrap">
 		<h2>Sandbox Configuration Options</h2>
 
+		<h3><?php _e( 'Main Settings', 'Sandbox' ) ?></h3>
+		<table class="form-table">
+		<tbody>
+<?php if( $settings['site_logo'] != '' ) { ?>
+			<tr valign="top">
+				<th scope="row"><label>Current logo:</label></th>
+				<td>
+<?php echo wp_get_attachment_image( $settings['site_logo'], array($settings['site_logo_width'],$settings['site_logo_height'] ) ) ?>
+				</td>
+			</tr>
+<?php } ?>
+<?php fileupload( 'Logo:' ) ?>
+		</tbody>
+		</table>
+
 		<form method="post" action="options.php">
 <?php
 	settings_fields('sandbox');
 ?>
-			<h3><?php _e( 'Main Settings', 'Sandbox' ) ?></h3>
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">Logo size:</th>
+					<td>
+						<input type="hidden" name="sb_settings[site_logo]" value="<?php echo $settings['site_logo'] ?>">
+						Width: <input type="text" name="sb_settings[site_logo_width]" value="<?php echo $settings['site_logo_width'] ?>" /><br />
+						Height: <input type="text" name="sb_settings[site_logo_height]" value="<?php echo $settings['site_logo_height'] ?>" />
+					</td>
+				</tr>
+			</tbody>
+			</table>
+
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
 					<th scope="row"><label>Site Layout:</label></th>
 					<td>
-						<input type="radio" name="sb_settings[site_layout]" value="1" <?php if( $settings['site_layout'] == 1 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_1.png" />
-						<input type="radio" name="sb_settings[site_layout]" value="2" <?php if( $settings['site_layout'] == 2 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_2.png" />
-						<input type="radio" name="sb_settings[site_layout]" value="3" <?php if( $settings['site_layout'] == 3 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_3.png" />
-						<input type="radio" name="sb_settings[site_layout]" value="4" <?php if( $settings['site_layout'] == 4 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_4.png" />
-						<input type="radio" name="sb_settings[site_layout]" value="5" <?php if( $settings['site_layout'] == 5 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_5.png" />
-						<input type="radio" name="sb_settings[site_layout]" value="6" <?php if( $settings['site_layout'] == 6 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_6.png" />
+						<div id="site-layout">
+							<input type="radio" id="site1" name="sb_settings[site_layout]" value="1" <?php if( $settings['site_layout'] == 1 ) {echo 'checked';} ?> /><label for="site1"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_1.png" /></label>
+							<input type="radio" id="site2" name="sb_settings[site_layout]" value="2" <?php if( $settings['site_layout'] == 2 ) {echo 'checked';} ?> /><label for="site2"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_2.png" /></label>
+							<input type="radio" id="site3" name="sb_settings[site_layout]" value="3" <?php if( $settings['site_layout'] == 3 ) {echo 'checked';} ?> /><label for="site3"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_3.png" /></label>
+							<input type="radio" id="site4" name="sb_settings[site_layout]" value="4" <?php if( $settings['site_layout'] == 4 ) {echo 'checked';} ?> /><label for="site4"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_4.png" /></label>
+							<input type="radio" id="site5" name="sb_settings[site_layout]" value="5" <?php if( $settings['site_layout'] == 5 ) {echo 'checked';} ?> /><label for="site5"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_5.png" /></label>
+							<input type="radio" id="site6" name="sb_settings[site_layout]" value="6" <?php if( $settings['site_layout'] == 6 ) {echo 'checked';} ?> /><label for="site6"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_6.png" /></label>
+						</div>
 					</td>
 				</tr>
 				<tr valign="top">
 					<th scope="row"><label>Footer Column Layout:</label></th>
 					<td>
-						<input type="radio" name="sb_settings[footer_layout]" value="1" <?php if( $settings['footer_layout'] == 1 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_1.png" />
-						<input type="radio" name="sb_settings[footer_layout]" value="2" <?php if( $settings['footer_layout'] == 2 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_2.png" />
-						<input type="radio" name="sb_settings[footer_layout]" value="3" <?php if( $settings['footer_layout'] == 3 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_3.png" />
-						<input type="radio" name="sb_settings[footer_layout]" value="4" <?php if( $settings['footer_layout'] == 4 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_4.png" />
-						<input type="radio" name="sb_settings[footer_layout]" value="5" <?php if( $settings['footer_layout'] == 5 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_5.png" />
-						<input type="radio" name="sb_settings[footer_layout]" value="6" <?php if( $settings['footer_layout'] == 6 ) {echo 'checked';} ?> /><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_6.png" />
+						<div id="footer-layout">
+							<input type="radio" id="footer1" name="sb_settings[footer_layout]" value="1" <?php if( $settings['footer_layout'] == 1 ) {echo 'checked';} ?> /><label for="footer1"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_1.png" /></label>
+							<input type="radio" id="footer2" name="sb_settings[footer_layout]" value="2" <?php if( $settings['footer_layout'] == 2 ) {echo 'checked';} ?> /><label for="footer2"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_2.png" /></label>
+							<input type="radio" id="footer3" name="sb_settings[footer_layout]" value="3" <?php if( $settings['footer_layout'] == 3 ) {echo 'checked';} ?> /><label for="footer3"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_3.png" /></label>
+							<input type="radio" id="footer4" name="sb_settings[footer_layout]" value="4" <?php if( $settings['footer_layout'] == 4 ) {echo 'checked';} ?> /><label for="footer4"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_4.png" /></label>
+							<input type="radio" id="footer5" name="sb_settings[footer_layout]" value="5" <?php if( $settings['footer_layout'] == 5 ) {echo 'checked';} ?> /><label for="footer5"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_5.png" /></label>
+							<input type="radio" id="footer6" name="sb_settings[footer_layout]" value="6" <?php if( $settings['footer_layout'] == 6 ) {echo 'checked';} ?> /><label for="footer6"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_6.png" /></label>
+						</div>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -233,19 +274,93 @@ class sandbox_admin {
 	</div>
 <?php
 	} // Function settings_page
-
-	function settings_colors(){
-		
-	}
 } // Class sandbox_admin
 
 // Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
 	add_menu_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page'), '', 61 );
-	add_submenu_page( 'sandbox', 'Colors', 'Colors', 'administrator', 'sandbox_colors', array( 'sandbox_admin', 'settings_colors' ) );
-
+	add_action( 'admin_enqueue_scripts', array('sandbox_admin', 'settings_scripts') );
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));
 }
 add_action('admin_menu', 'sandbox_admin_menu');
 
+function fileupload( $label ) { ?>
+	<tr valign="top">
+		<th scope="row"><label><?php echo $label; ?><label></th>
+		<td>
+			<form name="uploadfile" id="uploadfile_form" method="POST" enctype="multipart/form-data" action="<?php fileupload_process() ?>" accept-charset="utf-8" >
+				<input type="file" name="uploadfiles[]" id="uploadfiles" size="35" class="uploadfiles" />
+				<input class="button-primary" type="submit" name="uploadfile" id="uploadfile_btn" value="Upload"  />
+			</form>
+		</td>
+	</tr>
+<?php
+}
+
+function fileupload_process() { 
+	$uploadfiles = $_FILES['uploadfiles'];
+
+	if (is_array($uploadfiles)) {
+		foreach ($uploadfiles['name'] as $key => $value) {
+			// look only for uploded files
+			if ($uploadfiles['error'][$key] == 0) {
+				$filetmp = $uploadfiles['tmp_name'][$key];
+				//clean filename and extract extension
+				$filename = $uploadfiles['name'][$key];
+				// get file info
+				// @fixme: wp checks the file extension....
+				$filetype = wp_check_filetype( basename( $filename ), null );
+				$filetitle = preg_replace('/\.[^.]+$/', '', basename( $filename ) );
+				$filetitle = preg_replace('/ /', '', basename( $filename ) );
+				$filename = $filetitle . '.' . $filetype['ext'];
+				$upload_dir = wp_upload_dir();
+
+				/**
+				* Check if the filename already exist in the directory and rename the
+				* file if necessary
+				*/
+				$i = 0;
+				while ( file_exists( $upload_dir['path'] .'/' . $filename ) ) {
+					$filename = $filetitle . '_' . $i . '.' . $filetype['ext'];
+					$i++;
+				}
+				$filedest = $upload_dir['path'] . '/' . $filename;
+
+				/**
+				* Check write permissions
+				*/
+				if ( !is_writeable( $upload_dir['path'] ) ) {
+					$this->msg_e('Unable to write to directory %s. Is this directory writable by the server?');
+					return;
+				}
+
+				/**
+				* Save temporary file to uploads dir
+				*/
+				if ( !@move_uploaded_file($filetmp, $filedest) ){
+					$this->msg_e("Error, the file $filetmp could not moved to : $filedest ");
+					continue;
+				}
+
+				$attachment = array(
+					'post_mime_type' => $filetype['type'],
+					'post_title' => $filetitle,
+					'post_content' => '',
+					'post_status' => 'inherit'
+				);
+
+				$attach_id = wp_insert_attachment( $attachment, $filedest );
+				require_once( ABSPATH . "wp-admin" . '/includes/image.php' );
+				$attach_data = wp_generate_attachment_metadata( $attach_id, $filedest );
+				wp_update_attachment_metadata( $attach_id,  $attach_data );
+
+				$settings = get_option( 'sb_settings' );
+				$settings['site_logo'] = $attach_id;
+				update_option('sb_settings', $settings);
+
+				echo 'Pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+			}
+		}
+	}
+}
 ?>

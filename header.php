@@ -83,7 +83,7 @@ endif; // site_gplus
 <?php endif; ?>
 </head>
 
-<body class="<?php sandbox_body_class() ?>">
+<body class="<?php sandbox_body_class() ?> custom-background">
 <?php if( $settings['site_fbappid'] != '' ) : ?>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
@@ -97,7 +97,7 @@ endif; // site_gplus
 <section id="wrapper" class="hfeed">
 
 	<header id="header">
-		<h1 id="blog-title"><span><a href="<?php bloginfo('home') ?>/" title="<?php echo wp_specialchars( get_bloginfo('name'), 1 ) ?>" rel="home"><?php bloginfo('name') ?></a></span></h1>
+		<h1 id="blog-title"><span><a href="<?php bloginfo('home') ?>/" title="<?php echo wp_specialchars( get_bloginfo('name'), 1 ) ?>" rel="home"><?php sandbox_header() ?></a></span></h1>
 
 		<?php sandbox_globalnav() ?>
 	</header><!--  #header -->

@@ -61,7 +61,7 @@ class sandbox_admin {
 			<tr valign="top">
 				<th scope="row"><label>Current logo:</label></th>
 				<td>
-<?php echo wp_get_attachment_image( $settings['site_logo'], array($settings['site_logo_width'],$settings['site_logo_height'] ) ) ?>
+<?php echo wp_get_attachment_image( $settings['site_logo'], array($settings['site_logo_width'],$settings['site_logo_height'], true) ) ?>
 				</td>
 			</tr>
 <?php } ?>
@@ -78,15 +78,10 @@ class sandbox_admin {
 					<th scope="row">Logo size:</th>
 					<td>
 						<input type="hidden" name="sb_settings[site_logo]" value="<?php echo $settings['site_logo'] ?>">
-						Width: <input type="text" name="sb_settings[site_logo_width]" value="<?php echo $settings['site_logo_width'] ?>" /><br />
-						Height: <input type="text" name="sb_settings[site_logo_height]" value="<?php echo $settings['site_logo_height'] ?>" />
+						Width: <input type="text" name="sb_settings[site_logo_width]" value="<?php echo $settings['site_logo_width'] ?>" />px<br />
+						Height: <input type="text" name="sb_settings[site_logo_height]" value="<?php echo $settings['site_logo_height'] ?>" />px
 					</td>
 				</tr>
-			</tbody>
-			</table>
-
-			<table class="form-table">
-			<tbody>
 				<tr valign="top">
 					<th scope="row"><label>Site Layout:</label></th>
 					<td>

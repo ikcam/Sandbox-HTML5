@@ -631,7 +631,7 @@ function sandbox_header(){
 	$settings = get_option('sb_settings');
 
 	if( $settings['site_logo'] != '' ) {
-		$src = wp_get_attachment_image_src( $settings['site_logo'], array($settings['site_logo_width'],$settings['site_logo_height']) );
+		$src = wp_get_attachment_image_src( $settings['site_logo'], array($settings['site_logo_width'], $settings['site_logo_height'], true) );
 		echo '<img src="'.$src[0].'" width="'.$src[1].'" height="'.$src[2].'" alt="'.get_bloginfo('name').'" />';	
 	}
 	else

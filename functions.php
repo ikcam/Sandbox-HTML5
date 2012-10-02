@@ -486,6 +486,7 @@ function sandbox_post_image(){
 		echo $post_image;
 	}
 }
+<<<<<<< .merge_file_a08144
 
 // Adds jQuery and jQueryUI to <head>
 function sandbox_scripts(){
@@ -679,4 +680,6 @@ include('inc/admin.php');
 include('inc/shortcodes.php');
 
 // Remember: the Sandbox is for play.
+=======
+>>>>>>> .merge_file_a07444
 ?>

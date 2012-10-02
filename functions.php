@@ -452,6 +452,9 @@ function sandbox_post_description(){
 	$my_id = get_the_ID();
 	$post_id = get_post($my_id);
 	$content = $post_id->post_content;
+	$content = strip_shortcodes( $content );
+	$content = str_replace( "\r", "", $content );
+	$content = str_replace( "\n", "", $content );
 	$content = str_replace(']]>', ']]&gt;', $content);
 	$content = strip_tags($content);
 	$content = substr($content, 0, 120);

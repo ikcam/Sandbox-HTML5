@@ -1,0 +1,8 @@
+/*
+LAYOUT: One-Column (Left)
+DESCRIPTION: One-column fluid layout with sidebars stacked in two columns below content
+*/
+footer#footer {
+clear:both;
+width:100%;
+}	

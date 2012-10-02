@@ -642,6 +642,37 @@ function sandbox_header(){
 		return bloginfo('name');
 }
 
+function sandbox_enqueue_css(){
+	$settings = get_option( 'sb_settings' );
+
+	$output = get_bloginfo('template_directory').'/css/';
+
+	switch ( $settings['site_layout'] ){
+		case 1:
+			$output .= 'layout1.css';
+			break;
+		case 2:
+			$output .= 'layout2.css';
+			break;
+		case 3:
+			$output .= 'layout3.css';
+			break;
+		case 4:
+			$output .= 'layout4.css';
+			break;
+		case 5:
+			$output .= 'layout5.css';
+			break;
+		case 6:
+			$output .= 'layout6.css';
+			break;
+		default:
+			$output .= 'layout1.css';
+	}
+
+	echo  $output;
+}
+
 // Sandbox Admin Panel
 include('inc/admin.php');
 // Sandbox Shortcodes

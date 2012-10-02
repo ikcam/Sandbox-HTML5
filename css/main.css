@@ -1,13 +1,4 @@
-/* Two-column with sidebar on left from this folder  */
-@import url('2c-l.css');
-
 /* Just some example content */
-div.skip-link {
-position:absolute;
-right:1em;
-top:1em;
-}
-
 nav#menu-main {
 background:#EEE;
 height:1.5em;
@@ -44,10 +35,6 @@ left:auto;
 
 .entry-title,.entry-meta {
 clear:both;
-}
-
-section#container,aside#primary {
-margin-top:2em;
 }
 
 form#commentform .form-label {

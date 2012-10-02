@@ -464,6 +464,8 @@ function sandbox_post_description(){
 }
 
 function sandbox_post_image(){
+	$settings = get_option( 'sb_settings' );
+
 	$attachments = get_children( array(
 		'post_parent'    => get_the_ID(),
 		'post_type'      => 'attachment',
@@ -479,7 +481,7 @@ function sandbox_post_image(){
 
 	$post_image = $post_image[0];
 	if( empty($post_image) ) {
-		echo $post_image = bloginfo('template_directory').'/images/logo.png';
+		echo $post_image = $settings['site_logo'];
 	} else {
 		echo $post_image;
 	}

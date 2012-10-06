@@ -2,23 +2,40 @@
 LAYOUT: Two-Column (Right)
 DESCRIPTION: Two-column fluid layout with one sidebar right of content
 */
-section#container {
-float:left;
-margin:0 -270px 0 0;
-width:100%;
+
+@media only screen and ( min-width: 900px ){
+
+	body{
+		font-size:1em;
+	}
+
+	section#container {
+		float:left;
+		margin:0 -270px 0 0;
+		width:100%;
+	}
+
+	section#content {
+		margin:0 270px 0 0;
+	}
+
+	aside.sidebar {
+		float:right	;
+		overflow:hidden;
+		width:250px;
+	}
+
 }
 
-section#content {
-margin:0 270px 0 0;
-}
+@media only screen and ( max-width: 900px ) {
 
-aside.sidebar {
-float:right	;
-overflow:hidden;
-width:250px;
+	body{
+		font-size:.8em;
+	}
+	
 }
 
 footer#footer {
-clear:both;
-width:100%;
+	clear:both;
+	width:100%;
 }

@@ -1,0 +1,324 @@
+@import 'nib'
+
+global-reset()
+reset-html5()
+
+body
+	font-family 'Helvetica', sans-serif, arial
+	line-height 1.5em
+
+abbr,
+acronym
+	border-bottom 1px dotted #000
+	cursor help
+
+address,
+cite,
+em,
+i,
+var
+	font-style italic
+
+address
+	font-family 'Times New Roman'
+	font-size 1.25em
+	padding 1em 0
+
+b,
+strong
+	font-weight bold
+
+blockquote
+	font-family 'Times New Roman'
+	font-size 1.25em
+	padding 1em 0
+	margin 0 40px
+
+	blockquote
+		font-size 1em
+
+code,
+kbd,
+pre
+	font-family monospace
+	font-size 1.25em
+
+del,
+s,
+strike
+	text-decoration line-through
+
+dd,
+p,
+table
+	margin-bottom 1.25em
+	
+dt
+	font-weight bold
+
+ins
+	background #FFF9C0
+	text-decoration none
+
+pre
+	background #F4F4F4
+	padding 1em 0
+
+small
+	font-size .8em
+
+sub
+	font-size smaller
+	vertical-align sub
+
+sup
+	font-size smaller
+	vertical-align super
+
+table
+	width 100%
+
+	td,
+	th
+		border-bottom 1px solid #DDD
+		padding .5em .5em .5em 0
+		vertical-align baseline
+
+	th
+		text-transform uppercase
+
+nav#menu-main
+	margin-bottom 1em
+
+	&:after
+		content '.'
+		clear both
+		display block
+		height 0
+		visibility hidden
+
+	> ul
+		> li
+			float left
+
+			> a
+				display block
+				padding .5em 1em
+				line-height 1em
+
+			&:hover
+				> ul
+					display block
+
+			ul
+				display none
+				position absolute
+
+				> li
+					> a
+						display block
+						padding .25em 1em
+
+nav.navigation
+	margin-bottom 1em
+
+	&:after
+		content '.'
+		clear both
+		display block
+		height 0
+		visibility hidden
+
+	div.nav-previous
+		float left
+
+	div.nav-next
+		float right
+
+	a
+		display inline-block
+		padding .25em 1em
+
+section#content			
+	
+	article.post
+		border-bottom 1px solid #DDD
+		padding-bottom 1.25em
+		margin-bottom 1.25em
+
+h2.entry-title,
+h2.page-title
+	font-size 1.6em
+	font-weight bold
+	line-height 1.25em
+	padding .25em 0
+
+.entry-content,
+section#comments
+	overflow hidden
+	
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6
+		clear both
+		font-weight bold
+
+	h1
+		font-size 2em
+		margin .67em 0
+	h2
+		font-size 1.5em
+		margin .83em 0
+	h3
+		font-size 1.17em
+		margin 1em 0
+	h4
+		font-size 1em
+		margin 1.33em 0
+	h5
+		font-size .83em
+		margin 1.67em 0
+	h6
+		font-size .67em
+		margin 2.33em 0
+
+	ul,
+	ol
+		margin-bottom .25em
+		padding 0 0 0 20px
+
+	ol
+		list-style decimal
+
+		ol
+			list-style upper-alpha
+
+			ol
+				list-style lower-roman
+
+	ul
+		list-style square
+
+	img
+		max-width 97.5%
+
+	a.more-link
+		clear both
+		display inline-block
+		padding .25em 1em
+		text-decoration none
+
+	.page-link
+		clear both
+		padding .25em 0
+
+.entry-date,
+.entry-meta,
+aside.sidebar,
+nav.navigation
+	font-size .9em
+	line-height 1.3em
+
+.entry-date
+	margin-bottom 0.25em
+
+// WordPress CSS classes
+img[class*='align'],
+img[class*='wp-image-'],
+img[class*="attachment-"]
+	height auto
+
+img[class*='align'],
+img[class*='wp-image-'],
+.gallery .gallery-icon img
+	border 1px solid #DDD
+	padding 6px
+
+	&:hover
+		background #F4F4F4
+
+
+img.size-full,
+img.size-large
+	max-width 97.5%
+	height auto
+	width auto
+	
+img.aligncenter,
+img.alignleft,
+img.alignright
+	margin-bottom 1.25em
+
+p img,
+.wp-caption
+	margin-top .4em
+
+.wp-caption
+	background #DDD
+	margin-bottom 1.25em
+	max-width 96%
+	padding 9px
+
+	img
+		display block
+		margin 0 auto
+		max-width 98%
+
+		&:hover
+			background #FFF
+			border 1px solid #CCC
+
+	.wp-caption-text
+		margin-bottom .6em
+		padding 10px 0 5px 40px
+		position relative
+
+		&:before
+			color #666
+			content '\2014'
+			font-size 14px
+			font-weight bold
+			margin-right 5px
+			position absolute
+			left 10px
+			top 7px
+
+.wp-caption-text,
+.gallery-caption	
+		color #666
+		font-family Georgia, serif
+		font-size 12px
+
+.alignleft
+	display inline
+	float left
+	margin-right 1.625em
+
+.alignright 
+	display inline
+	float right
+	margin-left 1.625em
+
+.aligncenter 
+	clear both
+	display block
+	margin-left auto
+	margin-right auto
+
+aside.sidebar
+
+	> ul
+		> li
+			margin-bottom 1em
+
+			> h3
+				font-weight bold
+				font-size 1.2em
+				padding .25em 0 0
+
+			ul
+				list-style square
+				padding 0 0 0 20px

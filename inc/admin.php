@@ -66,7 +66,7 @@ class sandbox_admin {
 					<th scope="row"><label>Current logo:</label></th>
 					<td>
 <?php if( $settings['site_logo'] == '' ) : ?>
-						<img id="current_logo" src="<?php bloginfo('template_directory') ?>/inc/images/logo_none.png" />
+						<img id="current_logo" src="<?php echo get_template_directory_uri() ?>/inc/images/logo_none.png" />
 <?php else: ?>
 						<img id="current_logo" src="<?php echo $settings['site_logo'] ?>" height="<?php echo $settings['site_logo_height'] ?>" />
 <?php endif; ?>

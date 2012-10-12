@@ -28,7 +28,7 @@ if ( $settings['site_og'] == 1 ) :
 	<!-- Facebook Open Graph (NOT SINGLE) -->
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="<?php bloginfo('name') ?>" />
-	<meta property="og:url" content="<?php bloginfo('url') ?>" />
+	<meta property="og:url" content="<?php echo home_url() ?>" />
 	<meta property="og:description" content="<?php bloginfo('description') ?>" />
 	<meta property="og:image" content="<?php echo $settings['site_logo'] ?>" />
 <?php 
@@ -55,9 +55,9 @@ endif; // site_gplus
 	<title><?php wp_title( '-', true, 'right' ); echo esc_html( get_bloginfo('name'), 1 ) ?></title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/main.css" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/main.css" />
 	<link rel="stylesheet" href="<?php sandbox_enqueue_css() ?>" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/shortcodes.css" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/shortcodes.css" />
 
 	<!-- RSS & Pingback -->
 	<link rel="alternate" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), esc_html( get_bloginfo('name'), 1 ) ) ?>" />

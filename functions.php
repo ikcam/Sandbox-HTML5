@@ -646,7 +646,7 @@ function sandbox_header(){
 function sandbox_enqueue_css(){
 	$settings = get_option( 'sb_settings' );
 
-	$output = get_bloginfo('template_directory').'/css/';
+	$output = get_template_directory_uri().'/css/';
 
 	switch ( $settings['site_layout'] ){
 		case 1:

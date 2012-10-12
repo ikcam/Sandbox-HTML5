@@ -291,7 +291,7 @@ class sandbox_admin {
 
 // Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
-	add_menu_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page'), '', 61 );
+	add_theme_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page') );
 	add_action( 'admin_enqueue_scripts', array('sandbox_admin', 'settings_scripts') );
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));
 }

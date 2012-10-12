@@ -309,8 +309,8 @@ function sandbox_commenter_link() {
 function widget_sandbox_search($args) {
 	extract($args);
 	$options = get_option('widget_sandbox_search');
-	$title = empty($options['title']) ? __( 'Search', 'sandbox' ) : attribute_escape($options['title']);
-	$button = empty($options['button']) ? __( 'Find', 'sandbox' ) : attribute_escape($options['button']);
+	$title = empty($options['title']) ? __( 'Search', 'sandbox' ) : esc_attr($options['title']);
+	$button = empty($options['button']) ? __( 'Find', 'sandbox' ) : esc_attr($options['button']);
 ?>
 			<?php echo $before_widget ?>
 				<?php echo $before_title ?><label for="s"><?php echo $title ?></label><?php echo $after_title ?>
@@ -335,8 +335,8 @@ function widget_sandbox_search_control() {
 		$options = $newoptions;
 		update_option( 'widget_sandbox_search', $options );
 	}
-	$title = attribute_escape($options['title']);
-	$button = attribute_escape($options['button']);
+	$title = esc_attr($options['title']);
+	$button = esc_attr($options['button']);
 ?>
 	<p><label for="search-title"><?php _e( 'Title:', 'sandbox' ) ?> <input class="widefat" id="search-title" name="search-title" type="text" value="<?php echo $title; ?>" /></label></p>
 	<p><label for="search-button"><?php _e( 'Button Text:', 'sandbox' ) ?> <input class="widefat" id="search-button" name="search-button" type="text" value="<?php echo $button; ?>" /></label></p>
@@ -348,7 +348,7 @@ function widget_sandbox_search_control() {
 function widget_sandbox_meta($args) {
 	extract($args);
 	$options = get_option('widget_meta');
-	$title = empty($options['title']) ? __( 'Meta', 'sandbox' ) : attribute_escape($options['title']);
+	$title = empty($options['title']) ? __( 'Meta', 'sandbox' ) : esc_attr($options['title']);
 ?>
 			<?php echo $before_widget; ?>
 				<?php echo $before_title . $title . $after_title; ?>
@@ -367,7 +367,7 @@ function widget_sandbox_meta($args) {
 function widget_sandbox_rsslinks($args) {
 	extract($args);
 	$options = get_option('widget_sandbox_rsslinks');
-	$title = empty($options['title']) ? __( 'RSS Links', 'sandbox' ) : attribute_escape($options['title']);
+	$title = empty($options['title']) ? __( 'RSS Links', 'sandbox' ) : esc_attr($options['title']);
 ?>
 		<?php echo $before_widget; ?>
 			<?php echo $before_title . $title . $after_title; ?>
@@ -389,7 +389,7 @@ function widget_sandbox_rsslinks_control() {
 		$options = $newoptions;
 		update_option( 'widget_sandbox_rsslinks', $options );
 	}
-	$title = attribute_escape($options['title']);
+	$title = esc_attr($options['title']);
 ?>
 	<p><label for="rsslinks-title"><?php _e( 'Title:', 'sandbox' ) ?> <input class="widefat" id="rsslinks-title" name="rsslinks-title" type="text" value="<?php echo $title; ?>" /></label></p>
 	<input type="hidden" id="rsslinks-submit" name="rsslinks-submit" value="1" />

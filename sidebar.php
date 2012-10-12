@@ -38,7 +38,7 @@ if( $settings['site_layout'] != 6 ) :
 <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('secondary') ) : // begin secondary sidebar widgets ?>
 			<li id="search">
 				<h3><label for="s"><?php _e( 'Search', 'sandbox' ) ?></label></h3>
-				<form id="searchform" class="blog-search" method="get" action="<?php bloginfo('home') ?>">
+				<form id="searchform" class="blog-search" method="get" action="<?php echo home_url() ?>">
 					<div>
 						<input id="s" name="s" type="text" class="text" value="<?php the_search_query() ?>" size="10" tabindex="1" required />
 						<input type="submit" class="button" value="<?php _e( 'Find', 'sandbox' ) ?>" tabindex="2" />

@@ -104,12 +104,12 @@ class sandbox_admin {
 					<th scope="row"><label>Site Layout:</label></th>
 					<td>
 						<div id="site-layout">
-							<input type="radio" id="site1" name="sb_settings[site_layout]" value="1" <?php if( $settings['site_layout'] == 1 ) {echo 'checked';} ?> /><label for="site1"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_1.png" /></label>
-							<input type="radio" id="site2" name="sb_settings[site_layout]" value="2" <?php if( $settings['site_layout'] == 2 ) {echo 'checked';} ?> /><label for="site2"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_2.png" /></label>
-							<input type="radio" id="site3" name="sb_settings[site_layout]" value="3" <?php if( $settings['site_layout'] == 3 ) {echo 'checked';} ?> /><label for="site3"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_3.png" /></label>
-							<input type="radio" id="site4" name="sb_settings[site_layout]" value="4" <?php if( $settings['site_layout'] == 4 ) {echo 'checked';} ?> /><label for="site4"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_4.png" /></label>
-							<input type="radio" id="site5" name="sb_settings[site_layout]" value="5" <?php if( $settings['site_layout'] == 5 ) {echo 'checked';} ?> /><label for="site5"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_5.png" /></label>
-							<input type="radio" id="site6" name="sb_settings[site_layout]" value="6" <?php if( $settings['site_layout'] == 6 ) {echo 'checked';} ?> /><label for="site6"><img src="<?php bloginfo('template_directory') ?>/inc/images/layout_6.png" /></label>
+							<input type="radio" id="site1" name="sb_settings[site_layout]" value="1" <?php if( $settings['site_layout'] == 1 ) {echo 'checked';} ?> /><label for="site1"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_1.png" /></label>
+							<input type="radio" id="site2" name="sb_settings[site_layout]" value="2" <?php if( $settings['site_layout'] == 2 ) {echo 'checked';} ?> /><label for="site2"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_2.png" /></label>
+							<input type="radio" id="site3" name="sb_settings[site_layout]" value="3" <?php if( $settings['site_layout'] == 3 ) {echo 'checked';} ?> /><label for="site3"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_3.png" /></label>
+							<input type="radio" id="site4" name="sb_settings[site_layout]" value="4" <?php if( $settings['site_layout'] == 4 ) {echo 'checked';} ?> /><label for="site4"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_4.png" /></label>
+							<input type="radio" id="site5" name="sb_settings[site_layout]" value="5" <?php if( $settings['site_layout'] == 5 ) {echo 'checked';} ?> /><label for="site5"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_5.png" /></label>
+							<input type="radio" id="site6" name="sb_settings[site_layout]" value="6" <?php if( $settings['site_layout'] == 6 ) {echo 'checked';} ?> /><label for="site6"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_6.png" /></label>
 						</div>
 					</td>
 				</tr>
@@ -117,12 +117,12 @@ class sandbox_admin {
 					<th scope="row"><label>Footer Column Layout:</label></th>
 					<td>
 						<div id="footer-layout">
-							<input type="radio" id="footer1" name="sb_settings[footer_layout]" value="1" <?php if( $settings['footer_layout'] == 1 ) {echo 'checked';} ?> /><label for="footer1"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_1.png" /></label>
-							<input type="radio" id="footer2" name="sb_settings[footer_layout]" value="2" <?php if( $settings['footer_layout'] == 2 ) {echo 'checked';} ?> /><label for="footer2"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_2.png" /></label>
-							<input type="radio" id="footer3" name="sb_settings[footer_layout]" value="3" <?php if( $settings['footer_layout'] == 3 ) {echo 'checked';} ?> /><label for="footer3"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_3.png" /></label>
-							<input type="radio" id="footer4" name="sb_settings[footer_layout]" value="4" <?php if( $settings['footer_layout'] == 4 ) {echo 'checked';} ?> /><label for="footer4"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_4.png" /></label>
-							<input type="radio" id="footer5" name="sb_settings[footer_layout]" value="5" <?php if( $settings['footer_layout'] == 5 ) {echo 'checked';} ?> /><label for="footer5"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_5.png" /></label>
-							<input type="radio" id="footer6" name="sb_settings[footer_layout]" value="6" <?php if( $settings['footer_layout'] == 6 ) {echo 'checked';} ?> /><label for="footer6"><img src="<?php bloginfo('template_directory') ?>/inc/images/footer_6.png" /></label>
+							<input type="radio" id="footer1" name="sb_settings[footer_layout]" value="1" <?php if( $settings['footer_layout'] == 1 ) {echo 'checked';} ?> /><label for="footer1"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_1.png" /></label>
+							<input type="radio" id="footer2" name="sb_settings[footer_layout]" value="2" <?php if( $settings['footer_layout'] == 2 ) {echo 'checked';} ?> /><label for="footer2"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_2.png" /></label>
+							<input type="radio" id="footer3" name="sb_settings[footer_layout]" value="3" <?php if( $settings['footer_layout'] == 3 ) {echo 'checked';} ?> /><label for="footer3"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_3.png" /></label>
+							<input type="radio" id="footer4" name="sb_settings[footer_layout]" value="4" <?php if( $settings['footer_layout'] == 4 ) {echo 'checked';} ?> /><label for="footer4"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_4.png" /></label>
+							<input type="radio" id="footer5" name="sb_settings[footer_layout]" value="5" <?php if( $settings['footer_layout'] == 5 ) {echo 'checked';} ?> /><label for="footer5"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_5.png" /></label>
+							<input type="radio" id="footer6" name="sb_settings[footer_layout]" value="6" <?php if( $settings['footer_layout'] == 6 ) {echo 'checked';} ?> /><label for="footer6"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_6.png" /></label>
 						</div>
 					</td>
 				</tr>

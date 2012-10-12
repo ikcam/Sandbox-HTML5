@@ -52,7 +52,7 @@ if( $settings['site_gplus'] == 1 ) :
 endif; // site_gplus 
 ?>
 	<!-- Title -->
-	<title><?php wp_title( '-', true, 'right' ); echo wp_specialchars( get_bloginfo('name'), 1 ) ?></title>
+	<title><?php wp_title( '-', true, 'right' ); echo esc_html( get_bloginfo('name'), 1 ) ?></title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/main.css" />
@@ -60,8 +60,8 @@ endif; // site_gplus
 	<link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/shortcodes.css" />
 
 	<!-- RSS & Pingback -->
-	<link rel="alternate" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
-	<link rel="alternate" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'sandbox' ), wp_specialchars( get_bloginfo('name'), 1 ) ) ?>" />
+	<link rel="alternate" href="<?php bloginfo('rss2_url') ?>" title="<?php printf( __( '%s latest posts', 'sandbox' ), esc_html( get_bloginfo('name'), 1 ) ) ?>" />
+	<link rel="alternate" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'sandbox' ), esc_html( get_bloginfo('name'), 1 ) ) ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 
 	<!-- Scripts -->
@@ -98,7 +98,7 @@ endif; // site_gplus
 <section id="wrapper" class="hfeed">
 
 	<header id="header">
-		<h1 id="blog-title"><span><a href="<?php bloginfo('home') ?>/" title="<?php echo wp_specialchars( get_bloginfo('name'), 1 ) ?>" rel="home"><?php sandbox_header() ?></a></span></h1>
+		<h1 id="blog-title"><span><a href="<?php bloginfo('home') ?>/" title="<?php echo esc_html( get_bloginfo('name'), 1 ) ?>" rel="home"><?php sandbox_header() ?></a></span></h1>
 
 		<?php sandbox_globalnav() ?>
 	</header><!--  #header -->

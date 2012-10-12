@@ -94,7 +94,7 @@ foreach ( $comments as $comment )
 <?php if ( $user_ID ) : ?>
 							<p id="login"><?php printf( __( '<span class="loggedin">Logged in as <a href="%1$s" title="Logged in as %2$s">%2$s</a>.</span> <span class="logout"><a href="%3$s" title="Log out of this account">Log out?</a></span>', 'sandbox' ),
 								get_bloginfo('wpurl') . '/wp-admin/profile.php',
-								wp_specialchars( $user_identity, 1 ),
+								esc_html( $user_identity, 1 ),
 								get_bloginfo('wpurl') . '/wp-login.php?action=logout&amp;redirect_to=' . get_permalink() ) ?></p>
 
 <?php else : ?>

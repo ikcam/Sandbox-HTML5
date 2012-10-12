@@ -111,7 +111,7 @@ function shortcode_gmaps($atts, $content=NULL){
 		), $atts ) 
 	);
 
-	$settings = get_option('sb_settings');
+	$settings = get_settings('sb_settings');
 
 	if( $settings['site_gmaps'] == 0 )
 		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');

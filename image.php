@@ -25,7 +25,7 @@
 						get_the_time(),
 						get_permalink(),
 						the_title_attribute('echo=0'),
-						comments_rss() ) ?>
+						 get_post_comments_feed_link() ) ?>
 
 <?php if ( ('open' == $post->comment_status) && ('open' == $post->ping_status) ) : // Comments and trackbacks open ?>
 					<?php printf( __( '<a class="comment-link" href="#respond" title="Post a comment">Post a comment</a> or leave a trackback: <a class="trackback-link" href="%s" title="Trackback URL for your post" rel="trackback">Trackback URL</a>.', 'sandbox' ), get_trackback_url() ) ?>

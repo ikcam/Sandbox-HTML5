@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License along with SAN
 function sandbox_menus() {
 	register_nav_menus(
 		array(
-			'menu-main' => __( 'Main Menu' )
+			'menu-main' => __( 'Main Menu', 'sandbox' )
 			// 'menu-footer' => __( 'Footer Menu' )
 			// 'menu-is-login' => __( 'Menu IS Login' )
 			// 'menu-no-login' => __( 'Menu NO Login' )

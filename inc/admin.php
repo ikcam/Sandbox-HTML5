@@ -55,7 +55,7 @@ class sandbox_admin {
 		$settings = get_option('sb_settings');
 ?>
 	<div class="wrap">
-		<h2>Sandbox Configuration Options</h2>
+		<div id="icon-themes" class="icon32"><br></div><h2>Sandbox Settings</h2>
 		<form method="post" action="options.php">
 <?php settings_fields('sandbox'); ?>
 
@@ -291,7 +291,7 @@ class sandbox_admin {
 
 // Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
-	add_theme_page( 'Sandbox', 'Sandbox', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page') );
+	add_theme_page( 'Sandbox', 'Theme Settings', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page') );
 	add_action( 'admin_enqueue_scripts', array('sandbox_admin', 'settings_scripts') );
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));
 }

@@ -111,7 +111,7 @@ function shortcode_gmaps($atts, $content=NULL){
 		), $atts ) 
 	);
 
-	$settings = get_option('sb_settings');
+	global $settings;
 
 	if( $settings['site_gmaps'] == 0 )
 		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');
@@ -156,7 +156,7 @@ add_shortcode('gmarker', 'shortcode_gmarker');
 
 // [contact]
 function shortcode_contact($atts){
-	$settings = get_option('sb_settings');
+	global $settings;
 	$type = 'contact_'.$atts['type'];
 
 	if( in_array('link', $atts) )

@@ -1,4 +1,41 @@
 <?php
+// Theme activation
+if ( is_admin() && isset($_GET['activated'] ) && $pagenow == 'themes.php' ) :
+	global $settings;
+	if( $settings == FALSE ) :
+		$settings = array(
+				'site_logo'            => '',
+				'site_logo_height'     => 100,
+				'site_layout'          => 1,
+				'footer_layout'        => 1,
+				'site_jquery'          => 1,
+				'site_jqueryui'        => 1,
+				'site_gmaps'           => 0,
+				'site_og'              => 0,
+				'site_gplus'           => 0,
+				'site_fbappid'         => '',
+				'site_ga'              => '',
+				'excerpt_length'       => 80,
+				'excerpt_thumb'        => 0,
+				'excerpt_thumb_crop'   => 0,
+				'excerpt_thumb_align'  => 1,
+				'excerpt_thumb_width'  => 150,
+				'excerpt_thumb_height' => 150,
+				'excerpt_more'         => 1,
+				'comments_pages'       => 0,
+				'trackbacks_pages'     => 0,
+				'comments_posts'       => 1,
+				'trackbacks_posts'     => 1,
+				'contact_phone'        => '',
+				'contact_facebook'     => '',
+				'contact_twitter'      => '',
+				'contact_youtube'      => '',
+				'contact_yell'         => '',
+			);
+		add_option( 'sb_settings', $settings);
+	endif;
+endif;
+
 // Using a class to avoid conflicts with other fuctions
 class sandbox_admin {
 
@@ -32,30 +69,31 @@ class sandbox_admin {
 		// $input['contact_twitter'];
 		// $input['contact_youtube'];
 		// $input['contact_yell'];
-		$input['site_og']            = $input['site_og']            == true ? 1:0;
-		$input['site_gplus']         = $input['site_gplus']         == true ? 1:0;
-		$input['site_jquery']        = $input['site_jquery']        == true ? 1:0;
-		$input['site_jqueryui']      = $input['site_jqueryui']      == true ? 1:0;
-		$input['site_gmaps']         = $input['site_gmaps']         == true ? 1:0;
-		$input['comments_posts']     = $input['comments_posts']     == true ? 1:0;
-		$input['comments_pages']     = $input['comments_pages']     == true ? 1:0;
-		$input['trackbacks_posts']   = $input['trackbacks_posts']   == true ? 1:0;
-		$input['trackbacks_pages']   = $input['trackbacks_pages']   == true ? 1:0;
-		$input['excerpt_thumb']      = $input['excerpt_thumb']      == true ? 1:0;
-		$input['excerpt_thumb_crop'] = $input['excerpt_thumb_crop'] == true ? 1:0;
-		$input['excerpt_more']       = $input['excerpt_more']       == true ? 1:0;
-		if ( empty($input['excerpt_lenght']) )       { $input['excerpt_lenght']       = 80;  }
-		if ( empty($input['excerpt_thumb_width']) )  { $input['excerpt_thumb_width']  = 150; }
-		if ( empty($input['excerpt_thumb_height']) ) { $input['excerpt_thumb_height'] = 150; }
+		$input['site_og']              = isset( $input['site_og'] )                == true ? 1 : 0;
+		$input['site_gplus']           = isset( $input['site_gplus'] )             == true ? 1 : 0;
+		$input['site_jquery']          = isset( $input['site_jquery'] )            == true ? 1 : 0;
+		$input['site_jqueryui']        = isset( $input['site_jqueryui'] )          == true ? 1 : 0;
+		$input['site_gmaps']           = isset( $input['site_gmaps'] )             == true ? 1 : 0;
+		$input['comments_posts']       = isset( $input['comments_posts'] )         == true ? 1 : 0;
+		$input['comments_pages']       = isset( $input['comments_pages'] )         == true ? 1 : 0;
+		$input['trackbacks_posts']     = isset( $input['trackbacks_posts'] )       == true ? 1 : 0;
+		$input['trackbacks_pages']     = isset( $input['trackbacks_pages'] )       == true ? 1 : 0;
+		$input['excerpt_thumb']        = isset( $input['excerpt_thumb'] )          == true ? 1 : 0;
+		$input['excerpt_thumb_crop']   = isset( $input['excerpt_thumb_crop'] )     == true ? 1 : 0;
+		$input['excerpt_more']         = isset( $input['excerpt_more'] )           == true ? 1 : 0;
+		if ( empty($input['excerpt_lenght']) )       $input['excerpt_lenght']       = 80;
+		if ( empty($input['excerpt_thumb_width']) )  $input['excerpt_thumb_width']  = 150;
+		if ( empty($input['excerpt_thumb_height']) ) $input['excerpt_thumb_height'] = 150;
+
 		return $input;
 	} // Function settings_callback
 
 	// This is the settings page on WordPress Admin Page
 	function settings_page(){
-		$settings = get_option('sb_settings');
+		global $settings;
 ?>
 	<div class="wrap">
-		<div id="icon-themes" class="icon32"><br></div><h2>Sandbox Settings</h2>
+		<div id="icon-themes" class="icon32"><br></div><h2><?php _e('Theme Settings', 'sandbox') ?></h2>
 		<form method="post" action="options.php">
 <?php settings_fields('sandbox'); ?>
 
@@ -63,7 +101,7 @@ class sandbox_admin {
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row"><label>Current logo:</label></th>
+					<th scope="row"><label><?php _e('Current logo', 'sandbox') ?></label></th>
 					<td>
 <?php if( $settings['site_logo'] == '' ) : ?>
 						<img id="current_logo" src="<?php echo get_template_directory_uri() ?>/inc/images/logo_none.png" />
@@ -73,15 +111,15 @@ class sandbox_admin {
 					</td>
 				</tr>
 				<tr>
-					<th scope="row">Upload Logo:</th>
+					<th scope="row"><?php _e('Upload logo', 'sandbox') ?></th>
 					<td>
 						<input id="site_logo" type="text" size="36" name="sb_settings[site_logo]" value="<?php echo $settings['site_logo'] ?>" />
-						<input id="upload_image_button" type="button" value="Upload Image" />
-						<br />Enter an URL or upload an image for the banner.
+						<input id="upload_image_button" type="button" value="<?php _e('Upload Image', 'sandbox') ?>" />
+						<br /><?php _e('Enter an URL or upload an image for the banner.', 'sandbox') ?>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row">Logo Height:</th>
+					<th scope="row"><?php _e('Logo height', 'sandbox') ?></th>
 					<td>
 						<script>
 						jQuery(document).ready(function($){
@@ -101,7 +139,7 @@ class sandbox_admin {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Site Layout:</label></th>
+					<th scope="row"><label><?php _e('Site layout', 'sandbox') ?></label></th>
 					<td>
 						<div id="site-layout">
 							<input type="radio" id="site1" name="sb_settings[site_layout]" value="1" <?php if( $settings['site_layout'] == 1 ) {echo 'checked';} ?> /><label for="site1"><img src="<?php echo get_template_directory_uri() ?>/inc/images/layout_1.png" /></label>
@@ -114,7 +152,7 @@ class sandbox_admin {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Footer Column Layout:</label></th>
+					<th scope="row"><label><?php _e('Footer layout', 'sandbox') ?></label></th>
 					<td>
 						<div id="footer-layout">
 							<input type="radio" id="footer1" name="sb_settings[footer_layout]" value="1" <?php if( $settings['footer_layout'] == 1 ) {echo 'checked';} ?> /><label for="footer1"><img src="<?php echo get_template_directory_uri() ?>/inc/images/footer_1.png" /></label>
@@ -127,28 +165,28 @@ class sandbox_admin {
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>jQuery Settings:</label></th>
+					<th scope="row"><label><?php _e('jQuery settings', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[site_jquery]" <?php if( $settings['site_jquery'] == 1 ) {echo 'checked';} ?> /> jQuery<br />
-						<input type="checkbox" name="sb_settings[site_jqueryui]" <?php if( $settings['site_jqueryui'] == 1 ) {echo 'checked';} ?> /> jQueryUI <span class="description">Only jQueryUI Core</span><br />
+						<input type="checkbox" name="sb_settings[site_jqueryui]" <?php if( $settings['site_jqueryui'] == 1 ) {echo 'checked';} ?> /> jQueryUI <span class="description"><?php _e('Only jQueryUI Core', 'sandbox') ?></span><br />
 						<input type="checkbox" name="sb_settings[site_gmaps]" <?php if( $settings['site_gmaps'] == 1 ) {echo 'checked';} ?> /> gMaps
-						 <span class="description">Shortcode for gMaps</span>
+						 <span class="description"><?php _e('Shortcode for gMaps', 'sandbox') ?></span>
 					</td>
 				</tr>
 			</tbody>
 			</table>
 
-			<h3>Facebook and Google Settings</h3>
+			<h3><?php _e('Social Settings', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row"><label>Enable Facebook OpenGraphs</label></th>
+					<th scope="row"><label>Facebook OpenGraph</label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[site_og]" <?php if( $settings['site_og'] == 1 ) {echo 'checked';} ?> />
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Enable Google Plus</label></th>
+					<th scope="row"><label>Google Plus Tags</label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[site_gplus]" <?php if( $settings['site_gplus'] == 1 ) {echo 'checked';} ?> />
 					</td>
@@ -168,47 +206,47 @@ class sandbox_admin {
 			</tbody>
 			</table>
 
-			<h3>Excerpt Settings</h3>
+			<h3><?php _e('Excerpt Settings', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row"><label>Excerpt Lenght</label></th>
+					<th scope="row"><label><?php _e('Excerpt length', 'sandbox') ?></label></th>
 					<td>
-						<input type="number" min="20" name="sb_settings[excerpt_lenght]" value="<?php echo $settings['excerpt_lenght'] ?>" />
+						<input type="number" min="20" name="sb_settings[excerpt_length]" value="<?php echo $settings['excerpt_length'] ?>" />
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Enable Thumbnail</label></th>
+					<th scope="row"><label><?php _e('Thumbnail', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[excerpt_thumb]" <?php if( $settings['excerpt_thumb'] == 1 ) {echo 'checked';} ?> />
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Crop Thumbnail</label></th>
+					<th scope="row"><label><?php _e('Crop Thumbnail', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[excerpt_thumb_crop]" <?php if( $settings['excerpt_thumb_crop'] == 1 ) {echo 'checked';} ?> />
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Thumbnail Align</label></th>
+					<th scope="row"><label><?php _e('Thumbnail Align', 'sandbox') ?></label></th>
 					<td>
 						<select name="sb_settings[excerpt_thumb_align]">
-							<option value="1" <?php if( $settings['excerpt_thumb_align'] == 1 ) {echo 'selected'; } ?>>Align Left</option>
-							<option value="2" <?php if( $settings['excerpt_thumb_align'] == 2 ) {echo 'selected'; } ?>>Align Right</option>
-							<option value="3" <?php if( $settings['excerpt_thumb_align'] == 3 ) {echo 'selected'; } ?>>Align Center</option>
-							<option value="4" <?php if( $settings['excerpt_thumb_align'] == 4 ) {echo 'selected'; } ?>>No Align</option>
+							<option value="1" <?php if( $settings['excerpt_thumb_align'] == 1 ) {echo 'selected'; } ?>><?php _e('Align left', 'sandbox') ?></option>
+							<option value="2" <?php if( $settings['excerpt_thumb_align'] == 2 ) {echo 'selected'; } ?>><?php _e('Align right', 'sandbox') ?></option>
+							<option value="3" <?php if( $settings['excerpt_thumb_align'] == 3 ) {echo 'selected'; } ?>><?php _e('Align center', 'sandbox') ?></option>
+							<option value="4" <?php if( $settings['excerpt_thumb_align'] == 4 ) {echo 'selected'; } ?>><?php _e('No align', 'sandbox') ?></option>
 						</select>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Thumbnail Size</label></th>
+					<th scope="row"><label><?php _e('Thumbnail Size', 'sandbox') ?></label></th>
 					<td>
-						<input type="number" min="20" name="sb_settings[excerpt_thumb_width]" value="<?php echo $settings['excerpt_thumb_width'] ?>" />Width <span class="description">9999 for unlimited width</span><br />
-						<input type="number" min="20" name="sb_settings[excerpt_thumb_height]" value="<?php echo $settings['excerpt_thumb_height'] ?>" />Height <span class="description">9999 for unlimited height</span>
+						<input type="number" min="20" name="sb_settings[excerpt_thumb_width]" value="<?php echo $settings['excerpt_thumb_width'] ?>" /><span class="description"><?php _e('Width', 'sandbox') ?> - <?php _e('Use 999 for unlimited width', 'sandbox') ?></span><br />
+						<input type="number" min="20" name="sb_settings[excerpt_thumb_height]" value="<?php echo $settings['excerpt_thumb_height'] ?>" /><span class="description"><?php _e('Height', 'sandbox') ?> - <?php _e('Use 999 for unlimited height', 'sandbox') ?></span>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Add "Read More" button</label></th>
+					<th scope="row"><label><?php _e('Add "Read More" button', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[excerpt_more]" <?php if( $settings['excerpt_more'] == 1 ) {echo 'checked';} ?> />
 					</td>
@@ -216,63 +254,63 @@ class sandbox_admin {
 			</tbody>
 			</table>
 
-			<h3>Comments and Trackbacks</h3>
+			<h3><?php _e('Comments and Trackbacks', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row"><label>On Pages?</label></th>
+					<th scope="row"><label><?php _e('On Pages?', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[comments_pages]" <?php if( $settings['comments_pages'] == 1 ) {echo 'checked';} ?> />
-						Comments<br />
+						<?php _e('Comments', 'sandbox') ?><br />
 						<input type="checkbox" name="sb_settings[trackbacks_pages]" <?php if( $settings['trackbacks_pages'] == 1 ) {echo 'checked';} ?> />
-						Trackbacks<br />
+						<?php _e('Trackbacks', 'sandbox') ?><br />
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>On Posts?</label></th>
+					<th scope="row"><label><?php _e('On Posts?', 'sandbox') ?></label></th>
 					<td>
 						<input type="checkbox" name="sb_settings[comments_posts]" <?php if( $settings['comments_posts'] == 1 ) {echo 'checked';} ?> />
-						Comments<br />
+						<?php _e('Comments', 'sandbox') ?><br />
 						<input type="checkbox" name="sb_settings[trackbacks_posts]" <?php if( $settings['trackbacks_posts'] == 1 ) {echo 'checked';} ?> />
-						Trackbacks<br />
+						<?php _e('Trackbacks', 'sandbox') ?><br />
 					</td>
 				</tr>
 			</tbody>
 			</table>
 
-			<h3>Contact Information</h3>
+			<h3><?php _e('Contact Information', 'sandbox') ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">
-					<th scope="row"><label>Phone:</label></th>
+					<th scope="row"><label><?php _e('Phone', 'sandbox') ?></label></th>
 					<td>
 						<input type="text" name="sb_settings[contact_phone]" <?php if( !empty($settings['contact_phone']) ){ echo 'value="'.$settings['contact_phone'].'"'; } ?> />
 						<span class="description">Shortcode: [contact type="phone"]</span>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Facebook URL:</label></th>
+					<th scope="row"><label><?php _e('Facebook URL', 'sandbox') ?></label></th>
 					<td>
 						<input type="text" name="sb_settings[contact_facebook]" <?php if( !empty($settings['contact_facebook']) ){ echo 'value="'.$settings['contact_facebook'].'"'; } ?> />
 						<span class="description">Shortcode: [contact type="facebook"]</span>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Twitter URL:</label></th>
+					<th scope="row"><label><?php _e('Twitter URL', 'sandbox') ?></label></th>
 					<td>
 						<input type="text" name="sb_settings[contact_twitter]" <?php if( !empty($settings['contact_twitter']) ){ echo 'value="'.$settings['contact_twitter'].'"'; } ?> />
 						<span class="description">Shortcode: [contact type="twitter"]</span>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>YouTube URL:</label></th>
+					<th scope="row"><label><?php _e('YouTube URL', 'sandbox') ?></label></th>
 					<td>
 						<input type="text" name="sb_settings[contact_youtube]" <?php if( !empty($settings['contact_youtube']) ){ echo 'value="'.$settings['contact_youtube'].'"'; } ?> />
 						<span class="description">Shortcode: [contact type="youtube"]</span>
 					</td>
 				</tr>
 				<tr valign="top">
-					<th scope="row"><label>Yell URL:</label></th>
+					<th scope="row"><label><?php _e('Yell URL', 'sandbox') ?></label></th>
 					<td>
 						<input type="text" name="sb_settings[contact_yell]" <?php if( !empty($settings['contact_yell']) ){ echo 'value="'.$settings['contact_yell'].'"'; } ?> />
 						<span class="description">Shortcode: [contact type="yell"]</span>
@@ -281,7 +319,7 @@ class sandbox_admin {
 			</tbody>
 			</table>
 			<p class="submit">
-				<input type="submit" value="<?php _e('Save Changes') ?>" class="button-primary" />
+				<input type="submit" value="<?php _e('Save Changes', 'sandbox') ?>" class="button-primary" />
 			</p>
 		</form>
 	</div>
@@ -291,7 +329,7 @@ class sandbox_admin {
 
 // Adds the menu element at WordPress admin panel
 function sandbox_admin_menu(){
-	add_theme_page( 'Sandbox', 'Theme Settings', 'administrator', 'sandbox', array('sandbox_admin', 'settings_page') );
+	add_theme_page( __('Theme Settings', 'sandbox'), __('Theme Settings', 'sandbox'), 'administrator', 'sandbox', array('sandbox_admin', 'settings_page') );
 	add_action( 'admin_enqueue_scripts', array('sandbox_admin', 'settings_scripts') );
 	add_action('admin_init', array('sandbox_admin', 'settings_register'));
 }

@@ -19,28 +19,33 @@ del,s,strike{text-decoration:line-through}
 dd,p,table{margin-bottom:1.25em}
 dt{font-weight:bold}
 ins{background:#fff9c0;text-decoration:none}
-pre{background:#f4f4f4;padding:1em 0}
+pre{background:#f4f4f4;margin-bottom:1.25em;padding:1em 0}
 small{font-size:.8em}
 sub{font-size:smaller;vertical-align:sub}
 sup{font-size:smaller;vertical-align:super}
 table{width:100%;}
 table td,table th{border-bottom:1px solid #ddd;padding:.5em .5em .5em 0;vertical-align:baseline}
 table th{text-transform:uppercase}
+header#header{clear:both;margin-bottom:1em;}
+header#header h1#blog-title{font-weight:bold;font-size:2em;line-height:1.5em;}
+header#header h1#blog-title a{text-decoration:none}
 nav#menu-main{margin-bottom:1em;}
 nav#menu-main:after{content:'.';clear:both;display:block;height:0;visibility:hidden}
 nav#menu-main > ul > li{float:left;}
-nav#menu-main > ul > li > a{display:block;padding:.5em 1em;line-height:1em}
+nav#menu-main > ul > li > a{display:block;line-height:1em;padding:.5em 1em;text-decoration:none}
 nav#menu-main > ul > li:hover > ul{display:block}
 nav#menu-main > ul > li ul{display:none;position:absolute;}
-nav#menu-main > ul > li ul > li > a{display:block;padding:.25em 1em}
+nav#menu-main > ul > li ul > li > a{display:block;padding:.25em 1em;text-decoration:none}
 nav.navigation{margin-bottom:1em;}
 nav.navigation:after{content:'.';clear:both;display:block;height:0;visibility:hidden}
 nav.navigation div.nav-previous{float:left}
 nav.navigation div.nav-next{float:right}
 nav.navigation a{display:inline-block;padding:.25em 1em}
 section#content article.post{border-bottom:1px solid #ddd;padding-bottom:1.25em;margin-bottom:1.25em}
-h2.entry-title,h2.page-title{font-size:1.6em;font-weight:bold;line-height:1.25em;padding:.25em 0}
+h2.entry-title,h2.page-title,h3.entry-title{font-size:1.6em;font-weight:bold;line-height:1.25em;padding:.25em 0}
+h3.entry-title{font-size:1.4em;line-height:1.1em}
 .entry-content,section#comments{overflow:hidden;}
+.entry-content div,section#comments div{margin-bottom:1.25em}
 .entry-content h1,section#comments h1,.entry-content h2,section#comments h2,.entry-content h3,section#comments h3,.entry-content h4,section#comments h4,.entry-content h5,section#comments h5,.entry-content h6,section#comments h6{clear:both;font-weight:bold}
 .entry-content h1,section#comments h1{font-size:2em;margin:.67em 0}
 .entry-content h2,section#comments h2{font-size:1.5em;margin:.83em 0}
@@ -56,6 +61,7 @@ h2.entry-title,h2.page-title{font-size:1.6em;font-weight:bold;line-height:1.25em
 .entry-content img,section#comments img{max-width:97.5%}
 .entry-content a.more-link,section#comments a.more-link{clear:both;display:inline-block;padding:.25em 1em;text-decoration:none}
 .entry-content .page-link,section#comments .page-link{clear:both;padding:.25em 0}
+section#comments-list,form#commentform{font-size:.9em}
 .entry-date,.entry-meta,aside.sidebar,nav.navigation{font-size:.9em;line-height:1.3em}
 .entry-date{margin-bottom:.25em}
 img[class*='align'],img[class*='wp-image-'],img[class*="attachment-"]{height:auto}
@@ -73,6 +79,6 @@ p img,.wp-caption{margin-top:.4em}
 .alignleft{display:inline;float:left;margin-right:1.625em}
 .alignright{display:inline;float:right;margin-left:1.625em}
 .aligncenter{clear:both;display:block;margin-left:auto;margin-right:auto}
-aside.sidebar > ul > li{margin-bottom:1em;}
-aside.sidebar > ul > li > h3{font-weight:bold;font-size:1.2em;padding:.25em 0 0}
+aside.sidebar > ul > li{margin-bottom:1.5em;}
+aside.sidebar > ul > li > h3{font-weight:bold;font-size:1.2em;padding:0 0 .25em}
 aside.sidebar > ul > li ul{list-style:square;padding:0 0 0 20px}

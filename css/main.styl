@@ -62,6 +62,7 @@ ins
 
 pre
 	background #F4F4F4
+	margin-bottom 1.25em
 	padding 1em 0
 
 small
@@ -87,6 +88,18 @@ table
 	th
 		text-transform uppercase
 
+header#header
+	clear both
+	margin-bottom 1em
+
+	h1#blog-title
+		font-weight bold
+		font-size 2em
+		line-height 1.5em
+
+		a
+			text-decoration none
+
 nav#menu-main
 	margin-bottom 1em
 
@@ -103,8 +116,9 @@ nav#menu-main
 
 			> a
 				display block
-				padding .5em 1em
 				line-height 1em
+				padding .5em 1em
+				text-decoration none
 
 			&:hover
 				> ul
@@ -118,6 +132,7 @@ nav#menu-main
 					> a
 						display block
 						padding .25em 1em
+						text-decoration none
 
 nav.navigation
 	margin-bottom 1em
@@ -147,15 +162,23 @@ section#content
 		margin-bottom 1.25em
 
 h2.entry-title,
-h2.page-title
+h2.page-title,
+h3.entry-title
 	font-size 1.6em
 	font-weight bold
 	line-height 1.25em
 	padding .25em 0
 
+h3.entry-title
+	font-size 1.4em
+	line-height 1.1em
+
 .entry-content,
 section#comments
 	overflow hidden
+
+	div
+		margin-bottom 1.25em
 	
 	h1,
 	h2,
@@ -214,6 +237,10 @@ section#comments
 	.page-link
 		clear both
 		padding .25em 0
+
+section#comments-list,
+form#commentform
+	font-size .9em
 
 .entry-date,
 .entry-meta,
@@ -312,12 +339,12 @@ aside.sidebar
 
 	> ul
 		> li
-			margin-bottom 1em
+			margin-bottom 1.5em
 
 			> h3
 				font-weight bold
 				font-size 1.2em
-				padding .25em 0 0
+				padding 0 0 .25em
 
 			ul
 				list-style square

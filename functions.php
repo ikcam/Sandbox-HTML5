@@ -9,6 +9,9 @@ SANDBOX is distributed in the hope that it will be useful, but WITHOUT ANY WARRA
 You should have received a copy of the GNU General Public License along with SANDBOX. If not, see http://www.gnu.org/licenses/.
 */
 
+// Var of settings
+$settings = get_option('sb_settings');
+
 // Produces a list of pages in the header without whitespace
 function sandbox_menus() {
 	register_nav_menus(
@@ -114,7 +117,7 @@ function sandbox_body_class( $print = true ) {
 		$page_children = wp_list_pages("child_of=$pageID&echo=0");
 		the_post();
 		$c[] = 'page pageid-' . $pageID;
-		$c[] = 'page-author-' . sanitize_title_with_dashes(strtolower(get_the_author('login')));
+		$c[] = 'page-author-' . sanitize_title_with_dashes(strtolower(get_the_author_meta('login')));
 		// Checks to see if the page has children and/or is a child page; props to Adam
 		if ( $page_children )
 			$c[] = 'page-parent';
@@ -177,7 +180,7 @@ function sandbox_post_class( $print = true ) {
 	$c = array( 'hentry', "p$sandbox_post_alt", $post->post_type, $post->post_status );
 
 	// Author for the post queried
-	$c[] = 'author-' . sanitize_title_with_dashes(strtolower(get_the_author('login')));
+	$c[] = 'author-' . sanitize_title_with_dashes(strtolower(get_the_author_meta('login')));
 
 	// Category for the post queried
 	foreach ( (array) get_the_category() as $cat )
@@ -450,9 +453,9 @@ add_theme_support( 'custom-background' );
 
 // This two functions are for Meta and OG Graph purposes
 function sandbox_post_description(){
-	$my_id = get_the_ID();
-	$post_id = get_post($my_id);
-	$content = $post_id->post_content;
+	$ID = get_the_ID();
+	$post = get_post($ID);
+	$content = $post->post_content;
 	$content = strip_shortcodes( $content );
 	$content = str_replace( "\r", "", $content );
 	$content = str_replace( "\n", "", $content );
@@ -465,7 +468,7 @@ function sandbox_post_description(){
 }
 
 function sandbox_post_image(){
-	$settings = get_option( 'sb_settings' );
+	global $settings;
 
 	$attachments = get_children( array(
 		'post_parent'    => get_the_ID(),
@@ -489,7 +492,7 @@ function sandbox_post_image(){
 
 // Adds jQuery and jQueryUI to <head>
 function sandbox_scripts(){
-	$settings = get_option('sb_settings');
+	global $settings;
 	
 	if( $settings['site_jquery'] == 1 )
 		wp_enqueue_script( 'jquery' );
@@ -509,7 +512,7 @@ add_action('wp_enqueue_scripts', 'sandbox_scripts');
 
 function sandbox_comments(){
 	// Get the global option
-	$settings = get_option('sb_settings');
+	global $settings;
 
 	if( is_single() ){
 		$comments = $settings['comments_posts'];
@@ -532,7 +535,7 @@ function sandbox_comments(){
 
 function sandbox_trackbacks(){
 	// Get the global option
-	$settings = get_option('sb_settings');
+	global $settings;
 
 	if( is_single() ){
 		$comments = $settings['trackbacks_posts'];
@@ -554,7 +557,7 @@ function sandbox_trackbacks(){
 }
 
 function sandbox_excerpt($text) {
-	$settings = get_option('sb_settings');
+	global $settings;
 
 	if( $settings['excerpt_thumb_width'] == 9999 || $settings['excerpt_thumb_width'] == 0 )
 		$th_width = 9999;
@@ -621,7 +624,7 @@ function sandbox_excerpt($text) {
 		$text = apply_filters('the_content', $text);
 		$text = str_replace(']]>', ']]&gt;', $text);
 		$text = strip_tags($text);
-		$excerpt_length = apply_filters('excerpt_length', $settings['excerpt_lenght']); // Word limit
+		$excerpt_length = apply_filters('excerpt_length', $settings['excerpt_length']); // Word limit
 		$excerpt_more = apply_filters('excerpt_more', $more ); // "Read more" link
 		$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
 		if ( count($words) > $excerpt_length ) {
@@ -638,7 +641,7 @@ remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter( 'get_the_excerpt', 'sandbox_excerpt');
 
 function sandbox_header(){
-	$settings = get_option('sb_settings');
+	global $settings;
 
 	if( $settings['site_logo'] != '' ) {
 		echo '<img src="'.$settings['site_logo'].'" height="'. $settings['site_logo_height'].'" alt="'.get_bloginfo('name').'" />';	
@@ -648,7 +651,7 @@ function sandbox_header(){
 }
 
 function sandbox_enqueue_css(){
-	$settings = get_option( 'sb_settings' );
+	global $settings;
 
 	$output = get_template_directory_uri().'/css/';
 

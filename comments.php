@@ -10,9 +10,15 @@
 	endif;
 ?>
 <?php if ( have_comments() ) : ?>
-				<h3><?php comments_number('No Responses', 'One Respond', '% Responses' );?></h3>
+				<h3><?php comments_number(__('No Responses', 'sandbox'), __('One Respond', 'sandbox'), __('% Responses' , 'sandbox'));?></h3>
 				<section id="comments-list" class="comments">
-					<?php wp_list_comments( 'type=comment&style=div' ); ?>
+					<?php 
+						if( sandbox_trackbacks() ):
+							wp_list_comments( 'style=div' );
+						else:
+							wp_list_comments( 'type=comment&style=div' );
+						endif;
+					?>
 					<nav id="nav-comments" class="navigation">
 						<div class="nav-previous"><?php previous_comments_link() ?></div>
 						<div class="nav-next"><?php next_comments_link() ?></div>

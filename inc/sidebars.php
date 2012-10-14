@@ -1,9 +1,9 @@
 <?php
-$settings = get_option('sb_settings');
+global $settings;
 
 if( $settings['site_layout'] != 6 ) :
 	$sidebar = array(
-			'name'           =>   __( 'Primary Sidebar', 'Sandbox' ),
+			'name'           =>   __( 'Primary Sidebar', 'sandbox' ),
 			'id'             =>   "primary",
 			'before_widget'  =>   "\n\t\t\t" . '<li id="%1$s" class="widget %2$s">',
 			'after_widget'   =>   "\n\t\t\t</li>\n",
@@ -14,7 +14,7 @@ if( $settings['site_layout'] != 6 ) :
 
 	if( $settings['site_layout'] == 3 || $settings['site_layout'] == 4 || $settings['site_layout'] == 5 ) :
 		$sidebar = array(
-				'name'           =>   __( 'Secondary Sidebar', 'Sandbox' ),
+				'name'           =>   __( 'Secondary Sidebar', 'sandbox' ),
 				'id'             =>   "secondary",
 				'before_widget'  =>   "\n\t\t\t" . '<li id="%1$s" class="widget %2$s">',
 				'after_widget'   =>   "\n\t\t\t</li>\n",
@@ -31,7 +31,7 @@ if ( $footer_sidebars == 5 || $footer_sidebars == 6 )
 
 for($i=1;$i<=$footer_sidebars;$i++){
 	$sidebar = array(
-			'name'           =>   sprintf( __( 'Footer Sidebar %d', 'Sandbox' ), $i ),
+			'name'           =>   sprintf( __( 'Footer Sidebar %d', 'sandbox' ), $i ),
 			'id'             =>   "footer-$i",
 			'before_widget'  =>   "\n\t\t\t" . '<li id="%1$s" class="widget %2$s">',
 			'after_widget'   =>   "\n\t\t\t</li>\n",
@@ -42,7 +42,7 @@ for($i=1;$i<=$footer_sidebars;$i++){
 }
 
 function sandbox_footer_sidebars(){
-	$settings = get_option('sb_settings');
+	global $settings;
 	$layout = $settings['footer_layout'];
 	$class = 'footer-sidebar ';
 

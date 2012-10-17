@@ -13,3 +13,10 @@ Sandbox shortcodes CSS
 .clearfix{zoom:1}
 .clearfix:before,.clearfix:after{content:"";display:table}
 .clearfix:after{clear:both}
+div.box{-webkit-border-radius:5px;border-radius:5px;border:1px solid #dadada;}
+div.box div.box-header{background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #f1f1f1));background:-webkit-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-moz-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-o-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-ms-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:linear-gradient(top, #fff 0%, #f1f1f1 100%);border-bottom:1px solid #dadada;-webkit-border-top-left-radius:5px;border-top-left-radius:5px;-webkit-border-top-right-radius:5px;border-top-right-radius:5px;font-size:1.2em}
+div.box.with-header div.box-header{padding:.5em 30px}
+div.box.with-header div.box-content{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;padding:.5em 30px}
+div.box.with-header.padding-small div.box-header,div.box.with-header.padding-small div.box-content{padding:.5em 20px}
+div.box.no-header div.box-content{-webkit-border-radius:5px;border-radius:5px;padding:2em}
+div.box.with-bg{background:#f7f7f7}

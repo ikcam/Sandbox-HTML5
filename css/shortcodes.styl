@@ -44,4 +44,35 @@ Sandbox shortcodes CSS
 	margin-right 0 !important
 
 .clearfix
-	clearfix() 
+	clearfix()
+
+div.box
+	border-radius 5px
+	border 1px solid #DADADA
+
+	div.box-header
+		background linear-gradient(top, #FFF, #F1F1F1)
+		border-bottom 1px solid #DADADA
+		border-radius top 5px
+		font-size 1.2em
+
+	&.with-header
+		div.box-header
+			padding .5em 30px
+
+		div.box-content
+			border-radius bottom 5px
+			padding .5em 30px
+
+		&.padding-small
+			div.box-header,
+			div.box-content
+				padding .5em 20px
+
+	&.no-header
+		div.box-content
+			border-radius 5px
+			padding 2em
+
+	&.with-bg
+		background #F7F7F7

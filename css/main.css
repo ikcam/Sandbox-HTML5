@@ -16,10 +16,10 @@ blockquote{font-family:'Times New Roman';font-size:1.25em;padding:1em 0;margin:0
 blockquote blockquote{font-size:1em}
 code,kbd,pre{font-family:monospace;font-size:1.25em}
 del,s,strike{text-decoration:line-through}
-dd,p,table{margin-bottom:1.25em}
+dd,p,table{margin:.5em 0}
 dt{font-weight:bold}
 ins{background:#fff9c0;text-decoration:none}
-pre{background:#f4f4f4;margin-bottom:1.25em;padding:1em 0}
+pre{background:#f4f4f4;margin:.5em 0;padding:1em 0}
 small{font-size:.8em}
 sub{font-size:smaller;vertical-align:sub}
 sup{font-size:smaller;vertical-align:super}
@@ -36,7 +36,6 @@ nav#menu-main > ul > li > a{display:block;line-height:1em;padding:.5em 1em;text-
 nav#menu-main > ul > li:hover > ul{display:block}
 nav#menu-main > ul > li ul{display:none;position:absolute;}
 nav#menu-main > ul > li ul > li > a{display:block;padding:.25em 1em;text-decoration:none}
-nav.navigation{margin-bottom:1em;}
 nav.navigation:after{content:'.';clear:both;display:block;height:0;visibility:hidden}
 nav.navigation div.nav-previous{float:left}
 nav.navigation div.nav-next{float:right}
@@ -45,7 +44,6 @@ section#content article.post{border-bottom:1px solid #ddd;padding-bottom:1.25em;
 h2.entry-title,h2.page-title,h3.entry-title{font-size:1.6em;font-weight:bold;line-height:1.25em;padding:.25em 0}
 h3.entry-title{font-size:1.4em;line-height:1.1em}
 .entry-content,section#comments{overflow:hidden;}
-.entry-content div,section#comments div{margin-bottom:1.25em}
 .entry-content h1,section#comments h1,.entry-content h2,section#comments h2,.entry-content h3,section#comments h3,.entry-content h4,section#comments h4,.entry-content h5,section#comments h5,.entry-content h6,section#comments h6{clear:both;font-weight:bold}
 .entry-content h1,section#comments h1{font-size:2em;margin:.67em 0}
 .entry-content h2,section#comments h2{font-size:1.5em;margin:.83em 0}
@@ -53,7 +51,7 @@ h3.entry-title{font-size:1.4em;line-height:1.1em}
 .entry-content h4,section#comments h4{font-size:1em;margin:1.33em 0}
 .entry-content h5,section#comments h5{font-size:.83em;margin:1.67em 0}
 .entry-content h6,section#comments h6{font-size:.67em;margin:2.33em 0}
-.entry-content ul,section#comments ul,.entry-content ol,section#comments ol{margin-bottom:.25em;padding:0 0 0 20px}
+.entry-content ul,section#comments ul,.entry-content ol,section#comments ol{margin:.5em 0;padding:0 0 0 20px}
 .entry-content ol,section#comments ol{list-style:decimal;}
 .entry-content ol ol,section#comments ol ol{list-style:upper-alpha;}
 .entry-content ol ol ol,section#comments ol ol ol{list-style:lower-roman}

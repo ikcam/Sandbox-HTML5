@@ -220,4 +220,35 @@ function shortcode_box($atts, $content=null){
 	return $output;
 }
 add_shortcode( 'box', 'shortcode_box' );
+
+function shortcode_tabgroup( $atts, $content ){
+	$GLOBALS['tab_count'] = 0;
+	do_shortcode( $content );
+
+	if( is_array( $GLOBALS['tabs'] ) ){
+		$i=0;
+		foreach( $GLOBALS['tabs'] as $tab ){
+			$tabs[]  = '<li><a href="#tabs-'.$i.'">'.$tab['title'].'</a></li>';
+			$panes[] = '<div id="tabs-'.$i.'">'.do_shortcode($tab['content']).'</div>';
+			$i++;
+		}
+		$return = '<div id="tabs">'."\n".'<ul>'.implode( "\n", $tabs ).'</ul>'."\n".implode( "\n", $panes )."\n".'</div>';
+	}
+
+	return $return;
+}
+add_shortcode( 'tabgroup', 'shortcode_tabgroup' );
+
+function shortcode_tab( $atts, $content ){
+	extract(shortcode_atts(array(
+		'title' => 'Tab %d'
+	), $atts));
+
+	$x = $GLOBALS['tab_count'];
+	$GLOBALS['tabs'][$x] = array( 'title' => sprintf( $title, $GLOBALS['tab_count'] ), 'content' =>  $content );
+
+	$GLOBALS['tab_count']++;
+}
+add_shortcode( 'tab', 'shortcode_tab' );
+
 ?>

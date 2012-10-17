@@ -193,4 +193,31 @@ function shortcode_contact($atts){
 }
 add_shortcode( 'contact', 'shortcode_contact' );
 
+// [box]
+function shortcode_box($atts, $content=null){
+	extract( shortcode_atts( array(
+			'title' => false,
+			'padding' => 'normal',
+			'bg' => false
+		) , $atts )
+	);
+
+	if( $content == null )
+		return null;
+
+	$class = array('box');
+	$class[] = $title      == false   ? 'no-header'     : 'with-header';
+	$class[] = $bg         == false   ? null            : 'with-bg';
+	$class[] = $padding    == 'small' ? 'padding-small' : null;
+	$class = implode( ' ', $class );
+
+	$output = '<div class="'.$class.'">';
+	if( $title != false )
+		$output .= '<div class="box-header">'.$title.'</div>';
+	$output .= '<div class="box-content">'.do_shortcode($content).'</div>';
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode( 'box', 'shortcode_box' );
 ?>

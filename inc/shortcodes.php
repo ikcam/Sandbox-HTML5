@@ -116,7 +116,18 @@ function shortcode_gmaps($atts, $content=NULL){
 	if( $settings['site_gmaps'] == 0 )
 		return __('You need to enable gMaps on your Sandbox settings.', 'sandbox');
 	else
-		return '<script type="text/javascript">jQuery(document).ready(function(){ map = new GMaps({ div: "#'.$id.'", lat: '.$lat.', lng: '.$lng.', height: "'.$height.'px" });'.do_shortcode($content).'});</script><div id="'.$id.'"></div>';
+		return '
+			<script type="text/javascript">
+				jQuery(document).ready(function(){
+					map = new GMaps({
+						div: "#'.$id.'",
+						lat: '.$lat.',
+						lng: '.$lng.',
+						height: "'.$height.'px"
+					});'.do_shortcode($content).'});
+			</script>
+			<div id="'.$id.'" class="gmaps"></div>
+		';
 }
 add_shortcode('gmaps', 'shortcode_gmaps');
 
@@ -132,7 +143,16 @@ function shortcode_groute($atts){
 		), $atts ) 
 	);
 
-	return 'map.drawRoute({ origin: ['.$origin.'], destination: ['.$destination.'], travelMode: "'.$travelMode.'", strokeColor: "#'.$strokeColor.'", strokeOpacity: '.$strokeOpacity.', strokeWeight: '.$strokeWeight.'  });';
+	return '
+		map.drawRoute({
+			origin: ['.$origin.'],
+			destination: ['.$destination.'],
+			travelMode: "'.$travelMode.'",
+			strokeColor: "#'.$strokeColor.'",
+			strokeOpacity: '.$strokeOpacity.',
+			strokeWeight: '.$strokeWeight.'
+		});
+	';
 }
 add_shortcode('groute', 'shortcode_groute');
 
@@ -145,9 +165,16 @@ function shortcode_gmarker($atts, $content=NULL){
 		), $atts ) 
 	);
 
-	$output = 'map.addMarker({ lat: '.$lat.', lng: '.$lng.', title: "'.$title.'"';
-	if( $content!=NULL )
+	$output = '
+		map.addMarker({
+			lat: '.$lat.',
+			lng: '.$lng.',
+			title: "'.$title.'"';
+	if( $content!=NULL ){
+		$content = str_replace( "\n", ' ', $content );
+		$content = str_replace( "\r", ' ', $content );
 		$output.= ',infoWindow: { content: "'.$content.'" }';
+	}
 	$output .= '});';
 
 	return $output;

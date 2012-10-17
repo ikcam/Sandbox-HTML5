@@ -58,7 +58,6 @@ h3.entry-title{font-size:1.4em;line-height:1.1em}
 .entry-content ol ol,section#comments ol ol{list-style:upper-alpha;}
 .entry-content ol ol ol,section#comments ol ol ol{list-style:lower-roman}
 .entry-content ul,section#comments ul{list-style:square}
-.entry-content img,section#comments img{max-width:97.5%}
 .entry-content a.more-link,section#comments a.more-link{clear:both;display:inline-block;padding:.25em 1em;text-decoration:none}
 .entry-content .page-link,section#comments .page-link{clear:both;padding:.25em 0}
 section#comments-list,form#commentform{font-size:.9em}

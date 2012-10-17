@@ -50,7 +50,8 @@ class sandbox_admin {
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
-		wp_enqueue_script( 'sandbox-jquery', get_template_directory_uri().'/inc/javascript/admin.jquery.js', array('jquery') );
+		if( $_GET['page'] == 'sandbox' )
+			wp_enqueue_script( 'sandbox-jquery', get_template_directory_uri().'/inc/javascript/admin.jquery.js', array('jquery') );
 		wp_register_style( 'sandbox-css', get_template_directory_uri().'/inc/stylesheet/admin.css' );
 		wp_enqueue_style( 'sandbox-css' );
 		wp_enqueue_style( 'thickbox' );
@@ -97,7 +98,7 @@ class sandbox_admin {
 		<form method="post" action="options.php">
 <?php settings_fields('sandbox'); ?>
 
-			<h3><?php _e( 'Main Settings', 'Sandbox' ) ?></h3>
+			<h3><?php _e( 'Main Settings', 'sandbox' ) ?></h3>
 			<table class="form-table">
 			<tbody>
 				<tr valign="top">

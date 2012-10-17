@@ -50,7 +50,7 @@ class sandbox_admin {
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'media-upload' );
 		wp_enqueue_script( 'thickbox' );
-		if( $_GET['page'] == 'sandbox' )
+		if( isset($_GET['page']) && $_GET['page'] == 'sandbox' )
 			wp_enqueue_script( 'sandbox-jquery', get_template_directory_uri().'/inc/javascript/admin.jquery.js', array('jquery') );
 		wp_register_style( 'sandbox-css', get_template_directory_uri().'/inc/stylesheet/admin.css' );
 		wp_enqueue_style( 'sandbox-css' );

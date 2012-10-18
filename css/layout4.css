@@ -25,7 +25,7 @@ DESCRIPTION: Three-column fluid layout with two sidebars left of content
 	}
 
 	aside#primary {
-	width:250px;
+		width:250px;
 	}
 
 	aside#secondary {
@@ -41,6 +41,5 @@ DESCRIPTION: Three-column fluid layout with two sidebars left of content
 }
 
 footer#footer {
-clear:both;
-width:100%;
+	clear:both;
 }	

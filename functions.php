@@ -493,12 +493,18 @@ function sandbox_post_image(){
 // Adds jQuery and jQueryUI to <head>
 function sandbox_scripts(){
 	global $settings;
+
+	wp_register_script( 'sandbox', get_template_directory_uri() . '/javascript/sandbox.jquery.js', array('jquery') );
 	
 	if( $settings['site_jquery'] == 1 )
 		wp_enqueue_script( 'jquery' );
 
-	if( $settings['site_jqueryui'] == 1 )
+	if( $settings['site_jqueryui'] == 1 ){
 		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_script( 'sandbox' );
+	}
+
 
 	if( $settings['site_gmaps'] == 1 ){
 		wp_enqueue_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=true' );

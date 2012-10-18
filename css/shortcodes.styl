@@ -76,3 +76,40 @@ div.box
 
 	&.with-bg
 		background #F7F7F7
+
+div#tabs
+	margin .5em 0
+
+ul.ui-tabs-nav
+	list-style none !important
+	margin 0 !important
+	padding 0 !important
+
+	&:after
+		content '.'
+		clear both
+		display block
+		height 0
+		visibility hidden
+
+	> li
+		float left
+
+		> a
+			border 1px solid #DADADA
+			display block
+			margin-right -1px
+			padding .5em
+			text-decoration none
+
+		&.ui-state-active
+			> a
+				border-bottom 1px solid #FFF
+
+div.ui-tabs-hide
+	display none
+
+div.ui-tabs-panel
+	border 1px solid #DADADA
+	margin-top -1px
+	padding .5em

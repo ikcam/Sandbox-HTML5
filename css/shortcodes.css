@@ -20,3 +20,11 @@ div.box.with-header div.box-content{-webkit-border-bottom-left-radius:5px;border
 div.box.with-header.padding-small div.box-header,div.box.with-header.padding-small div.box-content{padding:.5em 20px}
 div.box.no-header div.box-content{-webkit-border-radius:5px;border-radius:5px;padding:2em}
 div.box.with-bg{background:#f7f7f7}
+div#tabs{margin:.5em 0}
+ul.ui-tabs-nav{list-style:none !important;margin:0 !important;padding:0 !important;}
+ul.ui-tabs-nav:after{content:'.';clear:both;display:block;height:0;visibility:hidden}
+ul.ui-tabs-nav > li{float:left;}
+ul.ui-tabs-nav > li > a{border:1px solid #dadada;display:block;margin-right:-1px;padding:.5em;text-decoration:none}
+ul.ui-tabs-nav > li.ui-state-active > a{border-bottom:1px solid #fff}
+div.ui-tabs-hide{display:none}
+div.ui-tabs-panel{border:1px solid #dadada;margin-top:-1px;padding:.5em}

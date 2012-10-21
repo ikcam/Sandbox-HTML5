@@ -445,6 +445,8 @@ add_filter( 'archive_meta', 'wptexturize' );
 add_filter( 'archive_meta', 'convert_smilies' );
 add_filter( 'archive_meta', 'convert_chars' );
 add_filter( 'archive_meta', 'wpautop' );
+add_filter( 'widget_text', 'do_shortcode' );
+
 
 // Adds thumbnails support
 add_theme_support( 'automatic-feed-links' );

@@ -47,6 +47,7 @@ Sandbox shortcodes CSS
 	clearfix()
 
 div.box
+	background #FFF
 	border-radius 5px
 	border 1px solid #DADADA
 
@@ -80,36 +81,38 @@ div.box
 div#tabs
 	margin .5em 0
 
-ul.ui-tabs-nav
-	list-style none !important
-	margin 0 !important
-	padding 0 !important
+	ul.ui-tabs-nav
+		list-style none !important
+		margin 0 !important
+		padding 0 !important
 
-	&:after
-		content '.'
-		clear both
-		display block
-		height 0
-		visibility hidden
-
-	> li
-		float left
-
-		> a
-			border 1px solid #DADADA
+		&:after
+			content '.'
+			clear both
 			display block
-			margin-right -1px
-			padding .5em
-			text-decoration none
+			height 0
+			visibility hidden
 
-		&.ui-state-active
+		> li
+			float left
+
 			> a
-				border-bottom 1px solid #FFF
+				background #FFF
+				border 1px solid #DADADA
+				display block
+				margin-right -1px
+				padding .5em
+				text-decoration none
 
-div.ui-tabs-hide
-	display none
+			&.ui-state-active
+				> a
+					border-bottom 1px solid #FFF
 
-div.ui-tabs-panel
-	border 1px solid #DADADA
-	margin-top -1px
-	padding .5em
+	div.ui-tabs-hide
+		display none
+
+	div.ui-tabs-panel
+		background #FFF
+		border 1px solid #DADADA
+		margin-top -1px
+		padding .5em

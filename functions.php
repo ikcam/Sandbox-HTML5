@@ -194,6 +194,9 @@ function sandbox_post_class( $print = true ) {
 			$c[] = 'tag-' . $tag->slug;
 	}
 
+	// Is sticky?, use. sticky
+	is_sticky() ? $c[] = 'sticky' : null;
+
 	// For password-protected posts
 	if ( $post->post_password )
 		$c[] = 'protected';

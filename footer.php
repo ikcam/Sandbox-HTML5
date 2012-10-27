@@ -1,4 +1,4 @@
-
+<?php global $settings; ?>
 	<footer id="footer">
 		<?php sandbox_footer_sidebars() ?>
 

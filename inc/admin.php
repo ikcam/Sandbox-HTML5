@@ -133,6 +133,9 @@ class sandbox_admin {
 										$( "#current_logo" ).attr( 'height', ui.value );
 								}
 							});
+							$( "#site-logo-height" ).change(function(){
+								$( "#slider-site-logo-height" ).slider( "value", this.value );
+							})
 						});
 						</script>
 						<div id="slider-site-logo-height"></div>

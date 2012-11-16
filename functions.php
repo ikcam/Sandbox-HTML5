@@ -475,24 +475,28 @@ function sandbox_post_description(){
 function sandbox_post_image(){
 	global $settings;
 
-	$attachments = get_children( array(
-		'post_parent'    => get_the_ID(),
-		'post_type'      => 'attachment',
-		'numberposts'    => 1, // show all -1
-		'post_status'    => 'inherit',
-		'post_mime_type' => 'image',
-		'order'          => 'DESC',
-		'orderby'        => 'menu_order DESC'
-	) );
-	foreach ( $attachments as $attachment_id => $attachment ) {
-		$post_image = wp_get_attachment_image_src( $attachment_id );
-	}
+	if( has_post_thumbnail( get_the_ID() ) ):
+		$post_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID(), array(200, 200, true) );
+	else:
+		$attachments = get_children( array(
+			'post_parent'    => get_the_ID(),
+			'post_type'      => 'attachment',
+			'numberposts'    => 1, // show all -1
+			'post_status'    => 'inherit',
+			'post_mime_type' => 'image',
+			'order'          => 'DESC',
+			'orderby'        => 'menu_order DESC'
+		) );
 
-	if( !isset($post_image) ) {
+		foreach ( $attachments as $attachment_id => $attachment ):
+			$post_image = wp_get_attachment_image_src( $attachment_id, array( 200, 200, true ) );
+		endforeach;
+	endif;
+
+	if( !isset($post_image) )
 		echo $settings['site_logo'];
-	} else {
+	else
 		echo $post_image[0];
-	}
 }
 
 // Adds jQuery and jQueryUI to <head>

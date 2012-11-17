@@ -507,6 +507,7 @@ function sandbox_scripts(){
 	if( $settings['site_jqueryui'] == 1 ){
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_script( 'jquery-ui-accordion' );
 		wp_enqueue_script( 'sandbox' );
 	}
 
@@ -625,7 +626,7 @@ function sandbox_excerpt($text) {
 	if( $settings['excerpt_more'] == 0 )
 		$more = '...';
 	else
-		$more = '... <a href="'. get_permalink($post->ID) . '">' . __( 'Read More', 'sandbox' ) . ' <span class="meta-nav">&raquo;</span></a>';
+		$more = '... <a href="'. get_permalink(get_the_ID()) . '">' . __( 'Read More', 'sandbox' ) . ' <span class="meta-nav">&raquo;</span></a>';
 
 	$raw_excerpt = $text;
 

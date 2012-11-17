@@ -66,8 +66,7 @@ img.size-full,img.size-large{max-width:97.5%;height:auto;width:auto}
 img.aligncenter,img.alignleft,img.alignright{margin-bottom:1.25em}
 p img,.wp-caption{margin-top:.4em}
 .wp-caption{background:#ddd;margin-bottom:1.25em;max-width:96%;padding:9px;}
-.wp-caption img{display:block;margin:0 auto;max-width:98%;}
-.wp-caption img:hover{background:#fff;border:1px solid #ccc}
+.wp-caption img{display:block;margin:0 auto;max-width:98%}
 .wp-caption .wp-caption-text{margin-bottom:.6em;padding:10px 0 5px 40px;position:relative;}
 .wp-caption .wp-caption-text:before{color:#666;content:'\2014';font-size:14px;font-weight:bold;margin-right:5px;position:absolute;left:10px;top:7px}
 .wp-caption-text,.gallery-caption{color:#666;font-family:Georgia,serif;font-size:12px}

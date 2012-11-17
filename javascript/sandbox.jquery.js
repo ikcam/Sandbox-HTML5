@@ -1,5 +1,5 @@
 /*!
- * Sandbox.jquery.js v0.1
+ * Sandbox.jquery.js v0.2
  * http://github.com/ikcam/Sandbox-HTML5
  *
  * Copyright 2012, Irving Kcam
@@ -9,5 +9,9 @@
 jQuery(document).ready(function($){
 	$('#tabs').each(function(){
 		$(this).tabs();
+	});
+
+	$('#accordion').each(function(){
+		$(this).accordion();
 	});
 });

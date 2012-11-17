@@ -515,7 +515,6 @@ function sandbox_scripts(){
 		wp_enqueue_script( 'sandbox' );
 	}
 
-
 	if( $settings['site_gmaps'] == 1 ){
 		wp_enqueue_script( 'google-maps', 'http://maps.google.com/maps/api/js?sensor=true' );
 		wp_enqueue_script( 'gmaps', get_template_directory_uri() . '/javascript/gmaps.jquery.js', array('jquery') );

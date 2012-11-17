@@ -251,7 +251,7 @@ function shortcode_tab( $atts, $content ){
 }
 add_shortcode( 'tab', 'shortcode_tab' );
 
-function shortcode_togglergroup( $content ){
+function shortcode_togglergroup( $atts, $content ){
 	$output  = '<div id="accordion">';
 	$output .= do_shortcode( $content );
 	$output .= '</div>';

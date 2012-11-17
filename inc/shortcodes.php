@@ -251,4 +251,30 @@ function shortcode_tab( $atts, $content ){
 }
 add_shortcode( 'tab', 'shortcode_tab' );
 
+function shortcode_togglergroup( $content ){
+	$output  = '<div id="accordion">';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
+	
+	return $output;
+}
+add_shortcode( 'togglergroup', 'shortcode_togglergroup' );
+
+function shortcode_toggler( $atts, $content ){
+	extract(shortcode_atts(array(
+		'title' => 'No title',
+		'active' => 'false'
+	) , $atts));
+
+	$output  = '<h3>'.$title.'</h3>';
+	$output .= "\n";
+	$output .= '<div>';
+	$output .= do_shortcode( $content );
+	$output .= '</div>';
+
+	return $output;
+}
+add_shortcode( 'toggler', 'shortcode_toggler' );
+
+
 ?>

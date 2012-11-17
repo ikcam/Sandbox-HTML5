@@ -28,7 +28,7 @@ div#tabs ul.ui-tabs-nav > li > a{background:#fff;border:1px solid #dadada;displa
 div#tabs ul.ui-tabs-nav > li.ui-state-active > a{border-bottom:1px solid #fff}
 div#tabs div.ui-tabs-hide{display:none}
 div#tabs div.ui-tabs-panel{background:#fff;border:1px solid #dadada;margin-top:-1px;padding:.5em}
-div#accordion{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;border-bottom:1px solid #ccc;}
+div#accordion{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;border-bottom:1px solid #ccc;margin:.5em 0;}
 div#accordion .ui-accordion-header{background:#f1f1f1;background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #f1f1f1));background:-webkit-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-moz-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-o-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-ms-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:linear-gradient(top, #fff 0%, #f1f1f1 100%);border:1px solid #ccc;font-size:1em;font-weight:normal;margin:0;padding:.5em 20px;}
 div#accordion .ui-accordion-header.ui-state-default{border-bottom:none}
 div#accordion .ui-accordion-header.ui-state-active{background-color:#fff;background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f1f1f1), color-stop(1, #fff));background:-webkit-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-moz-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-o-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-ms-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:linear-gradient(top, #f1f1f1 0%, #fff 100%)}

@@ -62,8 +62,6 @@ section#comments-list,form#commentform{font-size:.9em}
 .entry-date,.entry-meta,aside.sidebar,nav.navigation{font-size:.9em;line-height:1.3em}
 .entry-date{margin-bottom:.25em}
 img[class*='align'],img[class*='wp-image-'],img[class*="attachment-"]{height:auto}
-img[class*='align'],img[class*='wp-image-'],.gallery .gallery-icon img{border:1px solid #ddd;padding:6px;}
-img[class*='align']:hover,img[class*='wp-image-']:hover,.gallery .gallery-icon img:hover{background:#f4f4f4}
 img.size-full,img.size-large{max-width:97.5%;height:auto;width:auto}
 img.aligncenter,img.alignleft,img.alignright{margin-bottom:1.25em}
 p img,.wp-caption{margin-top:.4em}

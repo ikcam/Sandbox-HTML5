@@ -476,7 +476,7 @@ function sandbox_post_image(){
 	global $settings;
 
 	if( has_post_thumbnail( get_the_ID() ) ):
-		$post_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID(), array(200, 200, true) );
+		$post_image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID(), array(200, 200, true) ) );
 	else:
 		$attachments = get_children( array(
 			'post_parent'    => get_the_ID(),

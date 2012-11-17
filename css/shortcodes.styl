@@ -116,3 +116,35 @@ div#tabs
 		border 1px solid #DADADA
 		margin-top -1px
 		padding .5em
+
+div#accordion
+	border-radius bottom 5px
+	border-bottom 1px solid #CCC
+
+	.ui-accordion-header
+		background #f1f1f1
+		background linear-gradient(top, #FFF, #F1F1F1)
+		border 1px solid #CCC
+		font-size 1em
+		font-weight normal
+		margin 0
+		padding .5em 20px
+
+		&.ui-state-default
+			border-bottom none
+
+		&.ui-state-active
+			background-color #FFF
+			background linear-gradient(top, #F1F1F1, #FFF)
+
+		&:last-child
+			border-radius bottom 5px
+
+		&:first-child
+			border-radius top 5px
+
+	.ui-accordion-content
+		background #FFF
+		border-right 1px solid #CCC
+		border-left 1px solid #CCC
+		padding 20px

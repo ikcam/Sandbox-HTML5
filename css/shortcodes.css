@@ -13,14 +13,14 @@ Sandbox shortcodes CSS
 .clearfix{zoom:1}
 .clearfix:before,.clearfix:after{content:"";display:table}
 .clearfix:after{clear:both}
-div.box{background:#fff;-webkit-border-radius:5px;border-radius:5px;border:1px solid #dadada;}
+div.box{background:#fff;-webkit-border-radius:5px;border-radius:5px;border:1px solid #dadada;margin-bottom:1.5em;}
 div.box div.box-header{background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #f1f1f1));background:-webkit-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-moz-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-o-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-ms-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:linear-gradient(top, #fff 0%, #f1f1f1 100%);border-bottom:1px solid #dadada;-webkit-border-top-left-radius:5px;border-top-left-radius:5px;-webkit-border-top-right-radius:5px;border-top-right-radius:5px;font-size:1.2em}
 div.box.with-header div.box-header{padding:.5em 30px}
 div.box.with-header div.box-content{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;padding:.5em 30px}
 div.box.with-header.padding-small div.box-header,div.box.with-header.padding-small div.box-content{padding:.5em 20px}
 div.box.no-header div.box-content{-webkit-border-radius:5px;border-radius:5px;padding:2em}
 div.box.with-bg{background:#f7f7f7}
-div#tabs{margin:.5em 0;}
+div#tabs{margin:.5em 0 1.5em;}
 div#tabs ul.ui-tabs-nav{list-style:none !important;margin:0 !important;padding:0 !important;}
 div#tabs ul.ui-tabs-nav:after{content:'.';clear:both;display:block;height:0;visibility:hidden}
 div#tabs ul.ui-tabs-nav > li{float:left;}
@@ -28,7 +28,7 @@ div#tabs ul.ui-tabs-nav > li > a{background:#fff;border:1px solid #dadada;displa
 div#tabs ul.ui-tabs-nav > li.ui-state-active > a{border-bottom:1px solid #fff}
 div#tabs div.ui-tabs-hide{display:none}
 div#tabs div.ui-tabs-panel{background:#fff;border:1px solid #dadada;margin-top:-1px;padding:.5em}
-div#accordion{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;border-bottom:1px solid #ccc;margin:.5em 0;}
+div#accordion{-webkit-border-bottom-left-radius:5px;border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;border-bottom-right-radius:5px;border-bottom:1px solid #ccc;margin:.5em 0 1.5em;}
 div#accordion .ui-accordion-header{background:#f1f1f1;background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #f1f1f1));background:-webkit-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-moz-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-o-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:-ms-linear-gradient(top, #fff 0%, #f1f1f1 100%);background:linear-gradient(top, #fff 0%, #f1f1f1 100%);border:1px solid #ccc;font-size:1em;font-weight:normal;margin:0;padding:.5em 20px;}
 div#accordion .ui-accordion-header.ui-state-default{border-bottom:none}
 div#accordion .ui-accordion-header.ui-state-active{background-color:#fff;background:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f1f1f1), color-stop(1, #fff));background:-webkit-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-moz-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-o-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:-ms-linear-gradient(top, #f1f1f1 0%, #fff 100%);background:linear-gradient(top, #f1f1f1 0%, #fff 100%)}

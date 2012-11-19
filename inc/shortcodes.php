@@ -275,6 +275,4 @@ function shortcode_toggler( $atts, $content ){
 	return $output;
 }
 add_shortcode( 'toggler', 'shortcode_toggler' );
-
-
 ?>

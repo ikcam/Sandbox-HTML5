@@ -12,6 +12,8 @@ jQuery(document).ready(function($){
 	});
 
 	$('#accordion').each(function(){
-		$(this).accordion();
+		$(this).accordion({
+			collapsible: true
+		});
 	});
 });

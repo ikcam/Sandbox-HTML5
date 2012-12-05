@@ -28,6 +28,9 @@ One of the most influential blog themes, the Sandbox is a starting point for des
 	* gMaps
 		* gRoute
 		* gMarker
+	* Tabs
+		* Tab
+	* Toggler
 
 ## Comming soon ##
 * More **shortcodes**

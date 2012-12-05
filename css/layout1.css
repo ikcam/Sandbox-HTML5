@@ -15,7 +15,7 @@ DESCRIPTION: Two-column fluid layout with one sidebar right of content
 		width:100%;
 	}
 
-	section#content {
+	section#container > section#content {
 		margin:0 270px 0 0;
 	}
 

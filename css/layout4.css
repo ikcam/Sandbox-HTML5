@@ -14,7 +14,7 @@ DESCRIPTION: Three-column fluid layout with two sidebars left of content
 		width:100%;
 	}
 
-	section#content {
+	section#container > section#content {
 		margin:0 0 0 470px;
 	}
 

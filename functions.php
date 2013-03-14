@@ -11,6 +11,7 @@ You should have received a copy of the GNU General Public License along with SAN
 
 // Var of settings
 $settings = get_option('sb_settings');
+if ( ! isset( $content_width ) ) $content_width = 900;
 
 // Produces a list of pages in the header without whitespace
 function sandbox_menus() {

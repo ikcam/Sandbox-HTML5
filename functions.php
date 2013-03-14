@@ -577,12 +577,12 @@ function sandbox_excerpt($text) {
 	if( $settings['excerpt_thumb_width'] == 9999 || $settings['excerpt_thumb_width'] == 0 )
 		$th_width = 9999;
 	else
-		$th_with = $settings['excerpt_thumb_width'];
+		$th_width = $settings['excerpt_thumb_width'];
 
 	if( $settings['excerpt_thumb_height'] == 9999 || $settings['excerpt_thumb_height'] == 0 )
-		$th_width = 9999;
+		$th_height = 9999;
 	else
-		$th_with = $settings['excerpt_thumb_height'];
+		$th_height = $settings['excerpt_thumb_height'];
 
 	if( $settings['excerpt_thumb_crop'] == 1 )
 		$th_crop = true;
